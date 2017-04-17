@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Ingresar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form novalidate [formGroup]="loginForm" (ngSubmit)="doLogin( $event )">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Correo: </ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
+        <p *ngIf="loginForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+        <p *ngIf="loginForm.get('email').hasError('pattern')" ion-text color="danger">Puto este email no es valido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña: </ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
+        <p *ngIf="loginForm.get('password').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+        <p *ngIf="loginForm.get('password').hasError('minlength')" ion-text color="danger">Minimo tiene que ser de 6 caracteres.</p>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button block ion-button type="submit" icon-left [disabled]="loginForm.invalid">
+        <ion-icon name="lock"></ion-icon>
+        Ingresar
+      </button>
+    </div>
+    
+  </form>
+
+</ion-content>

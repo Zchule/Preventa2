@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>adminUsers</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addUser()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let user of users | async">
+      <ion-thumbnail item-left>
+        <img src="assets/imgs/papas.gif">
+      </ion-thumbnail>
+      <h2>{{ user.nombre }}</h2>
+      <p>{{ user.apPat}}</p>
+      <p>{{ user.apMat}}</p>
+      <p>{{ user.ci}}</p>
+      <p>{{ user.direccion}}</p>
+      <p>{{ user.type}}</p>
+      
+    </ion-item>
+  </ion-list>
+
+</ion-content>
