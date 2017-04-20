@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, ToastController} from 'ionic-angular';
+
+import { UserService } from '../../providers/user-service';
 
 @IonicPage()
 @Component({
@@ -10,20 +12,21 @@ import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 export class FormUserPage {
 
   userForm: FormGroup;
+  user: any= null;
 
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public toastCtrl: ToastController,
+    public userService: UserService,
+
     ) {
-      this.userForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      apPat: ['', [Validators.required]],
-      apMat: ['', [Validators.required]],
-      ci: ['', [Validators.required]],
-      direction: ['', [Validators.required]],
-      type: ['', [Validators.required]]
-    });
+   this.userForm = this.makeForm();   
+    this.user = this.navParams.get('user');
+    if(this.user !== null &&  this.user !==  undefined){
+      this.userForm.patchValue(this.user);
+    } 
   }
 
   ionViewDidLoad() {
@@ -31,9 +34,40 @@ export class FormUserPage {
   }
   saveUser( event: Event ){
     event.preventDefault();
-    console.log( this.userForm.value );
+    if(this.user !== null &&  this.user !==  undefined){
+      this.userService.update(this.user.$key, this.userForm.value);
+      let message = this.toastCtrl.create({
+      message: 'Usuario Actualizado',
+      duration: 3000,
+      showCloseButton: true
+    })
+    message.present();
+    this.close();
+    }else{
+      this.userService.create(this.userForm.value);
+      let message = this.toastCtrl.create({
+      message: 'Usuario Registrado',
+      duration: 3000,
+      showCloseButton: true
+    })
+    message.present();
+    this.close();
+    }
+    this.userForm = this.makeForm();    
   }
-
+  
+ makeForm(){
+    return this.formBuilder.group({
+      name: ['', [Validators.required]],
+      apPat: ['', [Validators.required]],
+      apMat: ['', [Validators.required]],
+      ci: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
+      direction: ['', [Validators.required]],
+      type: ['preventa', [Validators.required]]
+    });
+  }
+  
   close(){
     this.viewCtrl.dismiss();
   }

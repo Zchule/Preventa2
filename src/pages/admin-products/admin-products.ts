@@ -28,5 +28,13 @@ export class AdminProductsPage {
     let modal = this.modalCtrl.create('FormProductPage');
     modal.present();
   }
+  goToEdit(product){
+    console.log(product);
+    let modal2 = this.modalCtrl.create('FormProductPage',{
+      product:product
+    });
+    modal2.present();
+
+  }
 
 }

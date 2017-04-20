@@ -12,7 +12,7 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let user of users | async">
+    <ion-item *ngFor="let user of users | async" (click)="goToEdit(user)">
       <ion-thumbnail item-left>
         <img src="assets/imgs/papas.gif">
       </ion-thumbnail>

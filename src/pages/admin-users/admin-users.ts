@@ -24,10 +24,18 @@ export class AdminUsersPage {
   ionViewDidLoad() {
     this.users = this.userService.getAll();
   }
-
+duc
   addUser(){
     let modal = this.modalCtrl.create('FormUserPage');
     modal.present();
+  }
+  goToEdit(user){
+    console.log(user);
+    let modal2 = this.modalCtrl.create('FormUserPage',{
+      user:user
+    });
+    modal2.present();
+
   }
 
 }

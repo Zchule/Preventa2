@@ -25,6 +25,10 @@ export class AdminHomePage {
   goToAdminProductsPage(){
     this.navCtrl.push('AdminProductsPage');
   }
+  goToProductsPage()
+  {
+    this.navCtrl.push('TabsCategoryPage');
+  }
   
 
 }

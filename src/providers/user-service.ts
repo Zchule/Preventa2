@@ -16,4 +16,19 @@ export class UserService {
     return this.users;
   }
 
+  create(user){
+    this.users.push(user);
+  }
+
+  update(key, user){
+    this.users.update(key,{
+      name: user.name,
+      apPat: user.apPat,
+      apMat: user.apMat,
+      ci: user.ci,
+      direction: user.direction,
+      email: user.email,
+      type: user.type
+    });
+  }
 }

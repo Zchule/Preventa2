@@ -16,7 +16,7 @@
       </ion-item>
       <ion-item *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
         <p *ngIf="loginForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
-        <p *ngIf="loginForm.get('email').hasError('pattern')" ion-text color="danger">Puto este email no es valido.</p>
+        <p *ngIf="loginForm.get('email').hasError('pattern')" ion-text color="danger">este email no es valido.</p>
       </ion-item>
       <ion-item>
         <ion-label floating>Contraseña: </ion-label>

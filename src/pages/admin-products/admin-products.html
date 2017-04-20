@@ -10,13 +10,13 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products | async">
+    <ion-item *ngFor="let product of products | async" (click)="goToEdit(product)" >
       <ion-thumbnail item-left>
         <img src="assets/imgs/papas.gif">
       </ion-thumbnail>
-      <h2>{{ product.nombre }}</h2>
-      <p>BS {{ product.precio }}</p>
-      <ion-badge item-right>{{ product.cantidad }}</ion-badge>
+      <h2>{{ product.name }}</h2>
+      <p>BS {{ product.price }}</p>
+      <ion-badge item-right>{{ product.cant }}</ion-badge>
     </ion-item>
   </ion-list>
 </ion-content>

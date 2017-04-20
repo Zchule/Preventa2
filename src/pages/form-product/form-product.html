@@ -26,20 +26,22 @@
       </ion-item>
       <ion-item *ngIf="productForm.get('code').errors && productForm.get('code').dirty">
         <p *ngIf="productForm.get('code').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+        <p *ngIf="productForm.get('code').hasError('maxlength')" ion-text color="danger">solo de 5 caracteres.</p>
       </ion-item>
       <ion-item>
         <ion-label floating>Cantidad: </ion-label>
-        <ion-input formControlName="cant"></ion-input>
+        <ion-input formControlName="cant" type="number"></ion-input>
       </ion-item>
       <ion-item *ngIf="productForm.get('cant').errors && productForm.get('cant').dirty">
         <p *ngIf="productForm.get('cant').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
       <ion-item>
         <ion-label floating>Precio(Bs): </ion-label>
-        <ion-input formControlName="price"></ion-input>
+        <ion-input formControlName="price" type="number"></ion-input>
       </ion-item>
       <ion-item *ngIf="productForm.get('price').errors && productForm.get('price').dirty">
         <p *ngIf="productForm.get('price').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+        <p *ngIf="productForm.get('price').hasError('maxlength')" ion-text color="danger">solo 3 decimales.</p>
       </ion-item>
     </ion-list>
     <div padding>

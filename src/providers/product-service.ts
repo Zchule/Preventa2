@@ -15,5 +15,18 @@ export class ProductService {
   getAll(){
     return this.products;
   }
+  
+  create(product){
+    this.products.push(product);
+  }
+
+  update(key, product){
+    this.products.update(key,{
+      name: product.name,
+      code: product.code,
+      cant: product.cant,
+      price: product.price
+    });
+  }
 
 }
