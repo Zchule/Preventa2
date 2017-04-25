@@ -20,6 +20,7 @@ export class AdminUsersPage {
     public modalCtrl: ModalController,
     ) {
   }
+  
 
   ionViewDidLoad() {
     this.users = this.userService.getAll();
