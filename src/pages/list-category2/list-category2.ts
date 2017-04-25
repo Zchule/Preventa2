@@ -11,13 +11,15 @@ export class ListCategory2Page {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public MenuCtrl: MenuController
+    public menuCtrl: MenuController
     ) {
       
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListCategory2');
+    console.log('Alimentos');
+    //this.menuCtrl.enable(true,'menuA');
+    //this.menuCtrl.enable(false,'menu');
   }
 
 }

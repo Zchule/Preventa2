@@ -9,6 +9,9 @@ import { AngularFireModule } from 'angularfire2';
 
 import { ProductService } from '../providers/product-service';
 import { UserService } from '../providers/user-service';
+import { DetersService } from '../providers/deter-service';
+import { ClientService } from '../providers/client-service';
+
 
 const configFirebase ={
   apiKey: "AIzaSyB7BLUYFFxZw5lJEUt_3RfPMjcJMVcUmuw",
@@ -38,6 +41,8 @@ const configFirebase ={
     SplashScreen,
     ProductService,
     UserService,
+    DetersService,
+    ClientService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

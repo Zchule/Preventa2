@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,11 +8,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListCategory1Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public menuCtrl: MenuController
+    ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListCategory1');
+    console.log('Cuidado Personal');
+    //this.menuCtrl.enable(true,'menu');
+  //  this.menuCtrl.enable(false,'menuA');
   }
 
 }

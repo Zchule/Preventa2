@@ -18,30 +18,28 @@ export class MyApp {
       component: 'AdminHomePage'
     },
     {
-      title: 'Cuidado Personal',
-      icon: 'list',
+      title: 'Cuidado del Cabello',
       component: 'CuidadosPage',
       index: 0
     },
     {
       title: 'Detergentes',
-      icon: 'list',
       component: 'DetergentesPage',
       index: 1
     },
     {
       title: 'Desodorantes',
-      icon: 'camera',
-      component: 'DesodorantesPage'
+      component: 'DesodorantesPage',
+      index: 2
     },
     {
       title: 'Jabones',
-      icon: 'beer',
-      component: 'JabonesPage'
+      component: 'JabonesPage',
+      index: 3
     }
   ];
 
-  pages2: any[] = [
+  pagesA: any[] = [
     {
       title: 'Home',
       icon: 'home',
@@ -49,9 +47,25 @@ export class MyApp {
     },
     {
       title: 'Alimentos de Soya',
-      icon: 'list',
       component: 'SoyaPage',
       index: 0
+    }
+  ];
+  pagesP: any[] = [
+    {
+      title: 'Home',
+      icon: 'home',
+      component: 'AdminHomePage'
+    },
+    {
+      title: 'Clientes',
+      component: 'AdminClientsPage',
+      index: 0
+    },
+    {
+      title: 'Mapa de Preventa',
+      component: 'MapPreventaPage',
+      index: 1
     }
   ];
 

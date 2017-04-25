@@ -13,15 +13,16 @@
     </ion-list>
   </ion-content>
 </ion-menu>
-<ion-menu id="menuA" [content]="contentA">
+
+<ion-menu id="menuAlimentos" [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
+      <ion-title>Menu Alimentos</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pages2">
+      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesA">
         <ion-icon [name]="page.icon" item-left></ion-icon>
         {{ page.title }}
       </button>
@@ -29,5 +30,21 @@
   </ion-content>
 </ion-menu>
 
-<ion-nav #content #contentA [root]="rootPage"></ion-nav>
+<ion-menu id="menuPreventa" [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu Preventa</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesP">
+        <ion-icon [name]="page.icon" item-left></ion-icon>
+        {{ page.title }}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>
 

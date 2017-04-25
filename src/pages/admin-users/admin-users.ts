@@ -24,7 +24,7 @@ export class AdminUsersPage {
   ionViewDidLoad() {
     this.users = this.userService.getAll();
   }
-duc
+
   addUser(){
     let modal = this.modalCtrl.create('FormUserPage');
     modal.present();

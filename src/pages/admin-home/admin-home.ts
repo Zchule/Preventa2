@@ -29,6 +29,13 @@ export class AdminHomePage {
   {
     this.navCtrl.push('TabsCategoryPage');
   }
+  goToAdminPreventaPage(){
+    this.navCtrl.push('AdminPreventaPage')
+  }
+  
+  goToAdminClientsPage(){
+    this.navCtrl.push('AdminClientsPage')
+  }
   
 
 }

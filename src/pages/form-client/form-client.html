@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Cliente</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form novalidate [formGroup]="clientForm" (ngSubmit)="saveClient( $event )">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Codigo Cliente </ion-label>
+        <ion-input formControlName="codClient"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('codClient').errors && clientForm.get('codClient').dirty">
+        <p *ngIf="clientForm.get('codClient').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nombre: </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('name').errors && clientForm.get('name').dirty">
+        <p *ngIf="clientForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido Paterno: </ion-label>
+        <ion-input formControlName="apPat"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('apPat').errors && clientForm.get('apPat').dirty">
+        <p *ngIf="clientForm.get('apPat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido Materno: </ion-label>
+        <ion-input formControlName="apMat"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('apMat').errors && clientForm.get('apMat').dirty">
+        <p *ngIf="clientForm.get('apMat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Dirección: </ion-label>
+        <ion-input formControlName="direction"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('direction').errors && clientForm.get('direction').dirty">
+        <p *ngIf="clientForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>nombre Tienda: </ion-label>
+        <ion-input formControlName="nameStore"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('nameStore').errors && clientForm.get('nameStore').dirty">
+        <p *ngIf="clientForm.get('nameStore').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nombre a Facturar: </ion-label>
+        <ion-input formControlName="facName"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('facName').errors && clientForm.get('facName').dirty">
+        <p *ngIf="clientForm.get('facName').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nit de Factura: </ion-label>
+        <ion-input formControlName="facNit"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="clientForm.get('facNit').errors && clientForm.get('facNit').dirty">
+        <p *ngIf="clientForm.get('facNit').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+    <ion-item>
+      <ion-label>Zona</ion-label>
+      <ion-select formControlName="zone">
+        <ion-option value="norte" selected="true">Norte</ion-option>
+        <ion-option value="sud">Sud</ion-option>
+        <ion-option value="este">Este</ion-option>
+        <ion-option value="oeste">Oeste</ion-option>
+      </ion-select>
+    </ion-item>
+      
+      <ion-item>
+      <ion-label>Tipo de Tienda</ion-label>
+      <ion-select formControlName="typeStore">
+        <ion-option value="tienda" selected="true">Tienda de Barrio</ion-option>
+        <ion-option value="agencia">Agencia</ion-option>
+      </ion-select>
+    </ion-item>
+
+    </ion-list>
+    <div padding>
+      <button block ion-button type="submit" icon-left [disabled]="clientForm.invalid">
+        Guardar
+      </button>
+    </div>
+    
+  </form>
+</ion-content>

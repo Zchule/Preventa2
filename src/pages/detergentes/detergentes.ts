@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the Detergentes page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { DetersService } from '../../providers/deter-service';
+
 @IonicPage()
 @Component({
   selector: 'page-detergentes',
@@ -14,11 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetergentesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  detergentes: any[] = [];
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public deterService: DetersService
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Detergentes');
+    this.detergentes = this.deterService.getAllProduct();
+    console.log(this.detergentes);
+  }
+  goToDeterCategoryPage(detergente){
+    this.navCtrl.push('DeterCategoryPage', {
+      detergente: detergente,
+    });
   }
 
 }
