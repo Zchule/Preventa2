@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+
+import { ProductService } from '../../providers/product-service';
 
 @IonicPage()
 @Component({
@@ -9,8 +11,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class AdminHomePage {
 
   constructor(
-   public navCtrl: NavController,
-   public navParams: NavParams
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menuCtrl: MenuController,
+    public productService: ProductService
   ) {
   }
 
@@ -18,24 +22,36 @@ export class AdminHomePage {
     console.log('ionViewDidLoad AdminHome');
   }
 
-  goToAdminUsersPage(){
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuPreventa');
+  }
+
+  goToAdminUsersPage() {
     this.navCtrl.push('AdminUsersPage');
   }
 
-  goToAdminProductsPage(){
+  goToAdminProductsPage() {
     this.navCtrl.push('AdminProductsPage');
   }
-  goToProductsPage()
-  {
-    this.navCtrl.push('TabsCategoryPage');
+  goToProductsPage() {
+    this.productService.getData()
+    .then(data => {
+      this.navCtrl.push('TabsCategoryPage', {
+        tabs: data
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    })
   }
-  goToAdminPreventaPage(){
+  goToAdminPreventaPage() {
     this.navCtrl.push('AdminPreventaPage')
   }
-  
-  goToAdminClientsPage(){
+
+  goToAdminClientsPage() {
     this.navCtrl.push('AdminClientsPage')
   }
-  
+
+
 
 }

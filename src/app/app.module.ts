@@ -12,6 +12,8 @@ import { UserService } from '../providers/user-service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client-service';
 
+import { HttpModule } from '@angular/http';
+
 
 const configFirebase ={
   apiKey: "AIzaSyB7BLUYFFxZw5lJEUt_3RfPMjcJMVcUmuw",
@@ -29,6 +31,7 @@ const configFirebase ={
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp( configFirebase )
   ],

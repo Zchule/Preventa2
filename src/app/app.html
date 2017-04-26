@@ -1,35 +1,3 @@
-<ion-menu id="menu" [content]="content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pages">
-        <ion-icon [name]="page.icon" item-left></ion-icon>
-        {{ page.title }}
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<ion-menu id="menuAlimentos" [content]="content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Menu Alimentos</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesA">
-        <ion-icon [name]="page.icon" item-left></ion-icon>
-        {{ page.title }}
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <ion-menu id="menuPreventa" [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
@@ -38,7 +6,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesP">
+      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPreventa">
         <ion-icon [name]="page.icon" item-left></ion-icon>
         {{ page.title }}
       </button>

@@ -1,0 +1,196 @@
+[
+ {
+   "title":"Cuidado Personal",
+   "icon":"people",
+   "products":[
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Skip de 330gr",
+       "weight": "330 gr",
+       "cant":"bolson x 36 u",
+       "img":"xxx",
+       "mark":"Skip",
+       "group":"Skip"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Skip de 800gr",
+       "weight": "800 gr",
+       "cant":"bolson x 15 u",
+       "img":"xxx",
+       "mark":"Skip",
+       "group":"Skip"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Skip de 2,25kg",
+       "weight": "2,25kg",
+       "cant":"bolson x 6 u",
+       "img":"xxx",
+       "mark":"Skip",
+       "group":"Skip"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 140gr",
+       "weight": "140gr",
+       "cant":"bolson x 40 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Limon"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 360gr",
+       "weight": "360gr",
+       "cant":"bolson x 36 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Limon"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 900gr",
+       "weight": "900gr",
+       "cant":"bolson x 15 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Limon"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 2,5 kg",
+       "weight": "2,5 kg",
+       "cant":"bolson x 10 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Limon"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 160 g",
+       "weight": "160g",
+       "cant":"bolson x 40 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Floral"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 900g",
+       "weight": "900 g",
+       "cant":"bolson x 15 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Floral"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 2,5 kg",
+       "weight": "2,5 kg",
+       "cant":"bolson x 4 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Floral"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 160 g",
+       "weight": "160g",
+       "cant":"bolson x 40 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Abrazo de Sol"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 900g",
+       "weight": "900 g",
+       "cant":"bolson x 15 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Abrazo de Sol"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"detergente en polvo"
+       },
+       "name":"Omo de 2,5 kg",
+       "weight": "2,5 kg",
+       "cant":"bolson x 4 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Abrazo de Sol"
+     },
+     {
+       "category":{
+         "id":"222",
+         "title":"detergente en barra"
+       },
+       "name":"Omo de 2,5 kg",
+       "weight": "2,5 kg",
+       "cant":"bolson x 4 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Abrazo de Sol"
+     },
+     {
+       "category":{
+         "id":"222",
+         "title":"detergente en barra"
+       },
+       "name":"Omo de 2,5 kg",
+       "weight": "2,5 kg",
+       "cant":"bolson x 4 u",
+       "img":"xxx",
+       "mark":"Omo",
+       "group":"Abrazo de Sol"
+     }
+   ]
+ },
+ {
+   "title":"Alimentos",
+   "icon":"camera"
+ },
+ {
+   "title":"Sexo Shop",
+   "icon":"home"
+ }
+]

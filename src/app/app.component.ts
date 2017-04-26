@@ -3,6 +3,8 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import * as _ from "lodash";
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -11,47 +13,8 @@ export class MyApp {
   @ViewChild(Nav) navMaster: Nav;
   rootPage:any = 'LoginPage';
 
-   pages: any[] = [
-    {
-      title: 'Home',
-      icon: 'home',
-      component: 'AdminHomePage'
-    },
-    {
-      title: 'Cuidado del Cabello',
-      component: 'CuidadosPage',
-      index: 0
-    },
-    {
-      title: 'Detergentes',
-      component: 'DetergentesPage',
-      index: 1
-    },
-    {
-      title: 'Desodorantes',
-      component: 'DesodorantesPage',
-      index: 2
-    },
-    {
-      title: 'Jabones',
-      component: 'JabonesPage',
-      index: 3
-    }
-  ];
-
-  pagesA: any[] = [
-    {
-      title: 'Home',
-      icon: 'home',
-      component: 'AdminHomePage'
-    },
-    {
-      title: 'Alimentos de Soya',
-      component: 'SoyaPage',
-      index: 0
-    }
-  ];
-  pagesP: any[] = [
+   
+  pagesPreventa: any[] = [
     {
       title: 'Home',
       icon: 'home',
@@ -75,6 +38,32 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      let posiciones =[
+        {
+          title:'1',
+          place: 'cama',
+          person: "2"
+        },
+        {
+          title:'2',
+          place: 'cama',
+          person: "3"
+        },
+        {
+          title:'2',
+          place: 'cama',
+          person: "2"
+        },
+        {
+          title:'1',
+          place: 'parque',
+          person: "2"
+        }
+      ]
+      let result: any = _.groupBy(posiciones, 'place');
+      result.cama = _.groupBy(result.cama, 'person');
+      result.parque = _.groupBy(result.parque, 'person');
+      console.log(result);
     });
   }
 
@@ -86,6 +75,11 @@ export class MyApp {
     }else{
       this.navMaster.setRoot( page.component );
     }
+  }
+
+  goToHomePage(){
+    this.navMaster.setRoot('AdminHomePage');
+    //this.navMaster.pop();
   }
 }
 

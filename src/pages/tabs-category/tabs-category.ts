@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ProductService } from '../../providers/product-service';
+
 @IonicPage()
 @Component({
   selector: 'page-tabs-category',
@@ -8,19 +10,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsCategoryPage {
 
-  tab1: string = 'ListCategory1Page';
-  tab2: string = 'ListCategory2Page';
-  index: string = '0';
+  tabs: any[] = [];
+  page: string = "ProductsPage";
 
   constructor(
    public navCtrl: NavController,
    public navParams: NavParams,
+   public productService: ProductService
    ) {
-     this.index = this.navParams.get('index');
+    this.tabs = this.navParams.get('tabs');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsCategory');
+    
   }
 
 }
