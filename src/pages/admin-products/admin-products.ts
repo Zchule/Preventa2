@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2';
 
 import { ProductService } from '../../providers/product-service';
@@ -17,11 +17,17 @@ export class AdminProductsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public productService: ProductService,
+    public menuCtrl: MenuController,
     public modalCtrl: ModalController
   ) {}
 
   ionViewDidLoad() {
     this.products = this.productService.getAll();
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuPreventa');
+    this.menuCtrl.enable(true,'menuUser')
   }
 
   addProduct(){

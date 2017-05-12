@@ -61,9 +61,14 @@ export class FormProductPage {
 
 makeForm(){
   return this.formBuilder.group({
+      type: ['cuidado', [Validators.required]],
+      category: ['polvo', [Validators.required]],
+      mark: ['omo', [Validators.required]],
+      group: ['limon', [Validators.required]],
       name: ['', [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
       cant: ['', [Validators.required]],
+      wheight: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.maxLength(3)]],
     });
 }

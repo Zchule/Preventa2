@@ -27,13 +27,17 @@ export class ClientService {
       name: client.name,
       apPat: client.apPat,
       apMat: client.apMat,
-      ci: client.ci,
+      CI: client.CI,
       direction: client.direction,
       nameStore: client.nameStore,
       zone: client.zone,
       typeStore: client.typeStore,
-      facname: client.facname,
-      facnit: client.facnit
+      facName: client.facName,
+      facNit: client.facNit
     });
+  }
+
+  delete(key){
+    return this.clients.remove(key);
   }
 }

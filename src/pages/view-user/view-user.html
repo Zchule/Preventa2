@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Usuarios</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="userForm">
+    <ion-list>
+      
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/imgs/papas.gif">
+        </ion-thumbnail>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nombre: </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Apellido Paterno: </ion-label>
+        <ion-input formControlName="apPat"></ion-input>
+      </ion-item>
+     
+      <ion-item>
+        <ion-label>Apellido Materno: </ion-label>
+        <ion-input formControlName="apMat"></ion-input>
+      </ion-item>
+     
+      <ion-item>
+        <ion-label>Carnet de Indentidad: </ion-label>
+        <ion-input formControlName="ci" ></ion-input>
+      </ion-item>
+     
+      <ion-item>
+        <ion-label>Dirección: </ion-label>
+        <ion-input formControlName="direction"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+      <ion-label>email: </ion-label>
+      <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+      <ion-label>Tipo de Usuario</ion-label>
+      <ion-input formControlName="type" ></ion-input>
+    </ion-item>
+    </ion-list>
+
+  </form>
+</ion-content>

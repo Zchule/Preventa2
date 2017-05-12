@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Clientes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form novalidate [formGroup]="clientForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Codigo Cliente </ion-label>
+        <ion-input formControlName="codClient"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nombre: </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Apellido Paterno: </ion-label>
+        <ion-input formControlName="apPat"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Apellido Materno: </ion-label>
+        <ion-input formControlName="apMat"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>CI: </ion-label>
+        <ion-input formControlName="CI"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Dirección: </ion-label>
+        <ion-input formControlName="direction"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/imgs/papas.gif">
+        </ion-thumbnail>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>nombre Tienda: </ion-label>
+        <ion-input formControlName="nameStore"></ion-input>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Tipo de Tienda</ion-label>
+      <ion-input formControlName="typeStore"></ion-input>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Zona</ion-label>
+      <ion-input formControlName="zone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nombre a Facturar: </ion-label>
+        <ion-input formControlName="facName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nit de Factura: </ion-label>
+        <ion-input formControlName="facNit"></ion-input>
+      </ion-item>
+      </ion-list>
+   
+  </form>
+</ion-content>
+

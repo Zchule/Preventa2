@@ -1,28 +1,27 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>adminUsers</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Usuarios</ion-title>
+    <button menuToggle="menuUser" ion-button>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-buttons end>
       <button ion-button icon-only (click)="addUser()">
-        <ion-icon name="add"></ion-icon>
+        <i class="material-icons">add_circle</i>
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-<ion-content padding>
+
+<ion-content>
   <ion-list>
-    <ion-item *ngFor="let user of users | async" (click)="goToEdit(user)">
+    <ion-item *ngFor="let user of users | async; let i = index" (click)="showActionSheet(user)">
       <ion-thumbnail item-left>
-        <img src="assets/imgs/papas.gif">
+        <img src="assets/imgs/sinfoto.png">
       </ion-thumbnail>
-      <h2>{{ user.nombre }}</h2>
+      <h2>{{ user.name }}</h2>
       <p>{{ user.apPat}}</p>
-      <p>{{ user.apMat}}</p>
       <p>{{ user.ci}}</p>
-      <p>{{ user.direccion}}</p>
-      <p>{{ user.type}}</p>
-      
+      <p>{{ user.direction}}</p>
     </ion-item>
   </ion-list>
 

@@ -14,6 +14,9 @@ import { ClientService } from '../providers/client-service';
 
 import { HttpModule } from '@angular/http';
 
+import { Camera } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 const configFirebase ={
   apiKey: "AIzaSyB7BLUYFFxZw5lJEUt_3RfPMjcJMVcUmuw",
@@ -23,7 +26,6 @@ const configFirebase ={
   storageBucket: "bddproyecto.appspot.com",
   messagingSenderId: "4446233718"
 };
-
 
 @NgModule({
   declarations: [
@@ -42,10 +44,13 @@ const configFirebase ={
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     ProductService,
     UserService,
     DetersService,
     ClientService,
+    Geolocation,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

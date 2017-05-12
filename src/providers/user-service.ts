@@ -31,4 +31,8 @@ export class UserService {
       type: user.type
     });
   }
+  
+  delete(key){
+    return this.users.remove(key);
+  }
 }

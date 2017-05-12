@@ -13,12 +13,39 @@ export class MyApp {
   @ViewChild(Nav) navMaster: Nav;
   rootPage:any = 'LoginPage';
 
+  pagesUser:any [] = [
+    {
+      title: 'Home',
+      icon: 'home',
+      component: 'AdminHomePage'
+    },
+    {
+      title: 'Categorias',
+      icon: 'home',
+      component: 'AdminCategoriesPage'
+    },
+    {
+      title: 'Marcas',
+      icon: 'home',
+      component: 'AdminMarksPage'
+    },
+    {
+      title: 'Grupos',
+      icon: 'home',
+      component: 'AdminHomePage'
+    }
+    ]
    
   pagesPreventa: any[] = [
     {
       title: 'Home',
       icon: 'home',
       component: 'AdminHomePage'
+    },
+    {
+      title: 'Pedido',
+      icon: 'beer',
+      component: 'PedidoPage'
     },
     {
       title: 'Clientes',

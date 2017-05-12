@@ -2,17 +2,20 @@
 
   <ion-navbar color="primary">
     <ion-title>Inicio</ion-title>
+    <button menuToggle ion-button>
+      <ion-icon name="menuUser"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <button block ion-button icon-left (click)="goToAdminUsersPage()">
+  <button ion-button block round icon-only icon-left (click)="goToAdminUsersPage()">
     <ion-icon name="people"></ion-icon>
       Administrar Usuarios
   </button>
-  <button block ion-button icon-left (click)="goToAdminProductsPage()">
+  <button block ion-button round icon-only icon-left (click)="goToAdminProductsPage()">
     <ion-icon name="list"></ion-icon>
     Administrar Productos
   </button>
@@ -28,5 +31,9 @@
     <ion-icon name="list"></ion-icon>
     Administrar Clientes
   </button>
-  
+  <button block ion-button icon-left (click)="goToMapPage()">
+    <ion-icon name="list"></ion-icon>
+    Map
+  </button>
+
 </ion-content>

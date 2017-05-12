@@ -24,6 +24,7 @@ export class AdminHomePage {
 
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'menuPreventa');
+    this.menuCtrl.enable(false,'menuUser')
   }
 
   goToAdminUsersPage() {
@@ -31,7 +32,7 @@ export class AdminHomePage {
   }
 
   goToAdminProductsPage() {
-    this.navCtrl.push('AdminProductsPage');
+    this.navCtrl.setRoot('AdminProductsPage');
   }
   goToProductsPage() {
     this.productService.getData()
@@ -45,13 +46,13 @@ export class AdminHomePage {
     })
   }
   goToAdminPreventaPage() {
-    this.navCtrl.push('AdminPreventaPage')
+    this.navCtrl.setRoot('AdminPreventaPage');
   }
 
   goToAdminClientsPage() {
-    this.navCtrl.push('AdminClientsPage')
+    this.navCtrl.push('AdminClientsPage');
   }
-
-
-
+  goToMapPage(){
+    this.navCtrl.push('MapPreventaPage');
+  }
 }

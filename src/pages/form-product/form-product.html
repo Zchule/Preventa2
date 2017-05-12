@@ -13,6 +13,40 @@
 <ion-content>
   <form novalidate [formGroup]="productForm" (ngSubmit)="saveProduct( $event )">
     <ion-list>
+    
+      <ion-item>
+        <ion-label>Tipo:</ion-label>
+        <ion-select formControlName="type">
+          <ion-option value="cuidado" selected="true">Cuidado Personal</ion-option>
+          <ion-option value="alimentos">Alimentos</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-select formControlName="category">
+          <ion-option value="polvo" selected="true">detergente en polvo</ion-option>
+          <ion-option value="barra">detergente en barra</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Marca:</ion-label>
+        <ion-select formControlName="mark">
+          <ion-option value="skip" selected="true">Skip</ion-option>
+          <ion-option value="omo">Omo</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Group:</ion-label>
+        <ion-select formControlName="group">
+          <ion-option value="skip" selected="true">Skip</ion-option>
+          <ion-option value="limon">Limon</ion-option>
+          <ion-option value="floral">Floral</ion-option>
+        </ion-select>
+      </ion-item>
+      
       <ion-item>
         <ion-label floating>Nombre: </ion-label>
         <ion-input formControlName="name"></ion-input>
@@ -20,6 +54,7 @@
       <ion-item *ngIf="productForm.get('name').errors && productForm.get('name').dirty">
         <p *ngIf="productForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
+
       <ion-item>
         <ion-label floating>Codigo: </ion-label>
         <ion-input formControlName="code"></ion-input>
@@ -28,6 +63,15 @@
         <p *ngIf="productForm.get('code').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
         <p *ngIf="productForm.get('code').hasError('maxlength')" ion-text color="danger">solo de 5 caracteres.</p>
       </ion-item>
+
+      <ion-item>
+        <ion-label floating>Peso: </ion-label>
+        <ion-input formControlName="wheight"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="productForm.get('wheight').errors && productForm.get('wheight').dirty">
+        <p *ngIf="productForm.get('wheight').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
       <ion-item>
         <ion-label floating>Cantidad: </ion-label>
         <ion-input formControlName="cant" type="number"></ion-input>
@@ -35,6 +79,7 @@
       <ion-item *ngIf="productForm.get('cant').errors && productForm.get('cant').dirty">
         <p *ngIf="productForm.get('cant').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
+
       <ion-item>
         <ion-label floating>Precio(Bs): </ion-label>
         <ion-input formControlName="price" type="number"></ion-input>
@@ -43,6 +88,7 @@
         <p *ngIf="productForm.get('price').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
         <p *ngIf="productForm.get('price').hasError('maxlength')" ion-text color="danger">solo 3 decimales.</p>
       </ion-item>
+
     </ion-list>
     <div padding>
       <button block ion-button type="submit" icon-left [disabled]="productForm.invalid">

@@ -9,6 +9,7 @@
          "title":"detergente en polvo"
        },
        "name":"Skip de 330gr",
+       "image":"http://www.stock.com.py/images/thumbs/0144743_300.jpeg",
        "weight": "330 gr",
        "cant":"bolson x 36 u",
        "img":"xxx",
@@ -21,6 +22,7 @@
          "title":"detergente en polvo"
        },
        "name":"Skip de 800gr",
+       "image":"http://www.stock.com.py/images/thumbs/0144743_300.jpeg",
        "weight": "800 gr",
        "cant":"bolson x 15 u",
        "img":"xxx",
@@ -32,6 +34,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"http://www.stock.com.py/images/thumbs/0144743_300.jpeg",
        "name":"Skip de 2,25kg",
        "weight": "2,25kg",
        "cant":"bolson x 6 u",
@@ -44,6 +47,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"http://stock.com.py/images/thumbs/0143145_300.jpeg",
        "name":"Omo de 140gr",
        "weight": "140gr",
        "cant":"bolson x 40 u",
@@ -56,6 +60,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"http://stock.com.py/images/thumbs/0143145_300.jpeg",
        "name":"Omo de 360gr",
        "weight": "360gr",
        "cant":"bolson x 36 u",
@@ -68,6 +73,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"http://stock.com.py/images/thumbs/0143145_300.jpeg",
        "name":"Omo de 900gr",
        "weight": "900gr",
        "cant":"bolson x 15 u",
@@ -80,6 +86,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"http://stock.com.py/images/thumbs/0143145_300.jpeg",
        "name":"Omo de 2,5 kg",
        "weight": "2,5 kg",
        "cant":"bolson x 10 u",
@@ -92,6 +99,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQBqTbL2WAz3wWrRcl-vchANk7qW4K5C-lb8vtvTmnu_rpJuL0c",
        "name":"Omo de 160 g",
        "weight": "160g",
        "cant":"bolson x 40 u",
@@ -104,6 +112,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQBqTbL2WAz3wWrRcl-vchANk7qW4K5C-lb8vtvTmnu_rpJuL0c",
        "name":"Omo de 900g",
        "weight": "900 g",
        "cant":"bolson x 15 u",
@@ -116,6 +125,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQBqTbL2WAz3wWrRcl-vchANk7qW4K5C-lb8vtvTmnu_rpJuL0c",
        "name":"Omo de 2,5 kg",
        "weight": "2,5 kg",
        "cant":"bolson x 4 u",
@@ -128,6 +138,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"https://www.omo.com.bo/wp-content/uploads/sites/5/2012/06/sol.png",
        "name":"Omo de 160 g",
        "weight": "160g",
        "cant":"bolson x 40 u",
@@ -140,6 +151,7 @@
          "id":"111",
          "title":"detergente en polvo"
        },
+       "image":"https://www.omo.com.bo/wp-content/uploads/sites/5/2012/06/sol.png",
        "name":"Omo de 900g",
        "weight": "900 g",
        "cant":"bolson x 15 u",
@@ -153,6 +165,7 @@
          "title":"detergente en polvo"
        },
        "name":"Omo de 2,5 kg",
+       "image":"https://www.omo.com.bo/wp-content/uploads/sites/5/2012/06/sol.png",
        "weight": "2,5 kg",
        "cant":"bolson x 4 u",
        "img":"xxx",
@@ -164,6 +177,7 @@
          "id":"222",
          "title":"detergente en barra"
        },
+       "image":"https://www.omo.com.bo/wp-content/uploads/sites/5/2012/06/sol.png",
        "name":"Omo de 2,5 kg",
        "weight": "2,5 kg",
        "cant":"bolson x 4 u",
@@ -176,6 +190,7 @@
          "id":"222",
          "title":"detergente en barra"
        },
+       "image":"https://www.omo.com.bo/wp-content/uploads/sites/5/2012/06/sol.png",
        "name":"Omo de 2,5 kg",
        "weight": "2,5 kg",
        "cant":"bolson x 4 u",
@@ -187,10 +202,91 @@
  },
  {
    "title":"Alimentos",
-   "icon":"camera"
+   "icon":"camera",
+    "products":[
+     {
+       "category":{
+         "id":"111",
+         "title":"alimentos de soya"
+       },
+       "name":"Ades regular",
+       "image":"http://www.ades.com.ar/Images/2034/2034-1170513-Durazno.png",
+       "cant": "1000 cc",
+       "sabor":"durazno"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"alimentos de soya"
+       },
+       "name":"Ades regular",
+       "image":"http://www.ades.com.ar/Images/2034/2034-1170513-Durazno.png",
+       "cant": "1000 cc",
+       "sabor":"manzana"
+     },
+      {
+       "category":{
+         "id":"111",
+         "title":"alimentos de soya"
+       },
+       "name":"Ades regular",
+       "image":"http://www.ades.com.ar/Images/2034/2034-1170513-Durazno.png",
+       "cant": "1000 cc",
+       "sabor":"tropical"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"alimentos de soya"
+       },
+       "name":"Ades Free",
+       "image":"http://www.ades.com.ar/Images/2034/2034-1170513-Durazno.png",
+       "cant": "1000 cc",
+       "sabor":"tumbo"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"alimentos de soya"
+       },
+       "name":"Ades Free",
+       "image":"http://www.ades.com.ar/Images/2034/2034-1170513-Durazno.png",
+       "cant": "1000 cc",
+       "sabor":"piña"
+     },
+     {
+       "category":{
+         "id":"111",
+         "title":"alimentos de Quinua"
+       },
+       "name":"Mabel Familiar",
+       "image":"http://www.bo.all.biz/img/bo/catalog/middle/7421.jpeg",
+       "cant": "650 g",
+       "sabor":"chocolate"
+     }]
  },
  {
-   "title":"Sexo Shop",
-   "icon":"home"
- }
+   "title":"Bebidas",
+   "icon":"beer",
+   "products":[
+     {
+       "category":{
+         "id":"333",
+         "title":"bebidas"
+       },
+       "name":"Coca cola",
+       "image":"https://www.papajohnscdmx.com/wp-content/uploads/2014/10/coca-bebidas-300x320.jpg",
+       "cant": "2,5 litros"
+     },
+     {
+       "category":{
+         "id":"333",
+         "title":"bebidas"
+       },
+       "name":"Fanta",
+       "image":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR9k8TStY8NUV0p1Gfy0BrX7at-k-gBWFAT1HubbvhdHT7pZvQ-",
+       "cant": "2,5 litros"
+     }
+     ]
+   }
 ]

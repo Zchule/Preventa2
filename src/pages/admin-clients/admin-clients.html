@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>adminClients</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Clientes</ion-title>
+    <button menuToggle="menuPreventa" ion-button>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-buttons end>
       <button ion-button icon-only (click)="addClient()">
         <ion-icon name="add"></ion-icon>
@@ -11,7 +14,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let client of clients" (click)="goToEdit(client)">
+    <ion-item *ngFor="let client of clients | async; let i = index" (click)="showActionSheet(client)">
       <ion-thumbnail item-left>
         <img src="assets/imgs/papas.gif">
       </ion-thumbnail>

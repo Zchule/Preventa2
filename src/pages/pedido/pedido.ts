@@ -20,5 +20,10 @@ export class PedidoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Pedido');
   }
+  loginCliente(event: Event){
+    event.preventDefault();
+    console.log(event);
+    this.navCtrl.push('AdminProductsPage');
+  }
 
 }

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController, ToastController } from 'ionic-angular';
 
 import { ClientService } from '../../providers/client-service';
+
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -13,6 +15,7 @@ export class FormClientPage {
 
   clientForm: FormGroup;
   client: any= null;
+  image: string = null;
 
   constructor(
     public viewCtrl: ViewController,
@@ -20,6 +23,7 @@ export class FormClientPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public clientService: ClientService,
+    public camera: Camera
     ) {
     
     this.clientForm = this.makeForm();   
@@ -62,15 +66,32 @@ export class FormClientPage {
       name: ['', [Validators.required]],
       apPat: ['', [Validators.required]],
       apMat: ['', [Validators.required]],
-      ci: ['', [Validators.required]],
+      CI: ['', [Validators.required]],
       direction: ['', [Validators.required]],
       nameStore: ['', [Validators.required]],
-      typeStore: ['agencia', [Validators.required]],
-      zone: ['norte', [Validators.required]],
+      typeStore: ['agencia'],
+      zone: ['norte'],
       facName: ['', [Validators.required]],
       facNit: ['', [Validators.required]]
     });
   }
+  takePicture(){
+    let options: CameraOptions = {
+       quality: 100,
+       destinationType: this.camera.DestinationType.DATA_URL,
+       sourceType: this.camera.PictureSourceType.CAMERA,
+       allowEdit: true,
+       targetWidth: 500,
+       targetHeight: 500
+     }
+     this.camera.getPicture( options )
+     .then(imageBase64 =>{
+       this.image = 'data:image/jpeg;base64,' + imageBase64;
+     })
+     .catch(error =>{
+       console.error( error );
+     });
+   }
   
   close(){
     this.viewCtrl.dismiss();
