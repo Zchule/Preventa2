@@ -33,12 +33,30 @@ export class LoginPage{
     console.log('ionViewDidLoad Login');
   }
 
+  // userCreate(){
+  //   this.authService.register("admin@gmail.com","123456","admin");
+  // }
+
   doLogin( event: Event ){
     event.preventDefault();
     console.log( this.loginForm.value );
       let msn="Correo invalido";
-      this.authService.doLogin(this.loginForm.value.email, this.loginForm.value.password).then( authService => {
-          this.navCtrl.setRoot( 'AdminHomePage' );
+      this.authService.doLogin(this.loginForm.value.email, this.loginForm.value.password).then( user => {
+          console.log(user.uid);
+          this.authService.getProfile(user.uid).once('value').then(data=>{
+            console.log(data);
+            let profile = data.val();
+            if(profile.role == 'admin'){
+              this.navCtrl.setRoot( 'HomeAdminPage' );
+            }else{
+              if(profile.role == 'distributor'){
+                this.navCtrl.setRoot( 'HomeDistributorPage' );
+              }else{
+                this.navCtrl.setRoot( 'HomePresalePage' );
+              }
+            }
+            
+          });
         }, error => {
           this.loading.dismiss().then( () => {
             let alert = this.alertCtrl.create({

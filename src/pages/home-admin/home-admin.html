@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Administrador</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+      <ion-icon name="md-exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button block round icon-only icon-left (click)="goToAdminUsersPage()">
+    <ion-icon name="people"></ion-icon>
+      Administrar Usuarios
+  </button>
+  <button block ion-button round icon-only icon-left (click)="goToAdminProductsPage()">
+    <ion-icon name="list"></ion-icon>
+    Administrar Productos
+  </button>
+</ion-content>

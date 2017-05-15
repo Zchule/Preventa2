@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, MenuController  } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2';
 
 import { UserService } from '../../providers/user-service';
@@ -19,12 +19,18 @@ export class AdminUsersPage {
     public userService: UserService,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public menuCtrl: MenuController
     ) {
   }
   
   ionViewDidLoad() {
     this.users = this.userService.getAll();
+  }
+
+   ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuPreventa');
+    this.menuCtrl.enable(false,'menuUser')
   }
 
   addUser(){
