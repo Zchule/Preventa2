@@ -28,7 +28,7 @@ export class UserService {
       ci: user.ci,
       direction: user.direction,
       email: user.email,
-      type: user.type
+      role: user.role
     });
   }
   

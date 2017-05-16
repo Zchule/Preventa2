@@ -32,11 +32,7 @@ export class LoginPage{
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
   }
-
-  // userCreate(){
-  //   this.authService.register("admin@gmail.com","123456","admin");
-  // }
-
+  
   doLogin( event: Event ){
     event.preventDefault();
     console.log( this.loginForm.value );

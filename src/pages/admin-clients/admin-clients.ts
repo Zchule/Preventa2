@@ -78,7 +78,7 @@ export class AdminClientsPage {
       buttons: [
         {
           text: 'Ver',
-          icon: 'share',
+          icon: 'md-contact',
           handler: ()=>{
             this.goToClient(client);
           }

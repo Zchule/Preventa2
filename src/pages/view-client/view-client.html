@@ -13,6 +13,13 @@
 <ion-content>
   <form novalidate [formGroup]="clientForm">
     <ion-list>
+
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/imgs/papas.gif">
+        </ion-thumbnail>
+      </ion-item>
+
       <ion-item>
         <ion-label floating>Codigo Cliente </ion-label>
         <ion-input formControlName="codClient"></ion-input>
@@ -41,12 +48,6 @@
       <ion-item>
         <ion-label floating>Dirección: </ion-label>
         <ion-input formControlName="direction"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="assets/imgs/papas.gif">
-        </ion-thumbnail>
       </ion-item>
 
       <ion-item>

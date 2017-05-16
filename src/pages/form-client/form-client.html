@@ -14,7 +14,7 @@
     <ion-list>
       <ion-item>
         <ion-label floating>Codigo Cliente </ion-label>
-        <ion-input formControlName="codClient"></ion-input>
+        <ion-input formControlName="codClient" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('codClient').errors && clientForm.get('codClient').dirty">
         <p *ngIf="clientForm.get('codClient').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -22,7 +22,7 @@
 
       <ion-item>
         <ion-label floating>Nombre: </ion-label>
-        <ion-input formControlName="name"></ion-input>
+        <ion-input formControlName="name" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('name').errors && clientForm.get('name').dirty">
         <p *ngIf="clientForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -30,7 +30,7 @@
 
       <ion-item>
         <ion-label floating>Apellido Paterno: </ion-label>
-        <ion-input formControlName="apPat"></ion-input>
+        <ion-input formControlName="apPat" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('apPat').errors && clientForm.get('apPat').dirty">
         <p *ngIf="clientForm.get('apPat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -65,13 +65,13 @@
         <ion-grid>
          <ion-row>
            <ion-col col-6>
-              <button color="secondary" type="button" block ion-button icon-left (click)="takePicture()" type="button">
+              <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
                 <ion-icon name="camera"></ion-icon>
                 Sacar Foto
               </button>
            </ion-col>
            <ion-col col-6>
-              <button color="danger" type="button" block ion-button icon-left (click)="takeLibrary()" type="button">
+              <button color="danger" block ion-button icon-left (click)="takeLibrary()" type="button">
                 <ion-icon name="ios-albums"></ion-icon>
                 Album
               </button>
@@ -91,18 +91,18 @@
       <ion-item>
       <ion-label>Tipo de Tienda</ion-label>
       <ion-select formControlName="typeStore">
-        <ion-option value="tienda" selected="true">Tienda de Barrio</ion-option>
-        <ion-option value="agencia">Agencia</ion-option>
+        <ion-option value="store" selected="true">Tienda de Barrio</ion-option>
+        <ion-option value="agency">Agencia</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
       <ion-label>Zona</ion-label>
       <ion-select formControlName="zone">
-        <ion-option value="norte" selected="true">Norte</ion-option>
-        <ion-option value="sud">Sud</ion-option>
-        <ion-option value="este">Este</ion-option>
-        <ion-option value="oeste">Oeste</ion-option>
+        <ion-option value="north" selected="true">Norte</ion-option>
+        <ion-option value="south">Sud</ion-option>
+        <ion-option value="east">Este</ion-option>
+        <ion-option value="west">Oeste</ion-option>
       </ion-select>
       </ion-item>
 

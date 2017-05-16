@@ -69,8 +69,8 @@ export class FormClientPage {
       CI: ['', [Validators.required]],
       direction: ['', [Validators.required]],
       nameStore: ['', [Validators.required]],
-      typeStore: ['agencia'],
-      zone: ['norte'],
+      typeStore: ['agency'],
+      zone: ['north'],
       facName: ['', [Validators.required]],
       facNit: ['', [Validators.required]]
     });

@@ -38,24 +38,22 @@ export class MyApp {
    
   pagesPreventa: any[] = [
     {
-      title: 'Home',
-      icon: 'home',
-      component: 'AdminHomePage'
-    },
-    {
-      title: 'Pedido',
-      icon: 'beer',
-      component: 'PedidoPage'
-    },
-    {
       title: 'Clientes',
       component: 'AdminClientsPage',
+      icon: 'people',
       index: 0
     },
     {
-      title: 'Mapa de Preventa',
-      component: 'MapPreventaPage',
+      title: 'Realizar Pedido',
+      icon: 'clipboard',
+      component: 'PedidoPage',
       index: 1
+    },
+    {
+      title: 'Mapa',
+      icon: 'md-globe',
+      component: 'MapPreventaPage',
+      index: 2
     }
   ];
 

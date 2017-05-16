@@ -31,7 +31,6 @@ export class HomePresalePage {
   }
 
   logout() {
-  console.log("salir");
   this.authService.doLogout();
   }
 

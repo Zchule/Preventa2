@@ -5,6 +5,8 @@ import { IonicPage, ViewController, NavParams, ToastController} from 'ionic-angu
 import { UserService } from '../../providers/user-service';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
+import { AuthService } from '../../providers/auth-service';
+
 @IonicPage()
 @Component({
   selector: 'page-form-user',
@@ -22,7 +24,8 @@ export class FormUserPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public userService: UserService,
-    public camera: Camera
+    public camera: Camera,
+    public authService: AuthService
     ) {
    this.userForm = this.makeForm();   
     this.user = this.navParams.get('user');
@@ -34,6 +37,11 @@ export class FormUserPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormUser');
   }
+
+  // userCreate(){
+  //   this.authService.register("admin@gmail.com","123456","admin");
+  // }
+
   saveUser( event: Event ){
     event.preventDefault();
     if(this.user !== null &&  this.user !==  undefined){
@@ -68,7 +76,7 @@ export class FormUserPage {
       ci: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
-      type: ['preventa', [Validators.required]]
+      role: ['presale', [Validators.required]]
     });
   }
 
