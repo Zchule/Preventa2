@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import * as _ from "lodash";
 
+
 @Component({
   templateUrl: 'app.html'
 })
