@@ -4,6 +4,8 @@ import { FirebaseListObservable } from 'angularfire2';
 
 import { UserService } from '../../providers/user-service';
 
+import { AuthService } from '../../providers/auth-service';
+
 @IonicPage()
 @Component({
   selector: 'page-admin-users',
@@ -17,6 +19,7 @@ export class AdminUsersPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public userService: UserService,
+    public authService: AuthService,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
@@ -25,7 +28,7 @@ export class AdminUsersPage {
   }
   
   ionViewDidLoad() {
-    this.users = this.userService.getAll();
+    this.users = this.authService.getAll();
   }
 
    ionViewDidEnter() {
@@ -85,13 +88,13 @@ export class AdminUsersPage {
       buttons: [
         {
           text: 'Ver',
-          icon: 'share',
+          icon: 'md-contact',
           handler: ()=>{
             this.goToUser(user);
           }
         },
         {
-          text: 'Editar',
+          text: 'Modificar',
           icon: 'create',
           handler: ()=>{
             this.goToEdit(user);

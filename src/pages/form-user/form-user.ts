@@ -15,7 +15,7 @@ import { AuthService } from '../../providers/auth-service';
 export class FormUserPage {
 
   userForm: FormGroup;
-  user: any= null;
+  user: any = null;
   image: string = null;
 
   constructor(
@@ -38,14 +38,11 @@ export class FormUserPage {
     console.log('ionViewDidLoad FormUser');
   }
 
-  // userCreate(){
-  //   this.authService.register("admin@gmail.com","123456","admin");
-  // }
-
   saveUser( event: Event ){
     event.preventDefault();
     if(this.user !== null &&  this.user !==  undefined){
-      this.userService.update(this.user.$key, this.userForm.value);
+      this.authService.updateProfile(this.user.$key, this.userForm.value);
+      // this.authService.updateUser(this.user.$key);
       let message = this.toastCtrl.create({
       message: 'Usuario Actualizado',
       duration: 3000,
@@ -55,8 +52,13 @@ export class FormUserPage {
     this.close();
   }else{
       let data = this.userForm.value;
-      data.image=this.image;
-      this.userService.create(data);
+      data.photo = this.image;
+      if(data.photo === null){
+        console.log(data.photo);
+        data.photo='assets/imgs/sinfoto.png';
+      }
+      console.log(data.photo);
+      this.authService.register(data.email,"123456", data.role, data.apPat, data.apMat, data.CI, data.direction, data.name, data.photo );
       let message = this.toastCtrl.create({
       message: 'Usuario Registrado',
       duration: 3000,
@@ -73,7 +75,7 @@ export class FormUserPage {
       name: ['', [Validators.required]],
       apPat: ['', [Validators.required]],
       apMat: ['', [Validators.required]],
-      ci: ['', [Validators.required]],
+      CI: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
       role: ['presale', [Validators.required]]
@@ -81,7 +83,7 @@ export class FormUserPage {
   }
 
   takePicture(){
-    // this.image = 'assets/imgs/sinfoto.png';
+    //  this.image = 'assets/imgs/papas.gif';
      let options: CameraOptions = {
        quality: 100,
        destinationType: this.camera.DestinationType.DATA_URL,
@@ -99,7 +101,7 @@ export class FormUserPage {
      });
    }
    takeLibrary(){
-      //this.image = 'assets/imgs/sinfoto.png';
+    // this.image = 'assets/imgs/papas.gif';
      let options: CameraOptions = {
        quality: 100,
        destinationType: this.camera.DestinationType.DATA_URL,

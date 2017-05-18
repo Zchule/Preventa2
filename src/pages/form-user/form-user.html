@@ -36,10 +36,10 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Carnet de Indentidad: </ion-label>
-        <ion-input formControlName="ci"  type="number"></ion-input>
+        <ion-input formControlName="CI"  type="number"></ion-input>
       </ion-item>
-      <ion-item *ngIf="userForm.get('ci').errors && userForm.get('ci').dirty">
-        <p *ngIf="userForm.get('ci').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      <ion-item *ngIf="userForm.get('CI').errors && userForm.get('CI').dirty">
+        <p *ngIf="userForm.get('CI').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
       <ion-item>
         <ion-label floating>Dirección: </ion-label>
@@ -58,9 +58,10 @@
       </ion-item>
       <ion-item>
       <ion-label>Tipo de Usuario</ion-label>
-        <ion-select formControlName="type">
+        <ion-select formControlName="role">
           <ion-option value="presale" selected="true">Preventa</ion-option>
-          <ion-option value="distributor">distribuidor</ion-option>
+          <ion-option value="distributor">Distribuidor</ion-option>
+          <ion-option value="admin">Administrador</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

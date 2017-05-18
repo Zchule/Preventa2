@@ -38,10 +38,10 @@ export class ViewUserPage {
       name: ['', [Validators.required]],
       apPat: ['', [Validators.required]],
       apMat: ['', [Validators.required]],
-      ci: ['', [Validators.required]],
+      CI: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
-      type: ['preventa', [Validators.required]]
+      role: ['presale', [Validators.required]]
     });
   }
   
