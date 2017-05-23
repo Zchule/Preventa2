@@ -82,10 +82,6 @@ export class MyApp {
     }
   }
 
-  goToHomePage(){
-    this.navMaster.setRoot('AdminHomePage');
-  }
-
   private listerSession(){
     this.fireAuth.authState.subscribe( user =>{
       if(user !== null){
