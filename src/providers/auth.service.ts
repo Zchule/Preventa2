@@ -10,12 +10,31 @@ export class AuthService {
     private fireDatabase: AngularFireDatabase
   ){}
 
-  doLogin(email: string, password: string): any {
-    return this.fireAuth.auth.signInWithEmailAndPassword (email, password);
+  doLogin(email: string, password: string): Promise<any> {
+    return <any>this.fireAuth.auth.signInWithEmailAndPassword(email, password)
+    .then(user => this.getProfile(user.uid) )
+    .then(data =>{
+      let profile = data.val();
+      let pages: any = {
+        'admin': 'HomeAdminPage',
+        'distributor': 'HomeDistributorPage',
+        'preventa': 'HomePresalePage',
+      };
+      return Promise.resolve(pages[profile.role]);
+    })
+    .catch(error => Promise.reject(error));
   }
 
-  getProfile(id: string){
-    return this.fireDatabase.object('/userProfiles/'+ id);
+  getProfile(id: string): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      this.fireDatabase.object('/userProfiles/'+ id)
+      .subscribe(data =>{
+        resolve(data);
+      },error=>{
+        reject(error)
+      })
+    })
+    
   }
 
   doLogout(): any {

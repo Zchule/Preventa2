@@ -13,7 +13,7 @@ import { ProductService } from '../providers/product-service';
 import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client-service';
-import { AuthService } from '../providers/auth-service';
+import { AuthService } from '../providers/auth.service';
 
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
