@@ -25,7 +25,7 @@ export class UserService {
       name: user.name,
       apPat: user.apPat,
       apMat: user.apMat,
-      ci: user.ci,
+      CI: user.CI,
       direction: user.direction,
       email: user.email,
       role: user.role

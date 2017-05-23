@@ -17,7 +17,7 @@
       
       <ion-item>
         <ion-thumbnail item-left>
-          <img src="assets/imgs/papas.gif">
+          <img [src]="user.photo">
         </ion-thumbnail>
       </ion-item>
 
@@ -38,7 +38,7 @@
      
       <ion-item>
         <ion-label>Carnet de Indentidad: </ion-label>
-        <ion-input formControlName="ci" ></ion-input>
+        <ion-input formControlName="CI" ></ion-input>
       </ion-item>
      
       <ion-item>
@@ -53,7 +53,7 @@
       
       <ion-item>
       <ion-label>Tipo de Usuario</ion-label>
-      <ion-input formControlName="type" ></ion-input>
+      <ion-input formControlName="role" ></ion-input>
     </ion-item>
     </ion-list>
 

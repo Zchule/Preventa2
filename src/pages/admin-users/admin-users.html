@@ -13,15 +13,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+
+  <!--<div *ngIf="users.length == 0">
+      <div class="item item-text-wrap">
+        No hay nada en la lista, agrega un usuario nuevo porfavor!!
+      </div>
+  </div>-->
+  
+ <ion-list>
     <ion-item *ngFor="let user of users | async; let i = index" (click)="showActionSheet(user)">
       <ion-thumbnail item-left>
-        <img src="assets/imgs/sinfoto.png">
+        <img [src]= "user.photo" alt="avatar">
       </ion-thumbnail>
       <h2>{{ user.name }}</h2>
       <p>{{ user.apPat}}</p>
-      <p>{{ user.ci}}</p>
+      <p>{{ user.CI}}</p>
       <p>{{ user.direction}}</p>
+      <p>{{user.role}}</p>
     </ion-item>
   </ion-list>
 

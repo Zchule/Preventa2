@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <form novalidate [formGroup]="clientForm">
+  <form disable [formGroup]="clientForm">
     <ion-list>
 
       <ion-item>
@@ -22,7 +22,7 @@
 
       <ion-item>
         <ion-label floating>Codigo Cliente </ion-label>
-        <ion-input formControlName="codClient"></ion-input>
+        <ion-input disable formControlName="codClient"></ion-input>
       </ion-item>
 
       <ion-item>
