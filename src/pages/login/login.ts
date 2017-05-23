@@ -34,9 +34,6 @@ export class LoginPage{
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
-    .then(page =>{
-      this.navCtrl.setRoot( page );
-    })
     .catch(error=>{
       load.dismiss();
     });

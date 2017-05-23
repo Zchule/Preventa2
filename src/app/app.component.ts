@@ -2,8 +2,9 @@ import { Component,ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-import * as _ from "lodash";
+import { AuthService } from '../providers/auth.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -57,38 +58,17 @@ export class MyApp {
     }
   ];
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-      let posiciones =[
-        {
-          title:'1',
-          place: 'cama',
-          person: "2"
-        },
-        {
-          title:'2',
-          place: 'cama',
-          person: "3"
-        },
-        {
-          title:'2',
-          place: 'cama',
-          person: "2"
-        },
-        {
-          title:'1',
-          place: 'parque',
-          person: "2"
-        }
-      ]
-      let result: any = _.groupBy(posiciones, 'place');
-      result.cama = _.groupBy(result.cama, 'person');
-      result.parque = _.groupBy(result.parque, 'person');
-      console.log(result);
+  constructor(
+    private platform: Platform,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private auth: AuthService,
+    private fireAuth: AngularFireAuth
+  ) {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+      this.listerSession();
     });
   }
 
@@ -104,7 +84,27 @@ export class MyApp {
 
   goToHomePage(){
     this.navMaster.setRoot('AdminHomePage');
-    //this.navMaster.pop();
   }
+
+  private listerSession(){
+    this.fireAuth.authState.subscribe( user =>{
+      if(user !== null){
+        this.auth.getProfile(user.uid)
+        .then(data =>{
+          let profile = data.val();
+          let pages: any = {
+            'admin': 'HomeAdminPage',
+            'distributor': 'HomeDistributorPage',
+            'preventa': 'HomePresalePage',
+          };
+          this.navMaster.setRoot(pages[profile.role]);
+        })
+        .catch(error=>{
+          console.error(error);
+        })
+      }
+  }, error=>{
+    console.error(error);
+  })
 }
 

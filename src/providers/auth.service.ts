@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -10,19 +11,8 @@ export class AuthService {
     private fireDatabase: AngularFireDatabase
   ){}
 
-  doLogin(email: string, password: string): Promise<any> {
-    return <any>this.fireAuth.auth.signInWithEmailAndPassword(email, password)
-    .then(user => this.getProfile(user.uid) )
-    .then(data =>{
-      let profile = data.val();
-      let pages: any = {
-        'admin': 'HomeAdminPage',
-        'distributor': 'HomeDistributorPage',
-        'preventa': 'HomePresalePage',
-      };
-      return Promise.resolve(pages[profile.role]);
-    })
-    .catch(error => Promise.reject(error));
+  doLogin(email: string, password: string): firebase.Promise<any> {
+    return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
   }
 
   getProfile(id: string): Promise<any>{
@@ -34,11 +24,11 @@ export class AuthService {
         reject(error)
       })
     })
-    
   }
 
   doLogout(): any {
     return this.fireAuth.auth.signOut();
   }
+  
 
 }
