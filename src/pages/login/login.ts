@@ -26,6 +26,7 @@ export class LoginPage{
   
   doLogin( event: Event ){
     event.preventDefault();
+
     let load = this.loadingCtrl.create({
       dismissOnPageChange: true,
     });
