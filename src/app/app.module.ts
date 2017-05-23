@@ -10,7 +10,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { ProductService } from '../providers/product-service';
-import { UserService } from '../providers/user-service';
+import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client-service';
 import { AuthService } from '../providers/auth-service';
@@ -51,7 +51,7 @@ const configFirebase ={
     SplashScreen,
     Camera,
     ProductService,
-    UserService,
+    UserProfileService,
     DetersService,
     ClientService,
     AuthService,
