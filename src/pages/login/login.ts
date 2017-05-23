@@ -42,7 +42,7 @@ export class LoginPage{
           this.authService.getProfile(user.uid).once('value').then(data=>{
             console.log(data);
             let profile = data.val();
-            if(profile.role == 'admin'){
+            if(profile.role == null || profile.role == 'admin'){
               this.navCtrl.setRoot( 'HomeAdminPage' );
             }else{
               if(profile.role == 'distributor'){

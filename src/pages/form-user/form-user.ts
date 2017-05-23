@@ -37,12 +37,12 @@ export class FormUserPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FormUser');
   }
-
+  isDisabled: boolean;
   saveUser( event: Event ){
     event.preventDefault();
     if(this.user !== null &&  this.user !==  undefined){
-      this.authService.updateProfile(this.user.$key, this.userForm.value);
-      // this.authService.updateUser(this.user.$key);
+      this.authService.updateProfile(this.user.$key, this.userForm.value); 
+      this.isDisabled=false;
       let message = this.toastCtrl.create({
       message: 'Usuario Actualizado',
       duration: 3000,

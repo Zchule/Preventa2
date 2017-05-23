@@ -56,7 +56,7 @@ export class AdminUsersPage {
   }
   
   private deleteUser(user: any){
-    this.userService.delete( user.$key );
+    this.authService.delete( user.$key );
   }
 
   showAlertDelete( user: any){

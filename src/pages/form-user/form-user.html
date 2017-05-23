@@ -36,11 +36,12 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Carnet de Indentidad: </ion-label>
-        <ion-input formControlName="CI"  type="number"></ion-input>
+        <ion-input formControlName="CI" type="number"></ion-input>
       </ion-item>
       <ion-item *ngIf="userForm.get('CI').errors && userForm.get('CI').dirty">
         <p *ngIf="userForm.get('CI').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
+
       <ion-item>
         <ion-label floating>Dirección: </ion-label>
         <ion-input formControlName="direction" type="text"></ion-input>
@@ -48,14 +49,16 @@
       <ion-item *ngIf="userForm.get('direction').errors && userForm.get('direction').dirty">
         <p *ngIf="userForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
-      <ion-item>
+
+      <ion-item >
       <ion-label floating>email: </ion-label>
-      <ion-input formControlName="email" type="email"></ion-input>
+      <ion-input formControlName="email" type="email" disabled="{{isDisabled}}" ></ion-input>
       </ion-item>
       <ion-item *ngIf="userForm.get('email').errors && userForm.get('email').dirty">
         <p *ngIf="userForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
         <p *ngIf="userForm.get('email').hasError('pattern')" ion-text color="danger">email no valido.</p>
       </ion-item>
+
       <ion-item>
       <ion-label>Tipo de Usuario</ion-label>
         <ion-select formControlName="role">
