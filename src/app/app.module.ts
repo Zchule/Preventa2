@@ -1,27 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-import * as firebase from 'firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { ProductService } from '../providers/product-service';
-import { UserService } from '../providers/user-service';
+import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client-service';
-
-import { AuthService } from '../providers/auth-service';
-
-import { HttpModule } from '@angular/http';
+import { AuthService } from '../providers/auth.service';
 
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
-export const configFirebase ={
+import { MyApp } from './app.component';
+
+const configFirebase ={
   apiKey: "AIzaSyB7BLUYFFxZw5lJEUt_3RfPMjcJMVcUmuw",
   authDomain: "bddproyecto.firebaseapp.com",
   databaseURL: "https://bddproyecto.firebaseio.com",
@@ -29,12 +29,6 @@ export const configFirebase ={
   storageBucket: "bddproyecto.appspot.com",
   messagingSenderId: "4446233718"
 };
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
-}
-
-firebase.initializeApp(configFirebase);
 
 @NgModule({
   declarations: [
@@ -44,7 +38,9 @@ firebase.initializeApp(configFirebase);
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp( configFirebase, myFirebaseAuthConfig )
+    AngularFireModule.initializeApp( configFirebase ),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +51,7 @@ firebase.initializeApp(configFirebase);
     SplashScreen,
     Camera,
     ProductService,
-    UserService,
+    UserProfileService,
     DetersService,
     ClientService,
     AuthService,

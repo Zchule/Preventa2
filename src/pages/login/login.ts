@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from '../../providers/auth.service';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,6 @@ import { AuthService } from '../../providers/auth-service';
 export class LoginPage{
 
   loginForm: FormGroup;
-  loading: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -21,58 +20,31 @@ export class LoginPage{
     public authService: AuthService,
     public alertCtrl: AlertController, 
     public loadingCtrl: LoadingController
-
   ) {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
+    this.loginForm = this.makeLoginForm();
   }
   
   doLogin( event: Event ){
     event.preventDefault();
-    console.log( this.loginForm.value );
-      let msn="Correo invalido";
-      this.authService.doLogin(this.loginForm.value.email, this.loginForm.value.password).then( user => {
-          console.log(user.uid);
-          this.authService.getProfile(user.uid).once('value').then(data=>{
-            console.log(data);
-            let profile = data.val();
-            if(profile.role == null || profile.role == 'admin'){
-              this.navCtrl.setRoot( 'HomeAdminPage' );
-            }else{
-              if(profile.role == 'distributor'){
-                this.navCtrl.setRoot( 'HomeDistributorPage' );
-              }else{
-                this.navCtrl.setRoot( 'HomePresalePage' );
-              }
-            }
-            
-          });
-        }, error => {
-          this.loading.dismiss().then( () => {
-            let alert = this.alertCtrl.create({
-              // message: error.message,
-              message: msn,
-              buttons: [
-                {
-                  text: "Ok",
-                  role: 'cancel'
-                }
-              ]
-            });
-            alert.present();
-          });
-        });
 
-        this.loading = this.loadingCtrl.create({
-          dismissOnPageChange: true,
-        });
-        this.loading.present();
-      }
+    let load = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    load.present();
+
+    let email = this.loginForm.value.email;
+    let password = this.loginForm.value.password;
+    this.authService.doLogin(email, password)
+    .catch(error=>{
+      load.dismiss();
+    });
+  }
+
+  private makeLoginForm(){
+    return this.formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
 }
