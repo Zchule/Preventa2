@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
-import { UserService } from '../../providers/user-service';
+import { UserProfileService } from '../../providers/user-profile.service';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class ViewUserPage {
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public formBuilder: FormBuilder,
-    public userService: UserService
+    public userService: UserProfileService
     ) {
 
       this.userForm = this.makeForm(); 

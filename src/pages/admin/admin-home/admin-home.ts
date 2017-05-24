@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 import firebase from 'firebase';
-import { AuthService } from '../../providers/auth-service'; 
+import { AuthService } from '../../../providers/auth.service'; 
 
-import { ProductService } from '../../providers/product-service';
+import { ProductService } from '../../../providers/product-service';
 
 @IonicPage()
 @Component({

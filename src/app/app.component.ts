@@ -99,8 +99,8 @@ export class MyApp {
           console.error(error);
         })
       }
-  }, error=>{
-    console.error(error);
-  })
+    }, error=>{
+      console.error(error);
+    })
+  }
 }
-

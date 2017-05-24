@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2/database';
 
-import { ClientService } from '../../providers/client-service';
+import { ClientService } from '../../../providers/client-service';
 
 @IonicPage()
 @Component({

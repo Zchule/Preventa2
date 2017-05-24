@@ -52,7 +52,7 @@
 
       <ion-item >
       <ion-label floating>email: </ion-label>
-      <ion-input formControlName="email" type="email" disabled="{{isDisabled}}" ></ion-input>
+      <ion-input formControlName="email" type="email"></ion-input>
       </ion-item>
       <ion-item *ngIf="userForm.get('email').errors && userForm.get('email').dirty">
         <p *ngIf="userForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
