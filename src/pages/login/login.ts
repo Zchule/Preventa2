@@ -35,6 +35,18 @@ export class LoginPage{
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
+    .then(user=>{
+      this.authService.getProfile(user.uid)
+      .then(data =>{
+        let profile = data.val();
+        let pages: any = {
+          'admin': 'HomeAdminPage',
+          'distributor': 'HomeDistributorPage',
+          'preventa': 'HomePresalePage',
+        };
+        this.navCtrl.setRoot(pages[profile.role]);
+      })
+    })
     .catch(error=>{
       load.dismiss();
     });
