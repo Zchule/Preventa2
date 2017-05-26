@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 @IonicPage({
   name: 'CategoryPresalePage',
@@ -44,8 +44,9 @@ export class CategoryPresalePage {
   order: string = '';
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private modalCtrl: ModalController
   ) {
     this.showCategories = this.getCategories();
     this.order = this.navParams.get('order');
@@ -60,6 +61,13 @@ export class CategoryPresalePage {
   segmentChanged( event ){
     this.typeSelected = event.value;
     this.showCategories = this.getCategories();
+  }
+
+  showOrder(){
+    let modal = this.modalCtrl.create('OrderPresalePage',{
+      order: this.navParams.get('order')
+    });
+    modal.present();
   }
 
   private getCategories(){
