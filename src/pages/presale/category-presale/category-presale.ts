@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+  name: 'CategoryPresalePage',
+  segment: 'category-presale/:order'
+})
 @Component({
   selector: 'page-category-presale',
   templateUrl: 'category-presale.html',
@@ -38,15 +41,20 @@ export class CategoryPresalePage {
   ];
   showCategories: any = [];
 
+  order: string = '';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
     this.showCategories = this.getCategories();
+    this.order = this.navParams.get('order');
   }
 
   goToProductsPresalePage(){
-    this.navCtrl.push('ProductsPresalePage');
+    this.navCtrl.push('ProductsPresalePage',{
+      order: this.order
+    });
   }
 
   segmentChanged( event ){
