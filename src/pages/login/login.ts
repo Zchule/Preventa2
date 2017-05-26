@@ -42,7 +42,7 @@ export class LoginPage{
       let pages: any = {
         'admin': 'HomeAdminPage',
         'distributor': 'HomeDistributorPage',
-        'preventa': 'HomePresalePage',
+        'presale': 'HomePresalePage',
       };
       this.navCtrl.setRoot(pages[profile.role]);
     })

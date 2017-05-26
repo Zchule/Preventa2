@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="royal">
+    <ion-title>Preventa</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides autoplay="5000" pager loop>
+    <ion-slide>
+      <img src="assets/imgs/banner1.jpg" alt="banner 1">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/banner2.jpg" alt="banner 2">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/banner3.jpg" alt="banner 3">
+    </ion-slide>
+  </ion-slides>
+  <ion-row align-items-center no-padding>
+    <ion-col col-4 text-center no-padding>
+      <a class="button-presale button-clients">
+        <h5>Ver <br/>Clientes</h5>
+        <ion-icon name="people"></ion-icon>
+      </a>
+    </ion-col>
+    <ion-col col-4 text-center no-padding>
+      <a class="button-presale button-orders" (click)="goToCategoryPresalePage()">
+        <h5>Hacer <br/>pedido</h5>
+        <ion-icon name="clipboard"></ion-icon>
+      </a>
+    </ion-col>
+    <ion-col col-4 text-center no-padding>
+      <a class="button-presale button-map">
+        <h5>Ver <br/>Mapa</h5>
+        <ion-icon name="map"></ion-icon>
+      </a>
+    </ion-col>
+  </ion-row>
+</ion-content>

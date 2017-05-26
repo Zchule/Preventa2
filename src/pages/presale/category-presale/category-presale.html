@@ -1,0 +1,34 @@
+<ion-header>
+   <ion-navbar color="royal">
+    <ion-title>Categorias</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-margin no-padding>
+    <ion-row no-margin no-padding>
+      <ion-col text-center col-6 *ngFor="let category of showCategories">
+        <ion-card tappable (click)="goToProductsPresalePage()">
+          <img [src]="category.image" alt="">
+          <ion-card-content>{{ category.title  }}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment color="royal" [(ngModel)]="typeSelected" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="cuidado">
+        Cuidado
+      </ion-segment-button>
+      <ion-segment-button value="bebidas">
+        Bebidas
+      </ion-segment-button>
+      <ion-segment-button value="alimentos">
+        Alimentos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

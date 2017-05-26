@@ -1,0 +1,23 @@
+<ion-header>
+   <ion-navbar color="royal">
+    <ion-title>Productos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let mark of marks" no-margin>
+    <ion-list-header>
+      {{ mark.title }}
+      <ion-badge item-end>{{ mark.products.length }}</ion-badge>
+    </ion-list-header>
+    <ion-scroll scrollX="true">
+      <ion-row nowrap>
+        <ion-col col-3 *ngFor="let product of mark.products">
+          <a class="product" (click)="clickedProduct( product )" [class.selected]="product == productSelected">
+            <img [src]="product.image" alt="product">
+          </a>
+        </ion-col>
+      </ion-row>
+    </ion-scroll>
+  </ion-list>
+</ion-content>

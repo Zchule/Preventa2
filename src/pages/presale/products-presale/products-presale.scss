@@ -1,0 +1,18 @@
+page-products-presale {
+  ion-scroll{
+    height: 120px;
+    margin-top: 10px;
+    ion-col[col-3]{
+      flex: 0 0 28%;
+      width: 28;
+      max-width: 28%;
+      .product{
+        padding: 5px;
+        display: block;
+        &.selected{
+          box-shadow: 0px 0px 3px 2px color($colors, royal);
+        }
+      }
+    }
+  }
+}

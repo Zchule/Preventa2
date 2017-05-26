@@ -1,0 +1,38 @@
+page-home-presale {
+  ion-slides{
+    height: 320px;
+    .swiper-pagination-bullet{
+      background-color: white;
+      opacity: .9;
+      &.swiper-pagination-bullet-active{
+        background-color: color($colors, royal);
+      }
+    }
+  }
+  .button-presale{
+    background-color: color($colors, royal);
+    color: white;
+    display: block;
+    height: 120px;
+    padding-top: 10px;
+    ion-icon{
+      font-size: 2.6em;
+    }
+    h5{
+      width: 88%;
+      font-size: 1.6rem;
+      padding-bottom: 10px;
+      margin: 0px auto 10px auto;
+      border-bottom: 1px solid white;
+    }
+    &.button-clients{
+      background-color: #886aea;
+    }
+    &.button-orders{
+      background-color: #bc99ff;
+    }
+    &.button-map{
+      background-color: #543eb7;
+    }
+  }
+}
