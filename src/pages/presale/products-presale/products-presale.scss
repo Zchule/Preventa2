@@ -1,18 +1,50 @@
 page-products-presale {
   ion-scroll{
-    height: 120px;
+    height: 170px;
     margin-top: 10px;
     ion-col[col-3]{
-      flex: 0 0 28%;
-      width: 28;
-      max-width: 28%;
+      flex: 0 0 40%;
+      width: 40%;
+      max-width: 40%;
       .product{
+        position: relative;
         padding: 5px;
         display: block;
+        color: color($colors, dark);
+        transition: all 200ms ease-in;
+        ion-icon{
+          opacity: 0;
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          color: color($colors, royal);
+          transition: all 200ms ease-in;
+          font-size: 1.5em;
+        }
         &.selected{
-          box-shadow: 0px 0px 3px 2px color($colors, royal);
+          box-shadow: 0px 0px 0px 2px color($colors, royal);
+          ion-icon{
+            opacity: 1;
+          }
+        }
+        h5{
+          font-size: 1.5rem;
+          margin: 0px;
         }
       }
+    }
+  }
+  .product-detail{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+    border-top: 5px solid color($colors, royal);
+    background-color: white;
+    h5{
+      margin: 0px;
+      font-size: 1.5rem;
     }
   }
 }

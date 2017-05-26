@@ -11,25 +11,28 @@ export class CategoryPresalePage {
   typeSelected: string = 'cuidado';
   categories: any[] = [
     {
-      title: 'detergente en polvo',
+      title: 'Detergente en polvo',
       image: 'https://cdn.galileo.pgsitecore.com/es-mx/-/media/Ariel_MX/Images/Products/Ariel-MB-1-kg-FT.png',
       type: 'cuidado'
     },
     {
-      title: 'detergente en barra',
-      image: 'https://thumbs.dreamstime.com/z/barra-detergente-17794023.jpg',
+      title: 'Detergente en barra',
+      image: 'http://industrialapopular.com/wp-content/uploads/2015/12/Barra-Detergente1.png',
       type: 'cuidado'
     },
     {
-      title: 'alimentos de soya',
+      title: 'Soya',
+      image: 'http://ibescosocial.com/wordpress/wp-content/uploads/2016/03/soja-1.jpg',
       type: 'alimentos'
     },
     {
-      title: 'alimentos de Quinua',
+      title: 'Quinua',
+      image: 'http://guia.agrecolandes.org/wp-content/uploads/2016/04/quinua.png',
       type: 'alimentos'
     },
     {
       title: 'gaseosas',
+      image:'http://pizzali.net/wp-content/uploads/2014/08/40-138-large.jpg',
       type: 'bebidas'
     }
   ];
