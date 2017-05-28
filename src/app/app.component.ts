@@ -39,12 +39,12 @@ export class MyApp {
    
   pagesPreventa: any[] = [
     {
-      title: 'Clientes',
+      title: 'Ver Clientes',
       component: 'AdminClientsPage',
       icon: 'people'
     },
     {
-      title: 'Realizar Pedido',
+      title: 'Ver pedidos',
       icon: 'clipboard',
       component: 'PedidoPage'
     },
