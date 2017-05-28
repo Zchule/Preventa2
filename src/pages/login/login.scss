@@ -2,10 +2,12 @@ page-login {
   .logo{
     width: 130px;
     position: absolute;
-    top: 20px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+    border: 5px solid white;
+    border-radius: 100%;
   }
   ion-slide{
     color: white;
@@ -21,26 +23,39 @@ page-login {
   .slide-1{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#488aff+0,005ecb+100 */
     background: #488aff; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #488aff 0%, #005ecb 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #488aff 0%,#005ecb 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #488aff 0%,#005ecb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(-45deg, #488aff 40%, #005ecb 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #488aff 40%,#005ecb 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #488aff 40%,#005ecb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#488aff', endColorstr='#005ecb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
   .slide-2{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#32db64+0,00a835+100 */
     background: #32db64; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #32db64 0%, #00a835 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #32db64 0%,#00a835 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #32db64 0%,#00a835 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(-45deg, #32db64 40%, #00a835 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #32db64 40%,#00a835 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #32db64 40%,#00a835 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#32db64', endColorstr='#00a835',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
   .slide-3{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#886aea+0,543eb7+100 */
     background: #886aea; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #886aea 0%, #543eb7 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #886aea 0%,#543eb7 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #886aea 0%,#543eb7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(-45deg, #886aea 40%, #543eb7 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #886aea 40%,#543eb7 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #886aea 40%,#543eb7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#886aea', endColorstr='#543eb7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+  ion-slides{
+    .swiper-pagination-bullets{
+      top: 10px;
+    }
+    .swiper-pagination-bullet{
+      background-color: white;
+      opacity: .5;
+    }
+    .swiper-pagination-bullet-active{
+      background-color: white;
+      opacity: 1;
+    }
   }
   form{
     position: absolute;
