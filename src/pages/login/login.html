@@ -1,13 +1,22 @@
-<ion-header>
-
-  <ion-navbar color="primary">
-    <ion-title>Ingresar</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content>
+  <img class="logo" src="assets/imgs/icon.png" alt="logo">
+  <ion-slides>
+    <ion-slide class="slide-1">
+      <p>
+        Administrar y controlar todo desde un solo lugar
+      </p>
+    </ion-slide>
+    <ion-slide class="slide-2">
+      <p>
+        Distribuidor y controlar todo desde un solo lugar
+      </p>
+    </ion-slide>
+    <ion-slide class="slide-3">
+      <p>
+        Preventa y controlar todo desde un solo lugar
+      </p>
+    </ion-slide>
+  </ion-slides>
   <form novalidate [formGroup]="loginForm" (ngSubmit)="doLogin( $event )">
     <ion-list>
       <ion-item>
@@ -33,7 +42,5 @@
         Ingresar
       </button>
     </div>
-    
   </form>
-  
 </ion-content>

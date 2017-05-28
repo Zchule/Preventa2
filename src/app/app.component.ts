@@ -83,6 +83,7 @@ export class MyApp {
 
   logout() {
     this.fireAuth.auth.signOut();
+    this.navMaster.setRoot('LoginPage');
   }
 
   private listerSession(){
