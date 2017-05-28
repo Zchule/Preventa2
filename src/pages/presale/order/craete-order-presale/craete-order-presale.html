@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>order-sale</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form action="">
+    <ion-list>
+       <ion-item>
+        <ion-label>Código cliente:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo de Pago:</ion-label>
+        <ion-select>
+          <ion-option value="payment" selected="true">Contado</ion-option>
+          <ion-option value="credit">Credito</ion-option>
+        </ion-select>
+      </ion-item>
+      <button block ion-button type="submit">
+        Realizar Pedido
+      </button>
+    </ion-list>
+  </form>
+</ion-content>

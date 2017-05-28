@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { OrderService } from '../../../providers/order.service'; 
 
+import { OrderService } from '../../../../providers/order.service'; 
 
 @IonicPage({
   name: 'ProductsPresalePage',

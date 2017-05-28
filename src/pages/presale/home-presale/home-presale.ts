@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-import firebase from 'firebase';
 import { AuthService } from '../../../providers/auth.service'; 
 import { OrderService } from '../../../providers/order.service'; 
-
 
 @IonicPage()
 @Component({
@@ -19,19 +18,16 @@ export class HomePresalePage {
     private menuCtrl: MenuController,
     private authService: AuthService,
     private orderService: OrderService,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private fireAuth: AngularFireAuth
   ) {
-      firebase.auth().onAuthStateChanged(function(user) {
-      if (!user) {
-        navCtrl.setRoot("LoginPage");
-      }
-    });
+    this.checkSession();
   }
 
-  // ionViewDidLoad() {
-  //   this.menuCtrl.enable(false,'menuUser');
-  //   this.menuCtrl.enable(true,'menuPreventa');
-  // }
+  ionViewDidLoad() {
+    this.menuCtrl.enable(false, 'menuUser');
+    this.menuCtrl.enable(true , 'menuPresale');
+  }
 
   logout() {
     this.authService.doLogout();
@@ -57,6 +53,15 @@ export class HomePresalePage {
       console.error(error);
       load.dismiss();
     });
+  }
+
+  private checkSession(){
+    // this.fireAuth.authState.subscribe((user) =>{
+    //   console.log(user);
+    //   if (user !== null) {
+    //     this.navCtrl.setRoot("LoginPage");
+    //   }
+    // });
   }
 
 }

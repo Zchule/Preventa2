@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-import { OrderService } from '../../../providers/order.service'; 
+import { OrderService } from '../../../../providers/order.service'; 
 
 @IonicPage({
   name: 'OrderPresalePage',

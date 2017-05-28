@@ -35,26 +35,23 @@ export class MyApp {
       icon: 'home',
       component: 'AdminHomePage'
     }
-    ]
+  ]
    
   pagesPreventa: any[] = [
     {
-      title: 'Clientes',
+      title: 'Ver Clientes',
       component: 'AdminClientsPage',
-      icon: 'people',
-      index: 0
+      icon: 'people'
     },
     {
-      title: 'Realizar Pedido',
+      title: 'Ver pedidos',
       icon: 'clipboard',
-      component: 'PedidoPage',
-      index: 1
+      component: 'PedidoPage'
     },
     {
       title: 'Mapa',
-      icon: 'md-globe',
-      component: 'MapPreventaPage',
-      index: 2
+      icon: 'globe',
+      component: 'MapPreventaPage'
     }
   ];
 
