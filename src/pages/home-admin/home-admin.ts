@@ -38,7 +38,7 @@ export class HomeAdminPage {
   }
 
   goToAdminUsersPage() {
-    this.navCtrl.setRoot('AdminUsersPage');
+    this.navCtrl.setRoot('ListUsersPage');
   }
 
   goToAdminProductsPage() {

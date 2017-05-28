@@ -33,7 +33,7 @@ export class ListUsersPage {
   }
 
   addUser(){
-    let modal = this.modalCtrl.create('FormUserPage');
+    let modal = this.modalCtrl.create('CreateUserPage');
     modal.present();
   }
 
@@ -45,7 +45,7 @@ export class ListUsersPage {
   }
 
   goToEdit(user){
-    let modal = this.modalCtrl.create('FormUserPage',{
+    let modal = this.modalCtrl.create('EditUserPage',{
       user:user
     });
     modal.present();

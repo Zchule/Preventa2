@@ -23,7 +23,7 @@
  <ion-list>
     <ion-item *ngFor="let user of users | async; let i = index" (click)="showActionSheet(user)">
       <ion-thumbnail item-left>
-        <img [src]= "user.photo" alt="avatar">
+        <img [src]="user.photo" alt="avatar">
       </ion-thumbnail>
       <h2>{{ user.name }}</h2>
       <p>{{ user.apPat}}</p>
