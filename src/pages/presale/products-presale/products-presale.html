@@ -1,0 +1,77 @@
+<ion-header>
+   <ion-navbar color="royal">
+    <ion-title>Productos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showOrder()">
+        <ion-icon name="clipboard"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let mark of marks" no-margin>
+    <ion-list-header>
+      {{ mark.title }}
+      <ion-badge item-end color="royal">{{ mark.products.length }}</ion-badge>
+    </ion-list-header>
+    <ion-scroll scrollX="true">
+      <ion-row nowrap>
+        <ion-col col-3 *ngFor="let product of mark.products" text-center>
+          <a class="product" (click)="clickedProduct( product )" [class.selected]="product == productSelected">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            <img [src]="product.image" alt="product">
+            <h5>{{ product.name }}</h5>
+            <span>{{ product.cant }}</span>
+          </a>
+        </ion-col>
+      </ion-row>
+    </ion-scroll>
+  </ion-list>
+</ion-content>
+
+<div class="product-detail" *ngIf="productSelected !== null">
+  <ion-row align-items-center class="load" *ngIf="showLoad">
+    <ion-col text-center>
+      <ion-spinner color="royal"></ion-spinner>
+    </ion-col>
+  </ion-row>
+  <ion-row align-items-center>
+    <ion-col col-2>
+      <img [src]="productSelected.image" alt="product">
+    </ion-col>
+    <ion-col col-4>
+      <h5>{{ productSelected.name }}</h5>
+      <span>{{ productSelected.cant }}</span>
+    </ion-col>
+    <ion-col col-6>
+      <ion-row align-items-center no-margin no-padding>
+        <ion-col no-padding>
+          <button small block ion-button icon-only color="royal" (click)="remove()">
+            <ion-icon name="remove"></ion-icon> 
+          </button>
+        </ion-col>
+        <ion-col text-center>{{ productSelected.count }}</ion-col>
+        <ion-col no-padding>
+          <button small block ion-button icon-only color="royal" (click)="add()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6>
+      <button small block ion-button icon-left color="danger" (click)="close()">
+        <ion-icon name="close"></ion-icon>
+        Cerrar
+      </button>
+    </ion-col>
+    <ion-col col-6>
+      <button [disabled]="productSelected.count == 0" small block ion-button  icon-left color="royal" (click)="addProduct()">
+        <ion-icon name="clipboard"></ion-icon>
+        Agregar al pedido
+      </button>
+    </ion-col>
+  </ion-row>
+</div>

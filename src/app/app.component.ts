@@ -68,7 +68,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.listerSession();
+      //
+      this.listerSession();
     });
   }
 
