@@ -7,7 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-order-sale',
   templateUrl: 'order-sale.html',
 })
-export class OrderSalePage {
+export class CreateOrderPresalePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
