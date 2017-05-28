@@ -1,30 +1,44 @@
 <ion-menu id="menuUser" [content]="content">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Productos</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <ion-content>
+    <div class="profile primary">
+      <div class="cover">
+        <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
+        <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+      </div>
+      <h5>Adminstrador</h5>
+      <p *ngIf="profile.email !== undefined">nicolas@nicobytes.com</p>
+    </div>
     <ion-list>
       <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesUser">
         <ion-icon [name]="page.icon" item-left></ion-icon>
         {{ page.title }}
+      </button>
+      <button menuClose ion-item (click)="logout()">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Salir
       </button>
     </ion-list>
   </ion-content>
 </ion-menu>
 
 <ion-menu id="menuPresale" [content]="content">
-  <ion-header>
-    <ion-toolbar color="royal">
-      <ion-title>Preventa</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <ion-content>
+    <div class="profile royal">
+      <div class="cover">
+        <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
+        <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+      </div>
+      <h5>Preventa</h5>
+      <p *ngIf="profile.email !== undefined">nicolas@nicobytes.com</p>
+    </div>
     <ion-list>
       <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPreventa">
         <ion-icon [name]="page.icon" item-left></ion-icon>
         {{ page.title }}
+      </button>
+      <button menuClose ion-item (click)="logout()">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Salir
       </button>
     </ion-list>
   </ion-content>
