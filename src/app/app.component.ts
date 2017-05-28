@@ -68,7 +68,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.listerSession();
+      //
+      this.listerSession();
     });
   }
 
@@ -86,12 +87,11 @@ export class MyApp {
     this.fireAuth.authState.subscribe( user =>{
       if(user !== null){
         this.auth.getProfile(user.uid)
-        .then(data =>{
-          let profile = data.val();
+        .then(profile =>{
           let pages: any = {
             'admin': 'HomeAdminPage',
             'distributor': 'HomeDistributorPage',
-            'preventa': 'HomePresalePage',
+            'presale': 'HomePresalePage',
           };
           this.navMaster.setRoot(pages[profile.role]);
         })

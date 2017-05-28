@@ -8,14 +8,15 @@ import { UserProfileService } from '../../../../providers/user-profile.service';
 
 @IonicPage()
 @Component({
-  selector: 'create-user',
-  templateUrl: 'create-user.html',
+  selector: 'page-edit-user',
+  templateUrl: 'edit-user.html',
 })
-export class CreateUserPage {
+export class EditUserPage {
 
   userForm: FormGroup;
   image: string = null;
-
+  user: any = null;
+  
   constructor(
     private viewCtrl: ViewController,
     private navParams: NavParams,
@@ -23,27 +24,30 @@ export class CreateUserPage {
     private toastCtrl: ToastController,
     private camera: Camera,
     private userProfileService: UserProfileService
-  ) {
-    this.userForm = this.makeForm();  
+    ) {
+      this.userForm = this.makeForm();
+      this.user = this.navParams.get('user');
+      this.userForm.patchValue(this.user);
+      console.log(this.userForm.value);
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() { 
+    console.log('ionViewDidLoad EditUser');
+  }
 
   saveUser( event: Event ){
     event.preventDefault();
-    let data = this.userForm.value;
-    this.userProfileService.createProfile(data.email,"123456", data.role, data.apPat, data.apMat, data.CI, data.direction, data.name, data.photo )
+    let isInputDisabled:boolean = false;
+    this.userProfileService.updateProfile(this.user.$key, this.userForm.value)
     .then((()=>{
       let message = this.toastCtrl.create({
-        message: 'Usuario Registrado',
+        message: 'Usuario Actualizado',
         duration: 3000,
         showCloseButton: true
       })
       message.present();
-      message.onDidDismiss(()=>{
-        this.userForm = this.makeForm();  
-        this.close();
-      })
+      this.userForm = this.makeForm();  
+      this.close();
     }))
     .catch(error =>{
       console.error(error);

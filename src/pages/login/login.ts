@@ -31,7 +31,7 @@ export class LoginPage{
       dismissOnPageChange: true,
     });
     load.present();
-
+    let msn=" Revise sus Datos";
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
@@ -47,7 +47,20 @@ export class LoginPage{
       this.navCtrl.setRoot(pages[profile.role]);
     })
     .catch(error=>{
-      load.dismiss();
+      load.dismiss().then( () => {
+              let alert = this.alertCtrl.create({
+               // message: error.message,
+               title: "Datos Invalidos",
+               message: msn,
+               buttons: [
+                 {
+                   text: "Ok",
+                   role: 'cancel'
+                 }
+               ]
+             });
+             alert.present();
+           });;
     });
   }
 

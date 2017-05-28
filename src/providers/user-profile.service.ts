@@ -11,10 +11,10 @@ export class UserProfileService {
     public fireDatabase: AngularFireDatabase,
     private fireAuth: AngularFireAuth
   ) {
-    this.users = this.fireDatabase.list('/users');
+    this.users = this.fireDatabase.list('/userProfiles');
   }
 
-  createUser(email: string, password: string, role: string, apPat: string, apMat: string, CI: number, direction: string, name: string, photo: string): any {
+  createProfile(email: string, password: string, role: string, apPat: string, apMat: string, CI: number, direction: string, name: string, photo: string): any {
    return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
      .then((newUser) => {
        return this.fireDatabase
@@ -33,16 +33,8 @@ export class UserProfileService {
      .catch(error => Promise.reject(error))
    }
 
-  update(key, user){
-    return this.fireDatabase.object('/userProfiles/'+key).set({
-      name: user.name,
-      apPat: user.apPat,
-      apMat: user.apMat,
-      email: user.email,
-      CI: user.CI,
-      direction: user.direction,
-      role: user.role
-    });
+  updateProfile(key, user){
+    return this.fireDatabase.object('/userProfiles/'+key).set(user);
   }
 
   delete(key){

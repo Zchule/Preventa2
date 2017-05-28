@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Usuarios</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form novalidate [formGroup]="userForm" (ngSubmit)="saveUser( $event )">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nombre: </ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('name').errors && userForm.get('name').dirty">
+        <p *ngIf="userForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido Paterno: </ion-label>
+        <ion-input formControlName="apPat" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('apPat').errors && userForm.get('apPat').dirty">
+        <p *ngIf="userForm.get('apPat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido Materno: </ion-label>
+        <ion-input formControlName="apMat" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('apMat').errors && userForm.get('apMat').dirty">
+        <p *ngIf="userForm.get('apMat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Carnet de Indentidad: </ion-label>
+        <ion-input formControlName="CI" type="number"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('CI').errors && userForm.get('CI').dirty">
+        <p *ngIf="userForm.get('CI').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Dirección: </ion-label>
+        <ion-input formControlName="direction" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('direction').errors && userForm.get('direction').dirty">
+        <p *ngIf="userForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
+      <ion-item >
+      <ion-label floating>email: </ion-label>
+      <ion-input formControlName="email" type="email" disabled="{{isDisabled}}" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="userForm.get('email').errors && userForm.get('email').dirty">
+        <p *ngIf="userForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+        <p *ngIf="userForm.get('email').hasError('pattern')" ion-text color="danger">email no valido.</p>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Tipo de Usuario</ion-label>
+        <ion-select formControlName="role">
+          <ion-option value="presale" selected="true">Preventa</ion-option>
+          <ion-option value="distributor">Distribuidor</ion-option>
+          <ion-option value="admin">Administrador</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+        <img *ngIf="image !== null" [src]="image" alt="avatar">
+        <ion-grid>
+         <ion-row>
+           <ion-col col-6>
+              <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
+                <ion-icon name="camera"></ion-icon>
+                Sacar Foto
+              </button>
+           </ion-col>
+           <ion-col col-6>
+              <button color="danger" block ion-button icon-left (click)="takeLibrary()" type="button">
+                <ion-icon name="ios-albums"></ion-icon>
+                Album
+              </button>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </div>
+
+     <div padding>
+      <button block ion-button type="submit" icon-left [disabled]="userForm.invalid">
+        Guardar
+      </button>
+    </div>
+    
+  </form>
+</ion-content>
+
+
