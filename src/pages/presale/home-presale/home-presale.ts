@@ -56,11 +56,12 @@ export class HomePresalePage {
   }
 
   private checkSession(){
-    this.fireAuth.authState.subscribe((user) =>{
-      if (user !== null) {
-        this.navCtrl.setRoot("LoginPage");
-      }
-    });
+    // this.fireAuth.authState.subscribe((user) =>{
+    //   console.log(user);
+    //   if (user !== null) {
+    //     this.navCtrl.setRoot("LoginPage");
+    //   }
+    // });
   }
 
 }
