@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, ToastController } from 'ionic-angular';
 
-import { ClientService } from '../../providers/client-service';
+import { ClientService } from '../../../../providers/client-service';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -11,7 +11,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   selector: 'page-form-client',
   templateUrl: 'form-client.html',
 })
-export class FormClientPage {
+export class CreateClientPage {
 
   clientForm: FormGroup;
   client: any= null;
