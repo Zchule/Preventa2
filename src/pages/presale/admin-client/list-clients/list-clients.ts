@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-import { ClientService } from '../../../providers/client.service';
+import { ClientService } from '../../../../providers/client.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-admin-clients',
-  templateUrl: 'admin-clients.html',
+  selector: 'page-lists-clients',
+  templateUrl: 'list-clients.html',
 })
-export class AdminClientsPage {
+export class ListsClientsPage {
 
   clients: FirebaseListObservable<any>;
 
@@ -19,15 +19,24 @@ export class AdminClientsPage {
     public clientService: ClientService,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public loadCtrl: LoadingController
     ) {
   }
 
   ionViewDidLoad() {
-    this.clients = this.clientService.getAll();
+    let load = this.loadCtrl.create({
+      content: 'Cargando...'
+    });
+    load.present();
+    this.clientService.getAll()
+    .subscribe(clients=>{
+      this.clients = clients;
+      load.dismiss(); 
+    });   
   }
   addClient(){
-    let modal = this.modalCtrl.create('FormClientPage');
+    let modal = this.modalCtrl.create('CreateClientPage');
     modal.present();
   }
   goToClient(client){
@@ -39,7 +48,7 @@ export class AdminClientsPage {
   }
   goToEdit(client){
     console.log(client);
-    let modal = this.modalCtrl.create('FormClientPage',{
+    let modal = this.modalCtrl.create('EditClientPage',{
       client:client
     });
     modal.present();

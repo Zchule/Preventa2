@@ -35,6 +35,10 @@ export class HomePresalePage {
     this.navCtrl.push('MapPresalePage');
   }
 
+  goToClientPage(){
+    this.navCtrl.push('ListsClientsPage');
+  }
+
   private checkSession(){
     // this.fireAuth.authState.subscribe((user) =>{
     //   console.log(user);

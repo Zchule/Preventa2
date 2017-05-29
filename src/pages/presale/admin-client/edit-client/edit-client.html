@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="royal">
     <ion-title>Clientes</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="close()">
@@ -60,26 +60,6 @@
         <p *ngIf="clientForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
 
-      <div padding>
-        <img *ngIf="image !== null" [src]="image" alt="avatar">
-        <ion-grid>
-         <ion-row>
-           <ion-col col-6>
-              <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
-                <ion-icon name="camera"></ion-icon>
-                Sacar Foto
-              </button>
-           </ion-col>
-           <ion-col col-6>
-              <button color="danger" block ion-button icon-left (click)="takeLibrary()" type="button">
-                <ion-icon name="ios-albums"></ion-icon>
-                Album
-              </button>
-           </ion-col>
-         </ion-row>
-       </ion-grid>
-      </div>
-
       <ion-item>
         <ion-label floating>nombre Tienda: </ion-label>
         <ion-input formControlName="nameStore"></ion-input>
@@ -121,6 +101,26 @@
       <ion-item *ngIf="clientForm.get('facNit').errors && clientForm.get('facNit').dirty">
         <p *ngIf="clientForm.get('facNit').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
+
+       <div padding>
+        <img *ngIf="image !== null" [src]="image" alt="avatar">
+        <ion-grid>
+         <ion-row>
+           <ion-col col-6>
+              <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
+                <ion-icon name="camera"></ion-icon>
+                Sacar Foto
+              </button>
+           </ion-col>
+           <ion-col col-6>
+              <button color="danger" block ion-button icon-left (click)="takeLibrary()" type="button">
+                <ion-icon name="ios-albums"></ion-icon>
+                Album
+              </button>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
 
     </ion-list>
 

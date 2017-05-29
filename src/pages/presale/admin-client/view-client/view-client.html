@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="royal">
+    <ion-title>Clientes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form disable [formGroup]="clientForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img [src]="client.photo">
+        </ion-thumbnail>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Codigo Cliente </ion-label>
+        <ion-input disable formControlName="codClient" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nombre: </ion-label>
+        <ion-input formControlName="name" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Apellido Paterno: </ion-label>
+        <ion-input formControlName="apPat" disabled="true"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Apellido Materno: </ion-label>
+        <ion-input formControlName="apMat" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>CI: </ion-label>
+        <ion-input formControlName="CI" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dirección: </ion-label>
+        <ion-input formControlName="direction" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>nombre Tienda: </ion-label>
+        <ion-input formControlName="nameStore" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Tipo de Tienda</ion-label>
+      <ion-input formControlName="typeStore" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Zona</ion-label>
+      <ion-input formControlName="zone" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nombre a Facturar: </ion-label>
+        <ion-input formControlName="facName" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nit de Factura: </ion-label>
+        <ion-input formControlName="facNit" disabled="true"></ion-input>
+      </ion-item>
+      </ion-list>
+   
+  </form>
+</ion-content>
+

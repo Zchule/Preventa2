@@ -99,7 +99,7 @@ export class CreateUserPage {
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
       role: ['presale', [Validators.required]],
-      photo: ['assets/imgs/sinfoto.png', [Validators.required]],
+      photo: ['assets/imgs/sinfoto.png', [Validators.required]]
     });
   }
 

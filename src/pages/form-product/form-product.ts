@@ -70,6 +70,7 @@ makeForm(){
       cant: ['', [Validators.required]],
       wheight: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.maxLength(3)]],
+      photo: ['assets/imgs/papas.gif', [Validators.required]]
     });
 }
 

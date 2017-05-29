@@ -33,9 +33,10 @@ export class EditUserPage {
   ionViewDidLoad() { 
     console.log('ionViewDidLoad EditUser');
   }
-
   saveUser( event: Event ){
     event.preventDefault();
+    let isInputDisabled:boolean = true;
+    isInputDisabled = false;
     this.userProfileService.updateProfile(this.user.$key, this.userForm.value)
     .then((()=>{
       let message = this.toastCtrl.create({
