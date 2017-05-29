@@ -13,10 +13,7 @@ export class OrderService {
   }
 
   createOrder(order){
-    return this.orders.push({
-      date: order.date,
-      products: []
-    });
+    return this.orders.push(order);
   }
 
   getOrder(id){

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+
+import { OrderService } from '../../../../providers/order.service'; 
 
 @IonicPage()
 @Component({
@@ -8,11 +11,48 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreateOrderPresalePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  orderForm: FormGroup;
+
+  constructor(
+    private navCtrl: NavController, 
+    private navParams: NavParams,
+    private formBuilder: FormBuilder,
+    private orderService: OrderService,
+    private loadCtrl: LoadingController
+  ) {
+    this.orderForm = this.makeLoginForm();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderSalePage');
+  createOrder( event: Event){
+    event.preventDefault();
+     let load = this.loadCtrl.create({
+      content: 'Creando pedido'
+    });
+    load.present();
+    this.orderService.createOrder({
+      date: new Date().getTime(),
+      code: this.orderForm.value.code,
+      type: this.orderForm.value.type,
+      products: []
+    })
+    .then(order =>{
+      load.dismiss();
+      load.onDidDismiss(()=>{
+        this.navCtrl.push('CategoryPresalePage',{
+          order: order.key
+        });
+      })
+    })
+    .catch(error =>{
+      console.error(error);
+      load.dismiss();
+    });
   }
-
+  
+  private makeLoginForm(){
+    return this.formBuilder.group({
+      code: ['', [Validators.required]],
+      type: ['payment', [Validators.required]]
+    });
+  }
 }
