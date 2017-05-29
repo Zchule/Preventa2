@@ -48,19 +48,19 @@ export class LoginPage{
     })
     .catch(error=>{
       load.dismiss().then( () => {
-              let alert = this.alertCtrl.create({
-               // message: error.message,
-               title: "Datos Invalidos",
-               message: msn,
-               buttons: [
-                 {
-                   text: "Ok",
-                   role: 'cancel'
-                 }
-               ]
-             });
-             alert.present();
-           });
+      let alert = this.alertCtrl.create({
+        // message: error.message,
+        title: "Datos Invalidos",
+        message: msn,
+        buttons: [
+          {
+            text: "Ok",
+            role: 'cancel'
+          }
+        ]
+      });
+      alert.present();
+    });
     });
   }
 
