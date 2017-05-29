@@ -182,7 +182,10 @@ export class CreateProductPage {
           text: 'Agregar',
           handler: data => {
             console.log(data);
-            this.markProductService.create(data);
+            this.markProductService.create({
+              data: data.name,
+              value: data.name.replace(/ /g, "").toLowerCase()
+            });
           }
         }
       ]
@@ -193,7 +196,7 @@ export class CreateProductPage {
   makeForm() {
     return this.formBuilder.group({
       type: ['Cuidado Personal', [Validators.required]],
-      category: ['Detergente en Polvo', [Validators.required]],
+      category: ['Detergente en Barra', [Validators.required]],
       mark: ['Omo', [Validators.required]],
       name: ['', [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
