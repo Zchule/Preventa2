@@ -60,6 +60,7 @@ export class OrdersPresalePage {
         {
           text: 'Cancelar',
           role: 'cancel',
+          icon: 'close',
           handler: ()=>{
             console.log('cancel');
           }

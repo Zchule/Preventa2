@@ -109,6 +109,7 @@ export class ListsClientsPage {
         {
           text: 'Cancelar',
           role: 'cancel',
+          icon: 'close',
           handler: ()=>{
             console.log('cancel');
           }
