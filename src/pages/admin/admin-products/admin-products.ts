@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-import { ProductService } from '../../../providers/product-service';
+import { ProductService } from '../../../providers/product.service';
 
 @IonicPage()
 @Component({

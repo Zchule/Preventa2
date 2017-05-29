@@ -15,28 +15,33 @@ export class CategoryPresalePage {
   categories: any[] = [
     {
       title: 'Detergente en polvo',
+      value: 'beers',
       image: 'https://cdn.galileo.pgsitecore.com/es-mx/-/media/Ariel_MX/Images/Products/Ariel-MB-1-kg-FT.png',
       type: 'cuidado'
     },
     {
       title: 'Detergente en barra',
       image: 'http://industrialapopular.com/wp-content/uploads/2015/12/Barra-Detergente1.png',
-      type: 'cuidado'
+      type: 'cuidado',
+      value: 'food',
     },
     {
       title: 'Soya',
       image: 'http://ibescosocial.com/wordpress/wp-content/uploads/2016/03/soja-1.jpg',
-      type: 'alimentos'
+      type: 'alimentos',
+      value: 'beers',
     },
     {
       title: 'Quinua',
       image: 'http://guia.agrecolandes.org/wp-content/uploads/2016/04/quinua.png',
-      type: 'alimentos'
+      type: 'alimentos',
+      value: 'beers',
     },
     {
       title: 'gaseosas',
       image:'http://pizzali.net/wp-content/uploads/2014/08/40-138-large.jpg',
-      type: 'bebidas'
+      type: 'bebidas',
+      value: 'beers',
     }
   ];
   showCategories: any = [];
@@ -52,9 +57,10 @@ export class CategoryPresalePage {
     this.order = this.navParams.get('order');
   }
 
-  goToProductsPresalePage(){
+  goToProductsPresalePage( category ){
     this.navCtrl.push('ProductsPresalePage',{
-      order: this.order
+      order: this.order,
+      category: category.value
     });
   }
 

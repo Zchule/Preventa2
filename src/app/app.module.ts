@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { ProductService } from '../providers/product-service';
+import { ProductService } from '../providers/product.service';
 import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client-service';

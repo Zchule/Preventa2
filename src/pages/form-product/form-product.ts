@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, ViewController, NavParams,ToastController } from 'ionic-angular';
 
-import { ProductService } from '../../providers/product-service';
+import { ProductService } from '../../providers/product.service';
 
 
 @IonicPage()
