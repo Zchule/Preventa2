@@ -25,8 +25,8 @@ export class CategoryProductsService {
     return this.categoryProducts;
   }
   
-  create(type){
-    return this.categoryProducts.push(type);
+  create(data){
+    return this.categoryProducts.push(data);
   }
 
   update(key, product){

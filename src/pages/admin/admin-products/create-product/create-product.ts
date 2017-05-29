@@ -100,6 +100,7 @@ export class CreateProductPage {
   }
 
   addType(){
+    
     let alert = this.alertCtrl.create({
     title: 'Tipo',
     inputs: [
@@ -120,7 +121,10 @@ export class CreateProductPage {
           text: 'Agregar',
           handler: data =>{
             console.log( data );
-            this.typeProductsService.create(data);
+            this.typeProductsService.create({
+              name: data.name,
+              value: data.name.replace(/ /g,"").toLowerCase()
+            });
           }
       }
     ]
@@ -129,6 +133,8 @@ export class CreateProductPage {
 }
 
 addCategory(){
+    let type = this.productForm.value.type;
+    console.log(type);
     let alert = this.alertCtrl.create({
     title: 'Categoria',
     inputs: [
@@ -148,8 +154,12 @@ addCategory(){
      {
           text: 'Agregar',
           handler: data =>{
-            console.log( data );
-            this.categoryProductService.create(data);
+          console.log( data );
+          this.categoryProductService.create({
+              name: data.name,
+              type: type,
+              value: data.name.replace(/ /g,"").toLowerCase()
+            });
           }
       }
     ]
@@ -200,8 +210,10 @@ addGroup(){
      {
           text: 'Agregar',
           handler: data =>{
-            console.log( data );
-            this.groupProductService.create(data);
+            this.groupProductService.create({
+              data: data.name,
+              value: data.name.replace(/ /g,"").toLowerCase()
+            });
           }
       }
     ]
@@ -211,10 +223,9 @@ addGroup(){
   
 makeForm(){
   return this.formBuilder.group({
-      type: ['Cuidado', [Validators.required]],
+      type: ['Cuidado Personal', [Validators.required]],
       category: ['Detergente en Polvo', [Validators.required]],
       mark: ['Omo', [Validators.required]],
-      group: ['limon', [Validators.required]],
       name: ['', [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
       cant: ['', [Validators.required]],

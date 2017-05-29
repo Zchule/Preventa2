@@ -64,8 +64,8 @@ export class TypeProductsService {
     
   }
   
-  create(type){
-    return this.typeProducts.push(type);
+  create(data){
+    return this.typeProducts.push(data);
   }
 
   update(key, product){
