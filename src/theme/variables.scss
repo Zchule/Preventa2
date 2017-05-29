@@ -28,7 +28,10 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   royal:      #886aea,
-  dark:       #222
+  dark:       (
+    base: #222,
+    contrast: white
+  )
 );
 
 

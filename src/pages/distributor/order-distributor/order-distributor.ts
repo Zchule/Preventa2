@@ -2,19 +2,20 @@ import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavParams, NavController, LoadingController, App } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-import { OrderService } from '../../../../providers/order.service'; 
+import { OrderService } from '../../../providers/order.service'; 
 
 @IonicPage()
 @Component({
-  selector: 'page-order-presale',
-  templateUrl: 'order-presale.html',
+  selector: 'page-order-distributor',
+  templateUrl: 'order-distributor.html',
 })
-export class OrderPresalePage {
+export class OrderDistributorPage {
 
   products: any[] = [];
   total: number = 0;
   fireProducts: FirebaseListObservable<any>;
   state: string = 'init';
+  user: any = {};
 
   constructor(
     private viewCtrl: ViewController,
@@ -23,11 +24,10 @@ export class OrderPresalePage {
     private navCtrl: NavController,
     private loadCtrl: LoadingController,
     private app: App
-  ) {
-    this.state = this.navParams.get('state');
-  }
+  ) {}
 
   ionViewDidLoad() {
+    this.user = this.orderService.getOrderClient(this.navParams.get('order'));
     this.fireProducts = this.orderService.getOrderProducts(this.navParams.get('order'));
     this.fireProducts.subscribe((products)=>{
       this.products = products;
@@ -41,10 +41,6 @@ export class OrderPresalePage {
 
   close(){
     return this.viewCtrl.dismiss();
-  }
-
-  delete( product ){
-    this.fireProducts.remove( product.$key );
   }
 
   done(){

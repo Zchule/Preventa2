@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Pedido</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/marty-avatar.png">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>November 5, 1955</p>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngIf="products.length == 0">
+        No hay productos agregados
+      </ion-item>
+      <ion-item *ngFor="let product of products">
+        <ion-thumbnail item-left>
+          <img [src]="product.image">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>Bs {{product.price}} * {{product.count}}</p>
+        <p>Bs {{product.price * product.count}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer padding>
+  <button block ion-button color="dark" (click)="done()">
+    (Bs {{ total }}) Entregado
+  </button>
+</ion-footer>

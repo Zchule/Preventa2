@@ -55,38 +55,33 @@ export class MyApp {
     {
       title: 'Inicio',
       icon: 'home',
-      component: 'PedidoPage'
+      component: 'HomeDistributorPage'
     },
     {
       title: 'Ver pedidos',
-      icon: 'ios-clipboard',
-      component: 'PedidoPage'
+      icon: 'clipboard',
+      component: 'ListsOrdersDistributorPage'
     },
     {
       title: 'Pedidos entregados',
-      component: 'ListsClientsPage',
+      component: 'ListsOrdersDistributorPage',
       icon: 'clipboard'
     },
     {
       title: 'Pedidos Pendientes',
-      component: 'ListsClientsPage',
-      icon: 'clipboard-outline'
+      component: 'ListsOrdersDistributorPage',
+      icon: 'clipboard'
     },
     {
       title: 'Pedidos a Credito',
-      component: 'ListsClientsPage',
+      component: 'ListsOrdersDistributorPage',
       icon: 'clipboard'
     },
     {
       title: 'Pedidos al Contado',
-      component: 'ListsClientsPage',
+      component: 'ListsOrdersDistributorPage',
       icon: 'clipboard'
     },
-    {
-      title: 'Mapa',
-      icon: 'globe',
-      component: 'MapPreventaPage'
-    }
   ];
 
   constructor(

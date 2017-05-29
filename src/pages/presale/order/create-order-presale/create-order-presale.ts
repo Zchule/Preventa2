@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
-import { OrderService } from '../../../../providers/order.service'; 
+import { OrderService } from '../../../../providers/order.service';
+import { ClientService } from '../../../../providers/client.service';
 
 @IonicPage()
 @Component({
@@ -12,15 +13,24 @@ import { OrderService } from '../../../../providers/order.service';
 export class CreateOrderPresalePage {
 
   orderForm: FormGroup;
+  clients: any[] = [];
 
   constructor(
     private navCtrl: NavController, 
     private navParams: NavParams,
     private formBuilder: FormBuilder,
     private orderService: OrderService,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private clientService: ClientService
   ) {
     this.orderForm = this.makeLoginForm();
+  }
+
+  ionViewDidLoad(){
+    this.clientService.getAll()
+    .subscribe(clients =>{
+      this.clients = clients;
+    });
   }
 
   createOrder( event: Event){
@@ -31,8 +41,8 @@ export class CreateOrderPresalePage {
     load.present();
     this.orderService.createOrder({
       date: new Date().getTime(),
-      code: this.orderForm.value.code,
       type: this.orderForm.value.type,
+      client: this.orderForm.value.client,
       state: 'init',
       products: []
     })
@@ -52,7 +62,7 @@ export class CreateOrderPresalePage {
   
   private makeLoginForm(){
     return this.formBuilder.group({
-      code: ['', [Validators.required]],
+      client: ['', [Validators.required]],
       type: ['payment', [Validators.required]]
     });
   }

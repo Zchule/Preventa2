@@ -36,7 +36,7 @@ export class ProductsPresalePage {
     let load = this.loadCtrl.create();
     load.present();
 
-    this.productsOrder = this.orderService.getProducstOrder(this.navParams.get('order'));
+    this.productsOrder = this.orderService.getOrderProducts(this.navParams.get('order'));
     this.productsService.getProductsByCategory(this.navParams.get('category'))
     .then(products =>{
       let marks = _.groupBy(products, 'mark');

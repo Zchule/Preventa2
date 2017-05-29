@@ -7,18 +7,29 @@
 <ion-content>
   <form novalidate [formGroup]="orderForm" (ngSubmit)="orderForm.valid && createOrder( $event )">
     <ion-list>
-       <ion-item>
+      <!--<ion-item>
         <ion-label floating>Código cliente:</ion-label>
         <ion-input formControlName="code" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="orderForm.get('code').errors && orderForm.get('code').dirty">
         <p *ngIf="orderForm.get('code').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
-      </ion-item>
+      </ion-item>-->
       <ion-item>
         <ion-label floating>Tipo de Pago:</ion-label>
         <ion-select  color="royal" formControlName="type">
           <ion-option value="payment">Contado</ion-option>
           <ion-option value="credit">Credito</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="orderForm.get('type').errors && orderForm.get('type').dirty">
+        <p *ngIf="orderForm.get('type').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Cliente:</ion-label>
+        <ion-select  color="royal" formControlName="client">
+          <ion-option *ngFor="let client of clients" [value]="client">
+            {{ client.name }} {{ client.apPat }} {{ client.apPat }}
+          </ion-option>
         </ion-select>
       </ion-item>
       <ion-item *ngIf="orderForm.get('type').errors && orderForm.get('type').dirty">

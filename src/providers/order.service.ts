@@ -28,8 +28,12 @@ export class OrderService {
     return this.fireDatabase.object('/orders/'+ id);
   }
 
-  getProducstOrder(id){
+  getOrderProducts(id){
     return this.fireDatabase.list('/orders/'+ id + '/products');
+  }
+
+  getOrderClient(id){
+    return this.fireDatabase.list('/orders/'+ id + '/client');
   }
 
   updateOrder(id, data){
