@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="royal">
     <ion-title>Clientes</ion-title>
     <button menuToggle="menuPreventa" ion-button>
       <ion-icon name="menu"></ion-icon>
@@ -14,9 +14,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let client of clients | async; let i = index" (click)="showActionSheet(client)">
+    <ion-item *ngFor="let client of clients; let i = index" (click)="showActionSheet(client)">
       <ion-thumbnail item-left>
-        <img src="assets/imgs/papas.gif">
+        <img [src]="client.photo">
       </ion-thumbnail>
       <h2>{{ client.codClient }}</h2>
       <p>{{ client.name }}</p>

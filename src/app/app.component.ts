@@ -40,7 +40,7 @@ export class MyApp {
   pagesPreventa: any[] = [
     {
       title: 'Ver Clientes',
-      component: 'AdminClientsPage',
+      component: 'ListsClientsPage',
       icon: 'people'
     },
     {

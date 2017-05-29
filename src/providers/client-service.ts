@@ -22,19 +22,7 @@ export class ClientService {
   }
 
   update(key, client){
-    this.clients.update(key,{
-      codClient: client.codClient,
-      name: client.name,
-      apPat: client.apPat,
-      apMat: client.apMat,
-      CI: client.CI,
-      direction: client.direction,
-      nameStore: client.nameStore,
-      zone: client.zone,
-      typeStore: client.typeStore,
-      facName: client.facName,
-      facNit: client.facNit
-    });
+    return this.fireDatabase.object('/clientes/'+ key).set(client);
   }
 
   delete(key){

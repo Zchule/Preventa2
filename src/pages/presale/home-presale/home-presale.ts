@@ -55,6 +55,10 @@ export class HomePresalePage {
     });
   }
 
+  goToClientPage(){
+    this.navCtrl.push('ListsClientsPage');
+  }
+
   private checkSession(){
     // this.fireAuth.authState.subscribe((user) =>{
     //   console.log(user);

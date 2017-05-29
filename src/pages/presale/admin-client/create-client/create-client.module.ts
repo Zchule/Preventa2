@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { FormClientPage } from './form-client';
+import { CreateClientPage } from './create-client';
 
 @NgModule({
   declarations: [
-    FormClientPage,
+    CreateClientPage,
   ],
   imports: [
-    IonicPageModule.forChild(FormClientPage),
+    IonicPageModule.forChild(CreateClientPage),
   ],
   exports: [
-    FormClientPage
+    CreateClientPage
   ]
 })
-export class FormClientModule {}
+export class CreateClientPageModule {}
