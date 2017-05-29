@@ -13,7 +13,7 @@
   <ion-grid no-margin no-padding>
     <ion-row no-margin no-padding>
       <ion-col text-center col-6 *ngFor="let category of showCategories">
-        <a class="category-cover" (click)="goToProductsPresalePage()">
+        <a class="category-cover" (click)="goToProductsPresalePage( category )">
           <div class="cover">
             <img [src]="category.image" [alt]="category.title">
           </div>

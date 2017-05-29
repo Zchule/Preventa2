@@ -28,7 +28,6 @@ export class EditUserPage {
       this.userForm = this.makeForm();
       this.user = this.navParams.get('user');
       this.userForm.patchValue(this.user);
-      console.log(this.userForm.value);
   }
 
   ionViewDidLoad() { 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable,  } from 'angularfire2/database';
+
+import * as firebase from 'firebase';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -9,12 +11,14 @@ import 'rxjs/add/operator/toPromise';
 export class ProductService {
 
   products: FirebaseListObservable<any>;
+  productsRef: firebase.database.Query;
 
   constructor(
     public fireDatabase: AngularFireDatabase,
     public http: Http
   ) {
     this.products = this.fireDatabase.list('/productos');
+    this.productsRef = this.products.$ref;
   }
 
   getData(){
@@ -44,13 +48,28 @@ export class ProductService {
   getAll(){
     return this.products;
   }
+
+  getProductsByCategory(category: string): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      const query = this.productsRef.orderByChild('category').equalTo(category);
+      query.once('value', snap =>{
+        let data = snap.val();
+        if(data === null){
+          reject(data);
+        }else{
+          resolve(data);
+        }
+      })
+    })
+    
+  }
   
   create(product){
-    this.products.push(product);
+    return this.products.push(product);
   }
 
   update(key, product){
-    this.products.update(key,{
+    return this.products.update(key,{
       name: product.name,
       code: product.code,
       cant: product.cant,

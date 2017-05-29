@@ -1,26 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>order-sale</ion-title>
+  <ion-navbar color="royal">
+    <ion-title>Crear cotización</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form action="">
+<ion-content>
+  <form novalidate [formGroup]="orderForm" (ngSubmit)="orderForm.valid && createOrder( $event )">
     <ion-list>
        <ion-item>
-        <ion-label>Código cliente:</ion-label>
-        <ion-input></ion-input>
+        <ion-label floating>Código cliente:</ion-label>
+        <ion-input formControlName="code" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="orderForm.get('code').errors && orderForm.get('code').dirty">
+        <p *ngIf="orderForm.get('code').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
       <ion-item>
-        <ion-label>Tipo de Pago:</ion-label>
-        <ion-select>
-          <ion-option value="payment" selected="true">Contado</ion-option>
+        <ion-label floating>Tipo de Pago:</ion-label>
+        <ion-select  color="royal" formControlName="type">
+          <ion-option value="payment">Contado</ion-option>
           <ion-option value="credit">Credito</ion-option>
         </ion-select>
       </ion-item>
-      <button block ion-button type="submit">
+      <ion-item *ngIf="orderForm.get('type').errors && orderForm.get('type').dirty">
+        <p *ngIf="orderForm.get('type').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button block ion-button icon-left color="royal" type="submit" [disabled]="orderForm.invalid">
+        <ion-icon name="clipboard"></ion-icon>
         Realizar Pedido
       </button>
-    </ion-list>
+    </div>
   </form>
 </ion-content>

@@ -97,10 +97,10 @@ export class MyApp {
     private auth: AuthService,
     private fireAuth: AngularFireAuth
   ) {
-    this.platform.ready().then(() => {
+    this.platform.ready()
+    .then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //
       this.listerSession();
     });
   }
@@ -126,7 +126,6 @@ export class MyApp {
         this.auth.getProfile(user.uid)
         .then(profile =>{
           this.profile = profile;
-          console.log(this.profile);
           let pages: any = {
             'admin': 'HomeAdminPage',
             'distributor': 'HomeDistributorPage',

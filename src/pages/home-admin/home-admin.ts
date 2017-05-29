@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angula
 import firebase from 'firebase';
 import { AuthService } from '../../providers/auth.service'; 
 
-import { ProductService } from '../../providers/product-service';
+import { ProductService } from '../../providers/product.service';
 
 
 @IonicPage()
