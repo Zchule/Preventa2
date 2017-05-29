@@ -60,7 +60,7 @@ export class LoginPage{
                ]
              });
              alert.present();
-           });;
+           });
     });
   }
 

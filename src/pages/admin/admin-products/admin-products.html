@@ -6,7 +6,7 @@
     </button>
     <ion-buttons end>
       <button ion-button icon-only (click)="addProduct()">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="ios-create"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -15,9 +15,12 @@
   <ion-list>
     <ion-item *ngFor="let product of products | async" (click)="goToEdit(product)" >
       <ion-thumbnail item-left>
-        <img src="assets/imgs/papas.gif">
+        <img [src]="product.photo">
       </ion-thumbnail>
       <h2>{{ product.name }}</h2>
+      <p>Categoria: {{ product.category }}</p>
+      <p>Grupo: {{ product.group }}</p>
+      <p>Marca: {{ product.mark }}</p>
       <p>BS {{ product.price }}</p>
       <ion-badge item-right>{{ product.cant }}</ion-badge>
     </ion-item>

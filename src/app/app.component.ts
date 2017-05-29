@@ -17,28 +17,29 @@ export class MyApp {
 
   pagesUser:any [] = [
     {
-      title: 'Home',
-      icon: 'home',
+      title: 'Usuarios',
+      icon: 'contacts',
+      component: 'ListUsersPage'
+    }
+    ,
+    {
+      title: 'Grupos',
+      icon: 'folder',
       component: 'AdminHomePage'
     },
     {
       title: 'Categorias',
-      icon: 'home',
+      icon: 'list-box',
       component: 'AdminCategoriesPage'
     },
     {
       title: 'Marcas',
-      icon: 'home',
+      icon: 'ios-bookmarks-outline',
       component: 'AdminMarksPage'
-    },
-    {
-      title: 'Grupos',
-      icon: 'home',
-      component: 'AdminHomePage'
     }
   ]
    
-  pagesPreventa: any[] = [
+  pagesPresale: any[] = [
     {
       title: 'Ver Clientes',
       component: 'ListsClientsPage',
@@ -48,6 +49,39 @@ export class MyApp {
       title: 'Ver pedidos',
       icon: 'clipboard',
       component: 'PedidoPage'
+    },
+    {
+      title: 'Mapa',
+      icon: 'globe',
+      component: 'MapPreventaPage'
+    }
+  ];
+
+  pagesDistributor: any[] = [
+    {
+      title: 'Ver pedidos',
+      icon: 'ios-clipboard',
+      component: 'PedidoPage'
+    },
+    {
+      title: 'Pedidos entregados',
+      component: 'ListsClientsPage',
+      icon: 'clipboard'
+    },
+    {
+      title: 'Pedidos Pendientes',
+      component: 'ListsClientsPage',
+      icon: 'ios-clipboard-outline'
+    },
+    {
+      title: 'Pedidos a Credito',
+      component: 'ListsClientsPage',
+      icon: 'md-clipboard'
+    },
+    {
+      title: 'Pedidos al Contado',
+      component: 'ListsClientsPage',
+      icon: 'md-clipboard'
     },
     {
       title: 'Mapa',
