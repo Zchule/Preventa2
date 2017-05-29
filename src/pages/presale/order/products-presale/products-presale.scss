@@ -26,6 +26,12 @@ page-products-presale {
         display: block;
         color: color($colors, dark);
         transition: all 200ms ease-in;
+        .cant{
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          color: color($colors, royal);
+        }
         ion-icon{
           opacity: 0;
           position: absolute;

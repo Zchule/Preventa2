@@ -69,12 +69,7 @@ export class ProductService {
   }
 
   update(key, product){
-    return this.products.update(key,{
-      name: product.name,
-      code: product.code,
-      cant: product.cant,
-      price: product.price
-    });
+    return this.products.update(key, product);
   }
 
 }
