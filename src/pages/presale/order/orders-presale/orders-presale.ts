@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../../providers/order.service'; 
 
@@ -11,7 +10,6 @@ import { OrderService } from '../../../../providers/order.service';
 })
 export class OrdersPresalePage {
 
-  fireOrders: FirebaseListObservable<any>;
   orders: any[] = [];
 
   constructor(
@@ -27,8 +25,7 @@ export class OrdersPresalePage {
   ionViewDidLoad() {
     let load = this.loadCtrl.create();
     load.present();
-    this.fireOrders = this.orderService.getOrders();
-    this.fireOrders.subscribe(orders=>{
+    this.orderService.getOrders().subscribe(orders=>{
       this.orders = orders;
       load.dismiss();
     });
@@ -101,7 +98,7 @@ export class OrdersPresalePage {
         {
           text: 'Si, estoy seguro',
           handler: ()=>{
-            this.fireOrders.remove( order.$key );
+            this.orderService.deleteOrder( order.$key );
           }
         },
       ]

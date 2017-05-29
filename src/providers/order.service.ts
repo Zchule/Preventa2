@@ -20,6 +20,10 @@ export class OrderService {
     return this.orders;
   }
 
+  deleteOrder(key: string){
+    return this.orders.remove(key);
+  }
+
   getOrder(id){
     return this.fireDatabase.object('/orders/'+ id);
   }
