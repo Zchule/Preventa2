@@ -16,14 +16,15 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngIf="orders.length == 0">
+    <ion-item *ngIf="showOrders.length == 0">
       Lista vacia
     </ion-item>
-    <ion-item *ngFor="let order of orders">
+    <ion-item *ngFor="let order of showOrders">
       <p>{{ order.date | date }}</p>
       <p><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>
       <p><strong>Estado:</strong> {{ order.state }}</p>
       <p><strong>Total:</strong> Bs {{ order.total }}</p>
+      <p><strong>Tipo:</strong> {{ order.type }}</p>
       <button ion-button clear color="dark" item-right (click)="showOptions( order )">
         Opciones
       </button>

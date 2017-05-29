@@ -26,6 +26,7 @@ export class ListsOrdersDistributorPage {
   ) {
     this.state = this.navParams.get('state') || 'all';
     this.type = this.navParams.get('type') || 'all';
+    console.log(this.state, this.type);
   }
 
   ionViewDidLoad() {
