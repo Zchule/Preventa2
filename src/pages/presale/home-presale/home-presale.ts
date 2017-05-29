@@ -31,6 +31,10 @@ export class HomePresalePage {
     this.navCtrl.push('CreateOrderPresalePage');
   }
 
+  goToMapPresalePage(){
+    this.navCtrl.push('MapPresalePage');
+  }
+
   private checkSession(){
     // this.fireAuth.authState.subscribe((user) =>{
     //   console.log(user);
