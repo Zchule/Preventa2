@@ -55,7 +55,7 @@ export class MapPresalePage {
     });
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      let marker = new google.maps.Marker({
+      new google.maps.Marker({
         position: myLatLng,
         map: this.map,
         title: 'Hello World!',

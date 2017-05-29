@@ -28,7 +28,6 @@ export class EditUserPage {
       this.userForm = this.makeForm();
       this.user = this.navParams.get('user');
       this.userForm.patchValue(this.user);
-      console.log(this.userForm.value);
   }
 
   ionViewDidLoad() { 
@@ -37,7 +36,6 @@ export class EditUserPage {
 
   saveUser( event: Event ){
     event.preventDefault();
-    let isInputDisabled:boolean = false;
     this.userProfileService.updateProfile(this.user.$key, this.userForm.value)
     .then((()=>{
       let message = this.toastCtrl.create({
