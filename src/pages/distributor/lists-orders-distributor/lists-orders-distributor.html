@@ -6,11 +6,19 @@
       </button>
     </ion-buttons>
     <ion-title>Pedidos</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="goToMapOrdersDistributorPage()">
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
+    <ion-item *ngIf="orders.length == 0">
+      Lista vacia
+    </ion-item>
     <ion-item *ngFor="let order of orders">
       <p>{{ order.date | date }}</p>
       <p><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>

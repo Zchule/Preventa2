@@ -13,10 +13,11 @@
   <ion-card>
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/marty-avatar.png">
+        <img [src]="user.photo">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <h2>{{ user.name }} {{ user.apPat}}</h2>
+      <p>Dirección: {{ user.direction }}</p>
+      <p>Código: {{ user.codClient }}</p>
     </ion-item>
     <ion-list>
       <ion-item *ngIf="products.length == 0">

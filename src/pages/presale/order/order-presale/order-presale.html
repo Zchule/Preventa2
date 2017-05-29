@@ -10,22 +10,32 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngIf="products.length == 0">
-      No hay productos agregados
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="user.photo">
+      </ion-avatar>
+      <h2>{{ user.name }} {{ user.apPat}}</h2>
+      <p>Dirección: {{ user.direction }}</p>
+      <p>Código: {{ user.codClient }}</p>
     </ion-item>
-    <ion-item *ngFor="let product of products">
-      <ion-thumbnail item-left>
-        <img [src]="product.image">
-      </ion-thumbnail>
-      <h2>{{product.name}}</h2>
-      <p>Bs {{product.price}} * {{product.count}}</p>
-      <p>Bs {{product.price * product.count}}</p>
-      <button ion-button clear color="danger" item-right (click)="delete( product )">
-        Eliminar
-      </button>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item *ngIf="products.length == 0">
+        No hay productos agregados
+      </ion-item>
+      <ion-item *ngFor="let product of products">
+        <ion-thumbnail item-left>
+          <img [src]="product.image">
+        </ion-thumbnail>
+        <h2>{{product.name}}</h2>
+        <p>Bs {{product.price}} * {{product.count}}</p>
+        <p>Bs {{product.price * product.count}}</p>
+        <button ion-button clear color="danger" item-right (click)="delete( product )">
+          Eliminar
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
 
 <ion-footer padding *ngIf="state == 'init'">

@@ -33,7 +33,7 @@ export class OrderService {
   }
 
   getOrderClient(id){
-    return this.fireDatabase.list('/orders/'+ id + '/client');
+    return this.fireDatabase.object('/orders/'+ id + '/client');
   }
 
   updateOrder(id, data){

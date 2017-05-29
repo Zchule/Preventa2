@@ -15,6 +15,7 @@ export class OrderPresalePage {
   total: number = 0;
   fireProducts: FirebaseListObservable<any>;
   state: string = 'init';
+  user: any = {};
 
   constructor(
     private viewCtrl: ViewController,
@@ -28,15 +29,8 @@ export class OrderPresalePage {
   }
 
   ionViewDidLoad() {
-    this.fireProducts = this.orderService.getOrderProducts(this.navParams.get('order'));
-    this.fireProducts.subscribe((products)=>{
-      this.products = products;
-      let total = 0;
-      this.products.forEach((item)=>{
-        total+= item.price * item.count;
-      });
-      this.total = total;
-    });
+    this.getClient();
+    this.getProducts();
   }
 
   close(){
@@ -66,6 +60,25 @@ export class OrderPresalePage {
     .catch(error=>{
       load.dismiss();
       console.error(error);
+    });
+  }
+
+  private getClient(){
+    this.orderService.getOrderClient(this.navParams.get('order'))
+    .subscribe(user =>{
+      this.user = user;
+    });
+  }
+
+  private getProducts(){
+    this.fireProducts = this.orderService.getOrderProducts(this.navParams.get('order'));
+    this.fireProducts.subscribe((products)=>{
+      this.products = products;
+      let total = 0;
+      this.products.forEach((item)=>{
+        total+= item.price * item.count;
+      });
+      this.total = total;
     });
   }
 

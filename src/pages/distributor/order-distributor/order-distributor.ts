@@ -27,7 +27,42 @@ export class OrderDistributorPage {
   ) {}
 
   ionViewDidLoad() {
-    this.user = this.orderService.getOrderClient(this.navParams.get('order'));
+    this.getClient();
+    this.getProducts();
+  }
+
+  close(){
+    return this.viewCtrl.dismiss();
+  }
+
+  done(){
+    let load = this.loadCtrl.create({
+      content: 'Actualizando pedido'
+    });
+    load.present();
+    this.orderService.updateOrder(this.navParams.get('order'),{
+      state: 'done'
+    })
+    .then(()=>{
+      load.dismiss();
+      load.onDidDismiss(()=>{
+        this.close();
+      });
+    })
+    .catch(error=>{
+      load.dismiss();
+      console.error(error);
+    });
+  }
+
+  private getClient(){
+    this.orderService.getOrderClient(this.navParams.get('order'))
+    .subscribe(user =>{
+      this.user = user;
+    });
+  }
+
+  private getProducts(){
     this.fireProducts = this.orderService.getOrderProducts(this.navParams.get('order'));
     this.fireProducts.subscribe((products)=>{
       this.products = products;
@@ -38,32 +73,5 @@ export class OrderDistributorPage {
       this.total = total;
     });
   }
-
-  close(){
-    return this.viewCtrl.dismiss();
-  }
-
-  done(){
-    let load = this.loadCtrl.create({
-      content: 'Finalizando pedido'
-    });
-    load.present();
-    this.orderService.updateOrder(this.navParams.get('order'),{
-      state: 'pending',
-      total: this.total
-    })
-    .then(()=>{
-      load.dismiss();
-      load.onDidDismiss(()=>{
-        this.close();
-        this.app.getRootNav().setRoot('HomePresalePage');
-      });
-    })
-    .catch(error=>{
-      load.dismiss();
-      console.error(error);
-    });
-  }
-
 
 }

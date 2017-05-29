@@ -65,22 +65,34 @@ export class MyApp {
     {
       title: 'Pedidos entregados',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard'
+      icon: 'clipboard',
+      data: {
+        state: 'done'
+      }
     },
     {
       title: 'Pedidos Pendientes',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard'
+      icon: 'clipboard',
+      data: {
+        state: 'pending'
+      }
     },
     {
       title: 'Pedidos a Credito',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard'
+      icon: 'clipboard',
+      data: {
+        type: 'payment'
+      }
     },
     {
       title: 'Pedidos al Contado',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard'
+      icon: 'clipboard',
+      data: {
+        type: 'credit'
+      }
     },
   ];
 
@@ -100,10 +112,8 @@ export class MyApp {
   }
 
   openPage( page ){
-    if(page.index !== null){
-      this.navMaster.setRoot( page.component ,{
-        index: page.index
-      });
+    if(page.data !== null){
+      this.navMaster.setRoot( page.component, page.data);
     }else{
       this.navMaster.setRoot( page.component );
     }
