@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Producto</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="productForm" (ngSubmit)="saveProduct( $event )">
+    <ion-list>
+
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img [src]="product.photo">
+        </ion-thumbnail>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Tipo:</ion-label>
+        <ion-input formControlName="type" disabled="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-input formControlName="category" disabled="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Marca:</ion-label>
+        <ion-input formControlName="mark" disabled="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Group:</ion-label>
+        <ion-input formControlName="group" disabled="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nombre: </ion-label>
+        <ion-input formControlName="name" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Codigo: </ion-label>
+        <ion-input formControlName="code" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Peso: </ion-label>
+        <ion-input formControlName="wheight" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cantidad: </ion-label>
+        <ion-input formControlName="cant" type="number" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Precio(Bs): </ion-label>
+        <ion-input formControlName="price" type="number" disabled="true"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    
+  </form>
+</ion-content>

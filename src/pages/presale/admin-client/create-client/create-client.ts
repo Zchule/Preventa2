@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 
-import { ClientService } from '../../../../providers/client-service';
+import { ClientService } from '../../../../providers/client.service';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Geolocation} from '@ionic-native/geolocation';
@@ -48,6 +48,7 @@ export class CreateClientPage {
     })
     message.present();
     this.close();
+    this.clientForm = this.makeForm();
   } 
  
   takePicture(){
@@ -89,8 +90,6 @@ export class CreateClientPage {
   getPosition(): any {
     let msn = "No Encontramos su ubicacion, revise su internet o su Gps";
     this.geolocation.getCurrentPosition().then((position) => {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
     this.clientForm.get('latitude').setValue(position.coords.latitude);
     this.clientForm.get('longitude').setValue(position.coords.longitude);
     

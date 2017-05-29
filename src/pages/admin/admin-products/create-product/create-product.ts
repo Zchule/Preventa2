@@ -2,18 +2,20 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, ViewController, NavParams,ToastController } from 'ionic-angular';
 
-import { ProductService } from '../../providers/product.service';
+import { ProductService } from '../../../../providers/product.service';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
-  selector: 'page-form-product',
-  templateUrl: 'form-product.html',
+  selector: 'page-create-product',
+  templateUrl: 'create-product.html',
 })
-export class FormProductPage {
+export class CreateProductPage {
 
   productForm: FormGroup;
   product: any= null;
+  image: string = null;
 
   constructor(
     public viewCtrl: ViewController,
@@ -21,13 +23,9 @@ export class FormProductPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public productService: ProductService,
-
-  ) {
+    public camera: Camera   
+    ) {
     this.productForm = this.makeForm(); 
-    this.product = this.navParams.get('product');
-    if(this.product !== null &&  this.product !==  undefined){
-      this.productForm.patchValue(this.product);
-    }
   }
   
   ionViewDidLoad() {
@@ -35,16 +33,6 @@ export class FormProductPage {
   }
   saveProduct( event: Event ){
     event.preventDefault();
-    if(this.product !== null &&  this.product !==  undefined){
-      this.productService.update(this.product.$key, this.productForm.value);
-      let message = this.toastCtrl.create({
-      message: 'Producto Guardado',
-      duration: 3000,
-      showCloseButton: true
-    })
-    message.present();
-    this.close();
-    }else{
       this.productService.create(this.productForm.value);
       let message = this.toastCtrl.create({
       message: 'Producto Actualizado',
@@ -53,12 +41,46 @@ export class FormProductPage {
     })
     message.present();
     this.close();
-    }
     this.productForm = this.makeForm();
     
   }
-  
 
+   takePicture(){
+    let options: CameraOptions = {
+       quality: 100,
+       destinationType: this.camera.DestinationType.DATA_URL,
+       sourceType: this.camera.PictureSourceType.CAMERA,
+       allowEdit: true,
+       targetWidth: 500,
+       targetHeight: 500
+     }
+     this.camera.getPicture( options )
+     .then(imageBase64 =>{
+       this.productForm.get('photo').setValue('data:image/jpeg;base64,' + imageBase64);
+     })
+     .catch(error =>{
+       console.error( error );
+     });
+   }
+
+   takeLibrary(){
+    let options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: true,
+      targetWidth: 500,
+      targetHeight: 500
+    }
+    this.camera.getPicture( options )
+    .then(imageBase64 =>{
+      this.productForm.get('photo').setValue('data:image/jpeg;base64,' + imageBase64);
+    })
+    .catch(error =>{
+      console.error( error );
+    });
+  }
+  
 makeForm(){
   return this.formBuilder.group({
       type: ['cuidado', [Validators.required]],

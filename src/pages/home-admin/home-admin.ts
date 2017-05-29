@@ -42,7 +42,7 @@ export class HomeAdminPage {
   }
 
   goToAdminProductsPage() {
-    this.navCtrl.setRoot('AdminProductsPage');
+    this.navCtrl.setRoot('ListProductsPage');
   }
 
   logout() {

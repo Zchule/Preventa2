@@ -1,70 +1,75 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController, ModalController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-import { ClientService } from '../../../../providers/client.service';
+import { ProductService } from '../../../../providers/product.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-lists-clients',
-  templateUrl: 'list-clients.html',
+  selector: 'page-list-products',
+  templateUrl: 'list-products.html',
 })
-export class ListsClientsPage {
+export class ListProductsPage {
 
-  clients: FirebaseListObservable<any>;
-  
+  products: FirebaseListObservable<any>;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public clientService: ClientService,
+    public productService: ProductService,
+    public menuCtrl: MenuController,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     public loadCtrl: LoadingController
-    ) {
-  }
+  ) {}
 
   ionViewDidLoad() {
     let load = this.loadCtrl.create({
       content: 'Cargando...'
     });
     load.present();
-    this.clientService.getAll()
-    .subscribe(clients=>{
-      this.clients = clients;
+    this.productService.getAll()
+    .subscribe(products=>{
+      this.products = products;
       load.dismiss(); 
-    });   
+    }); 
   }
 
-  goToClient(client){
-    let modal = this.modalCtrl.create('ViewClientPage',{
-      client:client
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuPreventa');
+    this.menuCtrl.enable(true,'menuUser')
+  }
+
+  goToProduct(product){
+    let modal = this.modalCtrl.create('ViewProductPage',{
+      product:product
     });
     modal.present();
 
-  }
-
-  addClient(){
-    let modal = this.modalCtrl.create('CreateClientPage');
-    modal.present();
   }
   
-  goToEdit(client){
-    console.log(client);
-    let modal = this.modalCtrl.create('EditClientPage',{
-      client:client
-    });
+  addProduct(){
+    let modal = this.modalCtrl.create('CreateProductPage');
     modal.present();
   }
 
-  private deleteClient(client: any){
-    this.clientService.delete( client.$key );
+  goToEdit(product){
+    console.log(product);
+    let modal2 = this.modalCtrl.create('EditProductPage',{
+      product:product
+    });
+    modal2.present();
   }
 
-  showAlertDelete( client: any){
+  private deleteProduct(product: any){
+    this.productService.delete( product.$key );
+  }
+
+   showAlertDelete( product: any){
     let alert = this.alertCtrl.create({
       title: '¿Estás seguro?',
-      message: 'El cliente se eliminara',
+      message: 'El producto se eliminara',
       buttons: [
         {
           text: 'Cancelar',
@@ -76,7 +81,7 @@ export class ListsClientsPage {
         {
           text: 'Si, estoy seguro',
           handler: ()=>{
-            this.deleteClient( client );
+            this.deleteProduct( product );
           }
         },
       ]
@@ -84,7 +89,7 @@ export class ListsClientsPage {
     alert.present();
   }
 
-  showActionSheet(client: any){
+  showActionSheet(product: any){
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Opciones',
       buttons: [
@@ -92,14 +97,14 @@ export class ListsClientsPage {
           text: 'Ver',
           icon: 'md-contact',
           handler: ()=>{
-            this.goToClient(client);
+            this.goToProduct(product);
           }
         },
         {
           text: 'Modificar',
           icon: 'create',
           handler: ()=>{
-            this.goToEdit(client);
+            this.goToEdit(product);
           }
         },
         {
@@ -107,7 +112,7 @@ export class ListsClientsPage {
           icon:'trash',
           role: 'destructive',
           handler: ()=>{
-            this.showAlertDelete(client);
+            this.showAlertDelete(product);
           }
         },
         {

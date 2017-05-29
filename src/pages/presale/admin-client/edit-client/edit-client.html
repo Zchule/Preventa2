@@ -12,6 +12,25 @@
 <ion-content>
   <form novalidate [formGroup]="clientForm" (ngSubmit)="saveClient( $event )">
     <ion-list>
+
+      <ion-item>
+      <ion-label>Tipo de Tienda</ion-label>
+        <ion-select formControlName="typeStore">
+          <ion-option value="store" selected="true">Tienda de Barrio</ion-option>
+          <ion-option value="agency">Agencia</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+      <ion-label>Zona</ion-label>
+        <ion-select formControlName="zone">
+          <ion-option value="north" selected="true">Norte</ion-option>
+          <ion-option value="south">Sud</ion-option>
+          <ion-option value="east">Este</ion-option>
+          <ion-option value="west">Oeste</ion-option>
+        </ion-select>
+      </ion-item>
+
       <ion-item>
         <ion-label floating>Codigo Cliente </ion-label>
         <ion-input formControlName="codClient" type="text"></ion-input>
@@ -38,7 +57,7 @@
 
       <ion-item>
         <ion-label floating>Apellido Materno: </ion-label>
-        <ion-input formControlName="apMat"></ion-input>
+        <ion-input formControlName="apMat" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('apMat').errors && clientForm.get('apMat').dirty">
         <p *ngIf="clientForm.get('apMat').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -54,7 +73,7 @@
 
       <ion-item>
         <ion-label floating>Dirección: </ion-label>
-        <ion-input formControlName="direction"></ion-input>
+        <ion-input formControlName="direction" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('direction').errors && clientForm.get('direction').dirty">
         <p *ngIf="clientForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -62,33 +81,15 @@
 
       <ion-item>
         <ion-label floating>nombre Tienda: </ion-label>
-        <ion-input formControlName="nameStore"></ion-input>
+        <ion-input formControlName="nameStore" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('nameStore').errors && clientForm.get('nameStore').dirty">
         <p *ngIf="clientForm.get('nameStore').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
 
       <ion-item>
-      <ion-label>Tipo de Tienda</ion-label>
-      <ion-select formControlName="typeStore">
-        <ion-option value="store" selected="true">Tienda de Barrio</ion-option>
-        <ion-option value="agency">Agencia</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-      <ion-label>Zona</ion-label>
-      <ion-select formControlName="zone">
-        <ion-option value="north" selected="true">Norte</ion-option>
-        <ion-option value="south">Sud</ion-option>
-        <ion-option value="east">Este</ion-option>
-        <ion-option value="west">Oeste</ion-option>
-      </ion-select>
-      </ion-item>
-
-      <ion-item>
         <ion-label floating>Nombre a Facturar: </ion-label>
-        <ion-input formControlName="facName"></ion-input>
+        <ion-input formControlName="facName" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="clientForm.get('facName').errors && clientForm.get('facName').dirty">
         <p *ngIf="clientForm.get('facName').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -119,6 +120,19 @@
               </button>
            </ion-col>
          </ion-row>
+       </ion-grid>
+      </div>
+
+      <div class="item item-text-wrap" style="text-align:center"> {{" *Registre la Ubicación /Nueva:"}}
+        <ion-grid>
+         <ion-row>
+          <ion-col col-6 offset-3>
+            <button ion-button icon-left color="dark" type="button" (click)="getPosition()">
+              <ion-icon name="ios-pin"></ion-icon>
+                Presione!
+          </button>
+        </ion-col>
+        </ion-row>
        </ion-grid>
       </div>
 

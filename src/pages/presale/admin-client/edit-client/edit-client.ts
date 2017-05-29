@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 
 import { ClientService } from '../../../../providers/client.service';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Geolocation} from '@ionic-native/geolocation';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,9 @@ export class EditClientPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public clientService: ClientService,
-    public camera: Camera
+    public camera: Camera,
+    public alertCtrl: AlertController,
+    public geolocation: Geolocation
     ) {
     
     this.clientForm = this.makeForm();   
@@ -37,7 +40,6 @@ export class EditClientPage {
 
   saveClient( event: Event ){
     event.preventDefault();
-    console.log("editar");
       this.clientService.update(this.client.$key, this.clientForm.value)
       .then((()=>{
         let message = this.toastCtrl.create({
@@ -46,7 +48,7 @@ export class EditClientPage {
           showCloseButton: true
         })
         message.present();
-        this.clientForm = this.makeForm(); 
+        // this.clientForm = this.makeForm(); 
         this.close(); 
       }))
       .catch(error=>{
@@ -67,7 +69,9 @@ export class EditClientPage {
       zone: ['north'],
       facName: ['', [Validators.required]],
       facNit: ['', [Validators.required]],
-      photo: ['assets/imgs/sinfoto.png', [Validators.required]]
+      photo: ['assets/imgs/sinfoto.png', [Validators.required]],
+      latitude: ['', [Validators.required]],
+      longitude: ['', [Validators.required]]
     });
   }
   takePicture(){
@@ -103,6 +107,29 @@ export class EditClientPage {
     })
     .catch(error =>{
       console.error( error );
+    });
+  }
+
+  getPosition(): any {
+    let msn = "No Encontramos su ubicacion, revise su internet o su Gps";
+    this.geolocation.getCurrentPosition().then((position) => {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    this.clientForm.get('latitude').setValue(position.coords.latitude);
+    this.clientForm.get('longitude').setValue(position.coords.longitude);
+    
+  }).catch((error) => {
+              let alert = this.alertCtrl.create({
+               title: "ERROR GPS",
+               message: msn,
+               buttons: [
+                 {
+                   text: "Ok",
+                   role: 'cancel'
+                 }
+               ]
+             });
+             alert.present();
     });
   }
   

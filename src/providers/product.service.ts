@@ -69,12 +69,11 @@ export class ProductService {
   }
 
   update(key, product){
-    return this.products.update(key,{
-      name: product.name,
-      code: product.code,
-      cant: product.cant,
-      price: product.price
-    });
+    return this.fireDatabase.object('/productos/'+ key).set(product);
+  }
+
+  delete(key){
+    return this.products.remove(key);
   }
 
 }
