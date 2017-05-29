@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CreateOrderPresalePage } from './craete-order-presale';
+import { CreateOrderPresalePage } from './create-order-presale';
 
 @NgModule({
   declarations: [

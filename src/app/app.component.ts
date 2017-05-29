@@ -13,6 +13,7 @@ export class MyApp {
 
   @ViewChild(Nav) navMaster: Nav;
   rootPage:any = 'LoginPage';
+  profile: any =  {};
 
   pagesUser:any [] = [
     {
@@ -80,11 +81,18 @@ export class MyApp {
     }
   }
 
+  logout() {
+    this.fireAuth.auth.signOut();
+    this.navMaster.setRoot('LoginPage');
+  }
+
   private listerSession(){
     this.fireAuth.authState.subscribe( user =>{
       if(user !== null){
         this.auth.getProfile(user.uid)
         .then(profile =>{
+          this.profile = profile;
+          console.log(this.profile);
           let pages: any = {
             'admin': 'HomeAdminPage',
             'distributor': 'HomeDistributorPage',

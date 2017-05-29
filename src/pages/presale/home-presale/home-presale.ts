@@ -29,10 +29,6 @@ export class HomePresalePage {
     this.menuCtrl.enable(true , 'menuPresale');
   }
 
-  logout() {
-    this.authService.doLogout();
-  }
-
   goToCategoryPresalePage(){
     let load = this.loadCtrl.create({
       content: 'Creando pedido'

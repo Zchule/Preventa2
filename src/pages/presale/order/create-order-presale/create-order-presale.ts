@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 @IonicPage()
 @Component({
-  selector: 'page-order-sale',
-  templateUrl: 'order-sale.html',
+  selector: 'page-create-order-presale',
+  templateUrl: 'create-order-presale.html',
 })
 export class CreateOrderPresalePage {
 
