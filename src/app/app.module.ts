@@ -14,6 +14,10 @@ import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
 import { ClientService } from '../providers/client.service';
 import { AuthService } from '../providers/auth.service';
+import { TypeProductsService } from '../providers/typeProducts';
+import { GroupProductsService } from '../providers/groupProducts';
+import { MarkProductsService } from '../providers/markProducts';
+import { CategoryProductsService } from '../providers/categoryProducts';
 
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -55,6 +59,10 @@ const configFirebase ={
     DetersService,
     ClientService,
     AuthService,
+    TypeProductsService,
+    GroupProductsService,
+    MarkProductsService,
+    CategoryProductsService,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OrderService

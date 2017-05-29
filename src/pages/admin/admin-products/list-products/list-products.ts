@@ -83,7 +83,7 @@ export class ListProductsPage {
           handler: ()=>{
             this.deleteProduct( product );
           }
-        },
+        }
       ]
     });
     alert.present();

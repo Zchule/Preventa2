@@ -13,39 +13,69 @@
 <ion-content>
   <form novalidate [formGroup]="productForm" (ngSubmit)="saveProduct( $event )">
     <ion-list>
-    
-      <ion-item>
-        <ion-label>Tipo:</ion-label>
-        <ion-select formControlName="type">
-          <ion-option value="cuidado" selected="true">Cuidado Personal</ion-option>
-          <ion-option value="alimentos">Alimentos</ion-option>
-        </ion-select>
-      </ion-item>
+         <ion-row align-items-end>
+           <ion-col col-10>
+              <ion-item>
+              <ion-label floating>Tipo:</ion-label>
+              <ion-select formControlName="type">
+                <ion-option *ngFor="let type of types | async" [value]="type.name">{{type.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+           </ion-col>
+           <ion-col col-2>
+              <button ion-button icon-only color="primary" type="button" (click)="addType()">
+                <ion-icon name="add"></ion-icon>
+              </button>
+           </ion-col>
+         </ion-row>
 
-      <ion-item>
-        <ion-label>Categoria:</ion-label>
-        <ion-select formControlName="category">
-          <ion-option value="polvo" selected="true">detergente en polvo</ion-option>
-          <ion-option value="barra">detergente en barra</ion-option>
-        </ion-select>
-      </ion-item>
+         <ion-row align-items-end>
+           <ion-col col-10>
+              <ion-item>
+                <ion-label floating>Categoria:</ion-label>
+                <ion-select formControlName="category">
+                  <ion-option *ngFor="let category of categories | async" [value]="category.name">{{category.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+           </ion-col>
+           <ion-col col-2>
+              <button ion-button icon-only color="primary" type="button" (click)="addCategory()">
+                <ion-icon name="add"></ion-icon>
+              </button>
+           </ion-col>
+         </ion-row>
 
-      <ion-item>
-        <ion-label>Marca:</ion-label>
-        <ion-select formControlName="mark">
-          <ion-option value="skip" selected="true">Skip</ion-option>
-          <ion-option value="omo">Omo</ion-option>
-        </ion-select>
-      </ion-item>
+         <ion-row align-items-end>
+           <ion-col col-10>
+              <ion-item>
+                <ion-label floating>Marca:</ion-label>
+                <ion-select formControlName="mark">
+                  <ion-option *ngFor="let mark of marks | async" [value]="mark.name">{{mark.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+           </ion-col>
+           <ion-col col-2>
+              <button ion-button icon-only color="primary" type="button" (click)="addMark()">
+                <ion-icon name="add"></ion-icon>
+              </button>
+           </ion-col>
+         </ion-row>
 
-      <ion-item>
-        <ion-label>Group:</ion-label>
-        <ion-select formControlName="group">
-          <ion-option value="skip" selected="true">Skip</ion-option>
-          <ion-option value="limon">Limon</ion-option>
-          <ion-option value="floral">Floral</ion-option>
-        </ion-select>
-      </ion-item>
+         <ion-row align-items-end>
+           <ion-col col-10>
+              <ion-item>
+                  <ion-label floating>Group:</ion-label>
+                  <ion-select formControlName="group">
+                    <ion-option value="skip" *ngFor="let group of groups | async" [value]="group.name">Skip</ion-option>
+                  </ion-select>
+                </ion-item>
+           </ion-col>
+           <ion-col col-2>
+              <button ion-button icon-only color="primary" type="button" (click)="addGroup()">
+                <ion-icon name="add"></ion-icon>
+              </button>
+           </ion-col>
+         </ion-row>
       
       <ion-item>
         <ion-label>Nombre: </ion-label>
