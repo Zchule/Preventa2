@@ -54,11 +54,6 @@ export class MyApp {
       title: 'Ver pedidos',
       icon: 'clipboard',
       component: 'OrdersPresalePage'
-    },
-    {
-      title: 'Mapa',
-      icon: 'globe',
-      component: 'MapPreventaPage'
     }
   ];
 
