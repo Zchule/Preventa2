@@ -86,7 +86,7 @@ export class ListsClientsPage {
       buttons: [
         {
           text: 'Ver',
-          icon: 'md-contact',
+          icon: 'contact',
           handler: ()=>{
             this.goToClient(client);
           }

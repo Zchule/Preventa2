@@ -29,12 +29,16 @@ export class MapClientsPage {
     this.getPosition();
   }
 
+  goToListsClientsPage(){
+    this.navCtrl.push('ListsClientsPage');
+  }
+
   private getClients(){
     this.clientService.getAll()
     .subscribe((clients:any[]) =>{
       clients.forEach(item =>{
         this.createMarker({
-          position: {lat: item.latitude, lng: item.longitude},
+          position: {lat: parseFloat(item.latitude), lng: parseFloat(item.longitude)},
           map: this.map,
           title: 'Hello World!',
           icon: 'assets/imgs/markers/pin-green.png'
@@ -44,7 +48,9 @@ export class MapClientsPage {
   }
 
   private getPosition():any{
-    this.geolocation.getCurrentPosition()
+    this.geolocation.getCurrentPosition({
+      maximumAge: 20000
+    })
     .then(response => {
       this.loadMap(response);
     })

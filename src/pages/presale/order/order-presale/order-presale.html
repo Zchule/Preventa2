@@ -11,6 +11,9 @@
 
 <ion-content>
   <ion-list>
+    <ion-item *ngIf="products.length == 0">
+      No hay productos agregados
+    </ion-item>
     <ion-item *ngFor="let product of products">
       <ion-thumbnail item-left>
         <img [src]="product.image">
@@ -25,7 +28,7 @@
   </ion-list>
 </ion-content>
 
-<ion-footer padding>
+<ion-footer padding *ngIf="state == 'init'">
   <button block ion-button color="royal" (click)="done()">
     (Bs {{ total }}) Finalizar pedido
   </button>

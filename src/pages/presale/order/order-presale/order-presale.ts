@@ -4,10 +4,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../../providers/order.service'; 
 
-@IonicPage({
-  name: 'OrderPresalePage',
-  segment: 'order-presale/:order'
-})
+@IonicPage()
 @Component({
   selector: 'page-order-presale',
   templateUrl: 'order-presale.html',
@@ -17,6 +14,7 @@ export class OrderPresalePage {
   products: any[] = [];
   total: number = 0;
   fireProducts: FirebaseListObservable<any>;
+  state: string = 'init';
 
   constructor(
     private viewCtrl: ViewController,
@@ -24,7 +22,9 @@ export class OrderPresalePage {
     private orderService: OrderService,
     private navCtrl: NavController,
     private loadCtrl: LoadingController
-  ) {}
+  ) {
+    this.state = this.navParams.get('state');
+  }
 
   ionViewDidLoad() {
     this.fireProducts = this.orderService.getProducstOrder(this.navParams.get('order'));

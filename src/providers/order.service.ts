@@ -16,6 +16,10 @@ export class OrderService {
     return this.orders.push(order);
   }
 
+  getOrders(){
+    return this.orders;
+  }
+
   getOrder(id){
     return this.fireDatabase.object('/orders/'+ id);
   }
