@@ -24,4 +24,8 @@ export class OrderService {
     return this.fireDatabase.list('/orders/'+ id + '/products');
   }
 
+  updateOrder(id, data){
+    return this.fireDatabase.object('/orders/'+ id).update(data);
+  }
+
 }
