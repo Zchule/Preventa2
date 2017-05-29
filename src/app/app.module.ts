@@ -17,7 +17,6 @@ import { AuthService } from '../providers/auth.service';
 
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { MyApp } from './app.component';
 import { OrderService } from '../providers/order.service';
@@ -57,7 +56,6 @@ const configFirebase ={
     ClientService,
     AuthService,
     Geolocation,
-    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OrderService
   ]
