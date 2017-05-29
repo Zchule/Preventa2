@@ -53,6 +53,7 @@ export class OrderPresalePage {
     load.present();
     this.orderService.updateOrder(this.navParams.get('order'),{
       state: 'pending',
+      total: this.total
     })
     .then(()=>{
       load.dismiss();
