@@ -20,9 +20,10 @@
         <ion-col col-3 *ngFor="let product of mark.products" text-center>
           <a class="product" (click)="clickedProduct( product )" [class.selected]="product == productSelected">
             <ion-icon name="checkmark-circle"></ion-icon>
+            <span class="cant">{{ product.cant }}</span>
             <img [src]="product.image" alt="product">
             <h5>{{ product.name }}</h5>
-            <span>{{ product.cant }}</span>
+            <span>Bs {{ product.price }}</span>
           </a>
         </ion-col>
       </ion-row>

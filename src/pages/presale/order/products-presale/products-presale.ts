@@ -55,17 +55,21 @@ export class ProductsPresalePage {
   }
 
   clickedProduct( product ){
-    this.productSelected = product;
+    this.productSelected = Object.assign({}, product);
     this.productSelected.count = 0;
   }
 
   add(){
-    this.productSelected.count++;
+    if(this.productSelected.cant > 0){
+      this.productSelected.count++;
+      this.productSelected.cant--;
+    }
   }
 
   remove(){
     if(this.productSelected.count > 0){
       this.productSelected.count--;
+      this.productSelected.cant++;
     }
   }
 
@@ -93,7 +97,8 @@ export class ProductsPresalePage {
 
   showOrder(){
     let modal = this.modalCtrl.create('OrderPresalePage',{
-      order: this.navParams.get('order')
+      order: this.navParams.get('order'),
+      state: 'init'
     });
     modal.present();
   }

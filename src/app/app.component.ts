@@ -41,6 +41,11 @@ export class MyApp {
    
   pagesPresale: any[] = [
     {
+      title: 'Inicio',
+      icon: 'home',
+      component: 'HomePresalePage'
+    },
+    {
       title: 'Ver Clientes',
       component: 'ListsClientsPage',
       icon: 'people'
@@ -48,16 +53,16 @@ export class MyApp {
     {
       title: 'Ver pedidos',
       icon: 'clipboard',
-      component: 'PedidoPage'
-    },
-    {
-      title: 'Mapa',
-      icon: 'globe',
-      component: 'MapPreventaPage'
+      component: 'OrdersPresalePage'
     }
   ];
 
   pagesDistributor: any[] = [
+    {
+      title: 'Inicio',
+      icon: 'home',
+      component: 'PedidoPage'
+    },
     {
       title: 'Ver pedidos',
       icon: 'ios-clipboard',

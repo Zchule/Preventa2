@@ -18,13 +18,13 @@ export class ViewClientPage {
     public viewCtrl: ViewController,
     public formBuilder: FormBuilder,
     public clientService: ClientService    
-    ) {
+  ) {
       this.clientForm = this.makeForm();
       this.client = this.navParams.get('client');
       if(this.client !== null &&  this.client !==  undefined){
-      this.clientForm.patchValue(this.client);
-      this.clientForm.disabled;
-      console.log(this.client);
+        this.clientForm.patchValue(this.client);
+        this.clientForm.disabled;
+        console.log(this.client);
       }
   }
 

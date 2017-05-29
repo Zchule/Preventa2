@@ -25,7 +25,7 @@ export class CreateOrderPresalePage {
 
   createOrder( event: Event){
     event.preventDefault();
-     let load = this.loadCtrl.create({
+    let load = this.loadCtrl.create({
       content: 'Creando pedido'
     });
     load.present();
@@ -33,6 +33,7 @@ export class CreateOrderPresalePage {
       date: new Date().getTime(),
       code: this.orderForm.value.code,
       type: this.orderForm.value.type,
+      state: 'init',
       products: []
     })
     .then(order =>{

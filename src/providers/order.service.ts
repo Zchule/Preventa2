@@ -16,12 +16,24 @@ export class OrderService {
     return this.orders.push(order);
   }
 
+  getOrders(){
+    return this.orders;
+  }
+
+  deleteOrder(key: string){
+    return this.orders.remove(key);
+  }
+
   getOrder(id){
     return this.fireDatabase.object('/orders/'+ id);
   }
 
   getProducstOrder(id){
     return this.fireDatabase.list('/orders/'+ id + '/products');
+  }
+
+  updateOrder(id, data){
+    return this.fireDatabase.object('/orders/'+ id).update(data);
   }
 
 }

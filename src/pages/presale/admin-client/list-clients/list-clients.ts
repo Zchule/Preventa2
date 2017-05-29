@@ -14,15 +14,14 @@ export class ListsClientsPage {
   clients: FirebaseListObservable<any>;
   
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public clientService: ClientService,
-    public modalCtrl: ModalController,
-    public alertCtrl: AlertController,
-    public actionSheetCtrl: ActionSheetController,
-    public loadCtrl: LoadingController
-    ) {
-  }
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private clientService: ClientService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController,
+    private actionSheetCtrl: ActionSheetController,
+    private loadCtrl: LoadingController
+  ) {}
 
   ionViewDidLoad() {
     let load = this.loadCtrl.create({
@@ -90,7 +89,7 @@ export class ListsClientsPage {
       buttons: [
         {
           text: 'Ver',
-          icon: 'md-contact',
+          icon: 'contact',
           handler: ()=>{
             this.goToClient(client);
           }
@@ -113,6 +112,7 @@ export class ListsClientsPage {
         {
           text: 'Cancelar',
           role: 'cancel',
+          icon: 'close',
           handler: ()=>{
             console.log('cancel');
           }
@@ -120,6 +120,10 @@ export class ListsClientsPage {
       ]
     });
     actionSheet.present();
+  }
+
+  goToMapClientsPage(){
+    this.navCtrl.push('MapClientsPage');
   }
 
 }
