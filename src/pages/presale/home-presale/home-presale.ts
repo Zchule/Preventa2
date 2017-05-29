@@ -31,8 +31,8 @@ export class HomePresalePage {
     this.navCtrl.push('CreateOrderPresalePage');
   }
 
-  goToMapPresalePage(){
-    this.navCtrl.push('MapPresalePage');
+  goToMapClientsPage(){
+    this.navCtrl.push('MapClientsPage');
   }
 
   goToClientPage(){

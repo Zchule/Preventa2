@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController, Loading } from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
+import { ClientService } from '../../../../providers/client.service';
+
 declare var google;
 
 @IonicPage()
 @Component({
-  selector: 'page-map-presale',
-  templateUrl: 'map-presale.html',
+  selector: 'page-map-clients',
+  templateUrl: 'map-clients.html',
 })
-export class MapPresalePage {
+export class MapClientsPage {
 
    map: any;
    load: Loading;
@@ -17,9 +19,9 @@ export class MapPresalePage {
   constructor(
     private navCtrl: NavController,
     private geolocation: Geolocation,
-    private loadCtrl: LoadingController
-  ) {
-  }
+    private loadCtrl: LoadingController,
+    private clientService: ClientService,
+  ) {}
 
   ionViewDidLoad() {
     this.load = this.loadCtrl.create();
@@ -27,8 +29,23 @@ export class MapPresalePage {
     this.getPosition();
   }
 
+  private getClients(){
+    this.clientService.getAll()
+    .subscribe((clients:any[]) =>{
+      clients.forEach(item =>{
+        this.createMarker({
+          position: {lat: item.latitude, lng: item.longitude},
+          map: this.map,
+          title: 'Hello World!',
+          icon: 'assets/imgs/markers/pin-green.png'
+        });
+      });
+    })
+  }
+
   private getPosition():any{
-    this.geolocation.getCurrentPosition().then(response => {
+    this.geolocation.getCurrentPosition()
+    .then(response => {
       this.loadMap(response);
     })
     .catch(error =>{
@@ -55,7 +72,7 @@ export class MapPresalePage {
     });
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      new google.maps.Marker({
+      this.createMarker({
         position: myLatLng,
         map: this.map,
         title: 'Hello World!',
@@ -63,7 +80,12 @@ export class MapPresalePage {
       });
       mapEle.classList.add('show-map');
       this.load.dismiss();
+      this.getClients();
     });
+  }
+
+  private createMarker(marker){
+    return new google.maps.Marker(marker);
   }
 
 }
