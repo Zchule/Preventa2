@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable,  } from 'angularfire2/database';
 
-import * as firebase from 'firebase';
-
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
 @Injectable()
 export class CategoryProductsService {
 
@@ -15,7 +9,6 @@ export class CategoryProductsService {
 
   constructor(
     public fireDatabase: AngularFireDatabase,
-    public http: Http
   ) {
     this.categoryProducts = this.fireDatabase.list('/categoryProducts');
     this.productsRef = this.categoryProducts.$ref;
