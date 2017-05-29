@@ -23,11 +23,10 @@ export class HomeDistributorPage {
     this.checkSession();
   }
 
-  ionViewDidLoad() {
-    this.menuCtrl.enable(false, 'menuUser');
-    this.menuCtrl.enable(false , 'menuPresale');
-    this.menuCtrl.enable(true , 'menuDistributor');
-
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuAdmin');
+    this.menuCtrl.enable(true, 'menuDistributor')
+    this.menuCtrl.enable(false, 'menuPresale')
   }
 
   private checkSession(){
@@ -37,10 +36,6 @@ export class HomeDistributorPage {
     //     this.navCtrl.setRoot("LoginPage");
     //   }
     // });
-  }  
-
-  logout() {
-    this.authService.doLogout();
-  }
+  } 
 
 }

@@ -1,3 +1,12 @@
 page-home-distributor {
-
+  ion-slides{
+    height: 320px;
+    .swiper-pagination-bullet{
+      background-color: white;
+      opacity: .9;
+      &.swiper-pagination-bullet-active{
+        background-color: color($colors, secondary);
+      }
+    }
+  }
 }

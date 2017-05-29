@@ -15,7 +15,7 @@ export class MyApp {
   rootPage:any = 'LoginPage';
   profile: any =  {};
 
-  pagesUser:any [] = [
+  pagesAdmin:any [] = [
     {
       title: 'Inicio',
       icon: 'Home',
@@ -80,17 +80,17 @@ export class MyApp {
     {
       title: 'Pedidos Pendientes',
       component: 'ListsClientsPage',
-      icon: 'ios-clipboard-outline'
+      icon: 'clipboard-outline'
     },
     {
       title: 'Pedidos a Credito',
       component: 'ListsClientsPage',
-      icon: 'md-clipboard'
+      icon: 'clipboard'
     },
     {
       title: 'Pedidos al Contado',
       component: 'ListsClientsPage',
-      icon: 'md-clipboard'
+      icon: 'clipboard'
     },
     {
       title: 'Mapa',

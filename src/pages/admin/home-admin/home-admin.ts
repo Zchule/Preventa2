@@ -18,21 +18,18 @@ export class HomeAdminPage {
     public menuCtrl: MenuController,
     public productService: ProductService,
     public authService: AuthService
-  ) {
-      firebase.auth().onAuthStateChanged(function(user) {
+  ) { 
+    firebase.auth().onAuthStateChanged(function(user) {
       if (!user) {
         navCtrl.setRoot("LoginPage");
       }
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomeAdmin');
-  }
-
   ionViewDidEnter() {
-    this.menuCtrl.enable(false, 'menuPreventa');
-    this.menuCtrl.enable(false,'menuUser')
+    this.menuCtrl.enable(true, 'menuAdmin');
+    this.menuCtrl.enable(false, 'menuDistributor')
+    this.menuCtrl.enable(false, 'menuPresale')
   }
 
   goToListUsersPage() {

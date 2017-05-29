@@ -22,9 +22,10 @@ export class HomePresalePage {
     this.checkSession();
   }
 
-  ionViewDidLoad() {
-    this.menuCtrl.enable(false, 'menuUser');
-    this.menuCtrl.enable(true , 'menuPresale');
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'menuAdmin');
+    this.menuCtrl.enable(false, 'menuDistributor')
+    this.menuCtrl.enable(true, 'menuPresale')
   }
 
   goToCreateOrderPresalePage(){
