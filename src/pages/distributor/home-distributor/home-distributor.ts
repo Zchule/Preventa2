@@ -36,6 +36,13 @@ export class HomeDistributorPage {
     //     this.navCtrl.setRoot("LoginPage");
     //   }
     // });
-  } 
+  }
+
+  goToListsOrdersDistributorPage(state, type){
+    this.navCtrl.push('ListsOrdersDistributorPage',{
+      state: state,
+      type: type
+    });
+  }
 
 }

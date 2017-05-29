@@ -15,7 +15,6 @@ export class MapClientsPage {
 
    map: any;
    load: Loading;
-   bounds: any = null;
    clients: any[] = [];
    directionsService: any = null;
    directionsDisplay: any = null;

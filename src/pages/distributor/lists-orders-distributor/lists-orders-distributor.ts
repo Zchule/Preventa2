@@ -26,7 +26,6 @@ export class ListsOrdersDistributorPage {
   ) {
     this.state = this.navParams.get('state') || 'all';
     this.type = this.navParams.get('type') || 'all';
-    console.log(this.state, this.type);
   }
 
   ionViewDidLoad() {
@@ -39,30 +38,6 @@ export class ListsOrdersDistributorPage {
     });
   }
 
-  showOptions( order ){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Opciones',
-      buttons: [
-        {
-          text: 'Ver',
-          icon: 'contact',
-          handler: ()=>{
-            this.showOrder( order );
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          icon: 'close',
-          handler: ()=>{
-            console.log('cancel');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-
   showOrder( order ){
     let modal = this.modalCtrl.create('OrderDistributorPage',{
       order: order.$key
@@ -71,7 +46,10 @@ export class ListsOrdersDistributorPage {
   }
 
   goToMapOrdersDistributorPage(){
-    this.navCtrl.push('MapOrdersDistributorPage');
+    this.navCtrl.push('MapOrdersDistributorPage',{
+      state: this.state,
+      type: this.type
+    });
   }
 
   private getOrders(){

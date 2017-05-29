@@ -73,7 +73,7 @@ export class MyApp {
     {
       title: 'Pedidos Pendientes',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard',
+      icon: 'clipboard-outline',
       data: {
         state: 'pending'
       }
@@ -83,7 +83,7 @@ export class MyApp {
       component: 'ListsOrdersDistributorPage',
       icon: 'clipboard',
       data: {
-        type: 'payment'
+        type: 'credit'
       }
     },
     {
@@ -91,7 +91,7 @@ export class MyApp {
       component: 'ListsOrdersDistributorPage',
       icon: 'clipboard',
       data: {
-        type: 'credit'
+        type: 'payment'
       }
     },
   ];

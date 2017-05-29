@@ -23,20 +23,20 @@
   </ion-slides>
   <ion-row align-items-center no-padding>
     <ion-col col-4 text-center no-padding>
-      <a class="button-distributor button-orders">
+      <a class="button-distributor button-orders" (click)="goToListsOrdersDistributorPage('all','all')">
         <h5>Ver <br/>pedidos</h5>
         <ion-icon name="clipboard"></ion-icon>
       </a>
     </ion-col>
-    <ion-col col-4 text-center no-padding>
+    <ion-col col-4 text-center no-padding (click)="goToListsOrdersDistributorPage('pending','all')">
       <a class="button-distributor button-orders-done">
         <h5>Pedidos <br/> pendientes</h5>
         <ion-icon name="clipboard-outline"></ion-icon>
       </a>
     </ion-col>
-    <ion-col col-4 text-center no-padding>
+    <ion-col col-4 text-center no-padding (click)="goToListsOrdersDistributorPage('done','all')">
       <a class="button-distributor button-orders-undone">
-        <h5>pedidos <br/> entregados</h5>
+        <h5>Pedidos <br/> entregados</h5>
         <ion-icon name="clipboard"></ion-icon>
       </a>
     </ion-col>
