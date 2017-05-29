@@ -1,5 +1,19 @@
 {
   "name": "appEasyD",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/v1/",
+      "proxyUrl": "https://securetoken.googleapis.com/"
+    },
+    {
+      "path": "/v3/",
+      "proxyUrl": "https://www.googleapis.com/identitytoolkit/"
+    },
+    {
+      "path": "",
+      "proxyUrl": "https://bddproyecto.firebaseio.com"
+    }
+  ]
 }

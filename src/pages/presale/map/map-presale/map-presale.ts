@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading } from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 declare var google;
@@ -12,15 +12,18 @@ declare var google;
 export class MapPresalePage {
 
    map: any;
+   load: Loading;
 
   constructor(
-    public navCtrl: NavController,
-    public geolocation: Geolocation
+    private navCtrl: NavController,
+    private geolocation: Geolocation,
+    private loadCtrl: LoadingController
   ) {
-
   }
 
   ionViewDidLoad() {
+    this.load = this.loadCtrl.create();
+    this.load.present();
     this.getPosition();
   }
 
@@ -29,6 +32,7 @@ export class MapPresalePage {
       this.loadMap(response);
     })
     .catch(error =>{
+      this.load.dismiss();
       console.log(error);
     })
   }
@@ -54,9 +58,11 @@ export class MapPresalePage {
       let marker = new google.maps.Marker({
         position: myLatLng,
         map: this.map,
-        title: 'Hello World!'
+        title: 'Hello World!',
+        icon: 'assets/imgs/markers/here.png'
       });
       mapEle.classList.add('show-map');
+      this.load.dismiss();
     });
   }
 

@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProductService } from '../providers/product.service';
 import { UserProfileService } from '../providers/user-profile.service';
 import { DetersService } from '../providers/deter-service';
-import { ClientService } from '../providers/client-service';
+import { ClientService } from '../providers/client.service';
 import { AuthService } from '../providers/auth.service';
 
 import { Camera } from '@ionic-native/camera';

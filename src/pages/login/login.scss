@@ -1,8 +1,8 @@
 page-login {
   .logo{
-    width: 130px;
+    width: 120px;
     position: absolute;
-    top: 40px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -12,12 +12,13 @@ page-login {
   ion-slide{
     color: white;
     &.swiper-slide{
-      align-items: baseline;
+      align-items: flex-end;
     }
     p{
-      margin-top: 200px;
+      margin-top: 300px;
       width: 90%;
       margin-left: 5%;
+      margin-bottom: 50px;
     }
   }
   .slide-1{
@@ -45,9 +46,7 @@ page-login {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#886aea', endColorstr='#543eb7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
   ion-slides{
-    .swiper-pagination-bullets{
-      top: 10px;
-    }
+    height: 290px;
     .swiper-pagination-bullet{
       background-color: white;
       opacity: .5;
@@ -58,11 +57,7 @@ page-login {
     }
   }
   form{
-    position: absolute;
-    width: 90%;
-    bottom: 0px;
-    z-index: 1;
-    background-color: white;
-    margin-left: 5%;
+    position: relative;
+    z-index: 3;
   }
 }

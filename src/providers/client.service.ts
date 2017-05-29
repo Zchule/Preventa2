@@ -9,7 +9,6 @@ export class ClientService {
   constructor(
     public fireDatabase: AngularFireDatabase
     ) {
-    console.log('Hello ClientService Provider');
     this.clients = this.fireDatabase.list('/clientes');
     
   }
