@@ -42,14 +42,14 @@ export class OrdersPresalePage {
           text: 'Ver',
           icon: 'contact',
           handler: ()=>{
-            this.showOrder( order.$key );
+            this.showOrder( order );
           }
         },
         {
           text: 'Editar',
           icon: 'create',
           handler: ()=>{
-            this.goToCategoryPresalePage( order.$key );
+            this.goToCategoryPresalePage( order );
           }
         },
         {
@@ -57,7 +57,7 @@ export class OrdersPresalePage {
           icon:'trash',
           role: 'destructive',
           handler: ()=>{
-            this.showAlertDelete( order.$key );
+            this.showAlertDelete( order );
           }
         },
         {
@@ -74,7 +74,7 @@ export class OrdersPresalePage {
 
   showOrder( order ){
     let modal = this.modalCtrl.create('OrderPresalePage',{
-      order: order,
+      order: order.$key,
       state: order.state
     });
     modal.present();
@@ -82,11 +82,11 @@ export class OrdersPresalePage {
 
   goToCategoryPresalePage( order ){
     this.navCtrl.push('CategoryPresalePage',{
-      order: order.key
+      order: order.$key
     });
   }
 
-  showAlertDelete( order: string){
+  showAlertDelete( order: any){
     let alert = this.alertCtrl.create({
       title: '¿Estás seguro?',
       message: 'El pedido se eliminara',
@@ -101,7 +101,7 @@ export class OrdersPresalePage {
         {
           text: 'Si, estoy seguro',
           handler: ()=>{
-            this.fireOrders.remove( order );
+            this.fireOrders.remove( order.$key );
           }
         },
       ]

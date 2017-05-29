@@ -24,6 +24,7 @@ export class OrderPresalePage {
     private loadCtrl: LoadingController
   ) {
     this.state = this.navParams.get('state');
+    console.log(this.state);
   }
 
   ionViewDidLoad() {
