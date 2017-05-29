@@ -18,7 +18,7 @@ export class HomeAdminPage {
     public menuCtrl: MenuController,
     public productService: ProductService,
     public authService: AuthService
-    ) {
+  ) {
       firebase.auth().onAuthStateChanged(function(user) {
       if (!user) {
         navCtrl.setRoot("LoginPage");
@@ -35,11 +35,11 @@ export class HomeAdminPage {
     this.menuCtrl.enable(false,'menuUser')
   }
 
-  goToAdminUsersPage() {
+  goToListUsersPage() {
     this.navCtrl.setRoot('ListUsersPage');
   }
 
-  goToAdminProductsPage() {
+  goToListProductsPage() {
     this.navCtrl.setRoot('ListProductsPage');
   }
 

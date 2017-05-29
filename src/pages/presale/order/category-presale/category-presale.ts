@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
-import { TypeProductsService } from '../../../../providers/typeProducts';
-import { MarkProductsService } from '../../../../providers/markProducts';
-import { CategoryProductsService } from '../../../../providers/categoryProducts';
+import { TypeProductsService } from '../../../../providers/type-products.service';
+import { CategoryProductsService } from '../../../../providers/category-products.service';
 
 @IonicPage({
   name: 'CategoryPresalePage',

@@ -1,21 +1,38 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Administrador</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logout()">
-      <ion-icon name="md-log-out"></ion-icon>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-title>Administrador</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button block round icon-only icon-left (click)="goToAdminUsersPage()">
-    <ion-icon name="people"></ion-icon>
-      Administrar Usuarios
-  </button>
-  <button block ion-button round icon-only icon-left (click)="goToAdminProductsPage()">
-    <ion-icon name="list"></ion-icon>
-    Administrar Productos
-  </button>
+<ion-content>
+  <ion-slides autoplay="5000" pager loop>
+    <ion-slide>
+      <img src="assets/imgs/banner1.jpg" alt="banner 1">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/banner2.jpg" alt="banner 2">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/imgs/banner3.jpg" alt="banner 3">
+    </ion-slide>
+  </ion-slides>
+  <ion-row align-items-center no-padding>
+    <ion-col col-6 text-center no-padding>
+      <a class="button-admin button-users" (click)="goToListUsersPage()">
+        <h5>Gestionar <br/>Clientes</h5>
+        <ion-icon name="people"></ion-icon>
+      </a>
+    </ion-col>
+    <ion-col col-6 text-center no-padding>
+      <a class="button-admin button-products" (click)="goToListProductsPage()">
+        <h5>Gestionar <br/>productos</h5>
+        <ion-icon name="clipboard"></ion-icon>
+      </a>
+    </ion-col>
+  </ion-row>
 </ion-content>

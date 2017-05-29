@@ -6,7 +6,7 @@
         <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
       </div>
       <h5>Adminstrador</h5>
-      <p *ngIf="profile.email !== undefined">nicolas@nicobytes.com</p>
+      <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
     </div>
     <ion-list>
       <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesUser">
@@ -29,7 +29,7 @@
         <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
       </div>
       <h5>Preventa</h5>
-      <p *ngIf="profile.email !== undefined">nicolas@nicobytes.com</p>
+      <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
     </div>
     <ion-list>
       <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPresale">

@@ -17,11 +17,15 @@ export class MyApp {
 
   pagesUser:any [] = [
     {
+      title: 'Inicio',
+      icon: 'Home',
+      component: 'HomeAdminPage'
+    },
+    {
       title: 'Usuarios',
       icon: 'contacts',
       component: 'ListUsersPage'
-    }
-    ,
+    },
     {
       title: 'Grupos',
       icon: 'folder',
@@ -34,7 +38,7 @@ export class MyApp {
     },
     {
       title: 'Marcas',
-      icon: 'ios-bookmarks-outline',
+      icon: 'bookmarks-outline',
       component: 'AdminMarksPage'
     }
   ]
