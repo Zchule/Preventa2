@@ -59,6 +59,14 @@ export class ProductsPresalePage {
     this.productSelected.count = 0;
   }
 
+  getIsActive( product ){
+    if(this.productSelected === null){
+      return false;
+    }else{
+      return (this.productSelected.code+this.productSelected.name) == (product.code+product.name);
+    }
+  }
+
   add(){
     if(this.productSelected.cant > 0){
       this.productSelected.count++;

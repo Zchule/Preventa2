@@ -18,10 +18,10 @@
     <ion-scroll scrollX="true">
       <ion-row nowrap>
         <ion-col col-3 *ngFor="let product of mark.products" text-center>
-          <a class="product" (click)="clickedProduct( product )" [class.selected]="product == productSelected">
+          <a class="product" (click)="clickedProduct( product )" [class.selected]="getIsActive( product )">
             <ion-icon name="checkmark-circle"></ion-icon>
             <span class="cant">{{ product.cant }}</span>
-            <img [src]="product.image" alt="product">
+            <img [src]="product.photo" alt="product">
             <h5>{{ product.name }}</h5>
             <span>Bs {{ product.price }}</span>
           </a>
@@ -39,7 +39,7 @@
   </ion-row>
   <ion-row align-items-center>
     <ion-col col-2>
-      <img [src]="productSelected.image" alt="product">
+      <img [src]="productSelected.photo" alt="product">
     </ion-col>
     <ion-col col-4>
       <h5>{{ productSelected.name }}</h5>
