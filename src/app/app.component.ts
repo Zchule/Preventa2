@@ -18,7 +18,7 @@ export class MyApp {
   pagesAdmin:any [] = [
     {
       title: 'Inicio',
-      icon: 'Home',
+      icon: 'home',
       component: 'HomeAdminPage'
     },
     {
@@ -27,20 +27,10 @@ export class MyApp {
       component: 'ListUsersPage'
     },
     {
-      title: 'Grupos',
-      icon: 'folder',
-      component: 'AdminHomePage'
+      title: 'Productos',
+      icon: 'list',
+      component: 'ListProductsPage'
     },
-    {
-      title: 'Categorias',
-      icon: 'list-box',
-      component: 'AdminCategoriesPage'
-    },
-    {
-      title: 'Marcas',
-      icon: 'bookmarks-outline',
-      component: 'AdminMarksPage'
-    }
   ]
    
   pagesPresale: any[] = [

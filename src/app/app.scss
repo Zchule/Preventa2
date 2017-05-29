@@ -28,6 +28,9 @@ ion-menu{
     &.primary{
       background-color: color($colors, primary);
     }
+    &.secondary{
+      background-color: color($colors, secondary);
+    }
     .cover{
       width: 100px;
       height: 100px;

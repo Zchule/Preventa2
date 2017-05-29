@@ -1,25 +1,20 @@
 <ion-header>
   <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Usuarios</ion-title>
-    <button menuToggle="menuUser" ion-button>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-buttons end>
       <button ion-button icon-only (click)="addUser()">
-        <i class="material-icons">add_circle</i>
+        <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-
-  <!--<div *ngIf="users.length == 0">
-      <div class="item item-text-wrap">
-        No hay nada en la lista, agrega un usuario nuevo porfavor!!
-      </div>
-  </div>-->
-  
  <ion-list>
     <ion-item *ngFor="let user of users | async; let i = index" (click)="showActionSheet(user)">
       <ion-thumbnail item-left>
@@ -32,5 +27,4 @@
       <p>{{user.role}}</p>
     </ion-item>
   </ion-list>
-
 </ion-content>
