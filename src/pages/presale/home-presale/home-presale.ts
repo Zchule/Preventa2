@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-
-import { AuthService } from '../../../providers/auth.service'; 
-
 
 @IonicPage()
 @Component({
@@ -15,12 +11,8 @@ export class HomePresalePage {
   constructor(
     private navCtrl: NavController, 
     private navParams: NavParams,
-    private menuCtrl: MenuController,
-    private authService: AuthService,
-    private fireAuth: AngularFireAuth
-  ) {
-    this.checkSession();
-  }
+    private menuCtrl: MenuController
+  ) {}
 
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'menuAdmin');
@@ -38,15 +30,6 @@ export class HomePresalePage {
 
   goToClientPage(){
     this.navCtrl.push('ListsClientsPage');
-  }
-
-  private checkSession(){
-    // this.fireAuth.authState.subscribe((user) =>{
-    //   console.log(user);
-    //   if (user !== null) {
-    //     this.navCtrl.setRoot("LoginPage");
-    //   }
-    // });
   }
 
 }

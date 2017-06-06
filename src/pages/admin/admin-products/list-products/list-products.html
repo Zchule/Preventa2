@@ -25,4 +25,7 @@
       <ion-badge item-right>{{ product.cant }}</ion-badge>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll *ngIf="shownInfinite" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

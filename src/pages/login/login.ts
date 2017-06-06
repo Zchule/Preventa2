@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { AuthService } from '../../providers/auth.service';
 
@@ -19,7 +20,8 @@ export class LoginPage{
     public formBuilder: FormBuilder,
     public authService: AuthService,
     public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private storage: Storage
   ) {
     this.loginForm = this.makeLoginForm();
   }
@@ -43,6 +45,7 @@ export class LoginPage{
         'distributor': 'HomeDistributorPage',
         'presale': 'HomePresalePage',
       };
+      this.storage.set('session', JSON.stringify(profile));
       this.navCtrl.setRoot(pages[profile.role]);
     })
     .catch(error=>{

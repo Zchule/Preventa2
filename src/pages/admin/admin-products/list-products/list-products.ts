@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, AlertController, ModalController, ActionSheetController, LoadingController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
 
 import { ProductService } from '../../../../providers/product.service';
 
@@ -11,7 +10,9 @@ import { ProductService } from '../../../../providers/product.service';
 })
 export class ListProductsPage {
 
-  products: FirebaseListObservable<any>;
+  products: any[] = [];
+  page: number = 0;
+  shownInfinite: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -29,11 +30,15 @@ export class ListProductsPage {
       content: 'Cargando...'
     });
     load.present();
-    this.productService.getAll()
-    .subscribe(products=>{
+    this.productService.getProducts()
+    .then(products=>{
       this.products = products;
       load.dismiss(); 
-    }); 
+    })
+    .catch(error =>{
+      load.dismiss();
+      console.log(error);
+    })
   }
 
   ionViewDidEnter() {
@@ -125,6 +130,22 @@ export class ListProductsPage {
       ]
     });
     actionSheet.present();
+  }
+
+  doInfinite(infiniteScroll){
+    this.page++;
+    let id = this.products[this.products.length -1].key;
+    this.productService.getProductsByPage(id)
+    .then((products:any[])=>{
+      products.forEach(item =>{
+        this.products.push(item);
+      });
+      infiniteScroll.complete();
+    })
+    .catch(error =>{
+      this.shownInfinite = false;
+      console.log(error);
+    })
   }
 
 }

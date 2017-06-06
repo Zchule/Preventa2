@@ -1,10 +1,11 @@
 import { Component,ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Storage } from '@ionic/storage';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireAuth } from 'angularfire2/auth';
 
-import { AuthService } from '../providers/auth.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -100,8 +101,8 @@ export class MyApp {
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private auth: AuthService,
-    private fireAuth: AngularFireAuth
+    private fireAuth: AngularFireAuth,
+    private storage: Storage
   ) {
     this.platform.ready()
     .then(() => {
@@ -121,28 +122,23 @@ export class MyApp {
 
   logout() {
     this.fireAuth.auth.signOut();
+    this.storage.remove('session');
     this.navMaster.setRoot('LoginPage');
   }
 
   private listerSession(){
-    this.fireAuth.authState.subscribe( user =>{
-      if(user !== null){
-        this.auth.getProfile(user.uid)
-        .then(profile =>{
-          this.profile = profile;
-          let pages: any = {
-            'admin': 'HomeAdminPage',
-            'distributor': 'HomeDistributorPage',
-            'presale': 'HomePresalePage',
-          };
-          this.navMaster.setRoot(pages[profile.role]);
-        })
-        .catch(error=>{
-          console.error(error);
-        })
+    this.storage.get('session')
+    .then(data =>{
+      let profile = JSON.parse(data);
+      if(profile !== null){
+        let pages: any = {
+          'admin': 'HomeAdminPage',
+          'distributor': 'HomeDistributorPage',
+          'presale': 'HomePresalePage',
+        };
+        this.navMaster.setRoot(pages[profile.role]);
       }
-    }, error=>{
-      console.error(error);
     })
+    
   }
 }

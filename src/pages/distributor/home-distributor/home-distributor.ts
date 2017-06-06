@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 
-import { AuthService } from '../../../providers/auth.service'; 
 
 
 @IonicPage()
@@ -14,28 +12,15 @@ export class HomeDistributorPage {
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
-    public authService: AuthService, 
+    public navParams: NavParams, 
     private menuCtrl: MenuController,
-    private loadCtrl: LoadingController,
-    private fireAuth: AngularFireAuth
-  ) {
-    this.checkSession();
-  }
+    private loadCtrl: LoadingController
+  ) {}
 
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'menuAdmin');
     this.menuCtrl.enable(true, 'menuDistributor')
     this.menuCtrl.enable(false, 'menuPresale')
-  }
-
-  private checkSession(){
-    // this.fireAuth.authState.subscribe((user) =>{
-    //   console.log(user);
-    //   if (user !== null) {
-    //     this.navCtrl.setRoot("LoginPage");
-    //   }
-    // });
   }
 
   goToListsOrdersDistributorPage(state, type){

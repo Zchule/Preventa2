@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
-import firebase from 'firebase';
 
-import { AuthService } from '../../../providers/auth.service'; 
 import { ProductService } from '../../../providers/product.service';
 
 @IonicPage()
@@ -16,15 +14,8 @@ export class HomeAdminPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public productService: ProductService,
-    public authService: AuthService
-  ) { 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (!user) {
-        navCtrl.setRoot("LoginPage");
-      }
-    });
-  }
+    public productService: ProductService
+  ) {}
 
   ionViewDidEnter() {
     this.menuCtrl.enable(true, 'menuAdmin');
@@ -38,10 +29,6 @@ export class HomeAdminPage {
 
   goToListProductsPage() {
     this.navCtrl.setRoot('ListProductsPage');
-  }
-
-  logout() {
-  this.authService.doLogout();
   }
 
 }

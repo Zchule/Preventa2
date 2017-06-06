@@ -25,10 +25,6 @@ export class AuthService {
       })
     })
   }
-
-  doLogout(): any {
-    return this.fireAuth.auth.signOut();
-  }
   
 
 }

@@ -62,7 +62,46 @@ export class ProductService {
         }
       })
     })
-    
+  }
+
+  getProducts(): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      const query = this.productsRef.orderByKey().limitToFirst(8)
+      query.once('value', snaps =>{
+        if(snaps === null){
+          reject(null);
+        }else{
+          let products = [];
+          snaps.forEach(snap =>{
+            let data = snap.val();
+            data.key = snap.key;
+            products.push(data);
+            return false;
+          })
+          resolve(products);
+        }
+      })
+    })
+  }
+
+  getProductsByPage(id: string): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      const query = this.productsRef.orderByKey().startAt(id).limitToFirst(8)
+      query.once('value', snaps =>{
+        if(snaps === null){
+          reject(null);
+        }else{
+          let products = [];
+          snaps.forEach(snap =>{
+            let data = snap.val();
+            data.key = snap.key;
+            products.push(data);
+            return false;
+          })
+          resolve(products);
+        }
+      })
+    })
   }
   
   create(product){
