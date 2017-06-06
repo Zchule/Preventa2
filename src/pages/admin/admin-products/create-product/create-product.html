@@ -18,12 +18,12 @@
           <ion-item>
             <ion-label floating>Tipo:</ion-label>
             <ion-select formControlName="type">
-              <ion-option *ngFor="let type of types | async" [value]="type.value">{{type.name}}</ion-option>
+              <ion-option *ngFor="let type of types" [value]="type.value">{{type.name}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
         <ion-col col-2>
-          <button ion-button icon-only color="primary" type="button" (click)="addType()">
+          <button ion-button icon-only outline color="primary" type="button" (click)="addType()">
             <ion-icon name="add"></ion-icon>
           </button>
         </ion-col>
@@ -34,12 +34,12 @@
           <ion-item>
             <ion-label floating>Categoria:</ion-label>
             <ion-select formControlName="category">
-              <ion-option *ngFor="let category of categories | async" [value]="category.value">{{category.name}}</ion-option>
+              <ion-option *ngFor="let category of categories" [value]="category.value">{{category.name}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
         <ion-col col-2>
-          <button ion-button icon-only color="primary" type="button" (click)="addCategory()">
+          <button ion-button icon-only outline color="primary" type="button" (click)="addCategory()">
             <ion-icon name="add"></ion-icon>
           </button>
         </ion-col>
@@ -50,12 +50,12 @@
           <ion-item>
             <ion-label floating>Marca:</ion-label>
             <ion-select formControlName="mark">
-              <ion-option *ngFor="let mark of marks | async" [value]="mark.value">{{mark.name}}</ion-option>
+              <ion-option *ngFor="let mark of marks" [value]="mark.value">{{mark.data}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
         <ion-col col-2>
-          <button ion-button icon-only color="primary" type="button" (click)="addMark()">
+          <button ion-button icon-only outline color="primary" type="button" (click)="addMark()">
             <ion-icon name="add"></ion-icon>
           </button>
         </ion-col>
@@ -102,28 +102,26 @@
         <p *ngIf="productForm.get('price').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
         <p *ngIf="productForm.get('price').hasError('maxlength')" ion-text color="danger">solo 3 decimales.</p>
       </ion-item>
-
-      <div padding>
-        <img *ngIf="image !== null" [src]="image" alt="avatar">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-6>
-              <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
-                <ion-icon name="camera"></ion-icon>
-                Sacar Foto
-              </button>
-            </ion-col>
-            <ion-col col-6>
-              <button block ion-button icon-left color="danger" (click)="takeLibrary()" type="button">
-                <ion-icon name="ios-albums"></ion-icon>
-                Album
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-
     </ion-list>
+    <div padding *ngIf="image !== null">
+      <img [src]="image" alt="avatar">
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button color="secondary" block ion-button icon-left (click)="takePicture()" type="button">
+            <ion-icon name="camera"></ion-icon>
+            Sacar Foto
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button block ion-button icon-left color="danger" (click)="takeLibrary()" type="button">
+            <ion-icon name="ios-albums"></ion-icon>
+            Album
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <div padding>
       <button block ion-button type="submit" icon-left [disabled]="productForm.invalid">
         Guardar

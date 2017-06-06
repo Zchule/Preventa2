@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 
 import { ProductService } from '../../../../providers/product.service';
 import { TypeProductsService } from '../../../../providers/type-products.service';
 import { MarkProductsService } from '../../../../providers/mark-products.service';
 import { CategoryProductsService } from '../../../../providers/category-products.service';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -34,16 +37,29 @@ export class CreateProductPage {
     public alertCtrl: AlertController,
     public typeProductsService: TypeProductsService,
     public categoryProductService: CategoryProductsService,
-    public markProductService: MarkProductsService
+    public markProductService: MarkProductsService,
+    private loadCtrl: LoadingController
   ) {
     this.productForm = this.makeForm();
-    this.types = this.typeProductsService.getAll();
-    this.categories = this.categoryProductService.getAll();
-    this.marks = this.markProductService.getAll();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormProduct');
+    let load = this.loadCtrl.create();
+    load.present();
+    this.getAllData()
+    .subscribe(response =>{
+      this.types = response[0];
+      this.categories = response[1];
+      this.marks = response[2];
+      this.productForm.patchValue({
+        type: this.types[0].value,
+        category: this.categories[0].value,
+        mark: this.marks[0].value,
+      });
+      load.dismiss();
+    }, error=>{
+      load.dismiss();
+    })
   }
 
   saveProduct(event: Event) {
@@ -195,9 +211,9 @@ export class CreateProductPage {
 
   makeForm() {
     return this.formBuilder.group({
-      type: ['Cuidado Personal', [Validators.required]],
-      category: ['Detergente en Barra', [Validators.required]],
-      mark: ['Omo', [Validators.required]],
+      type: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      mark: ['', [Validators.required]],
       name: ['', [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
       cant: ['', [Validators.required]],
@@ -210,5 +226,15 @@ export class CreateProductPage {
   close() {
     this.viewCtrl.dismiss();
   }
+
+
+  private getAllData(){
+    return Observable.combineLatest(
+      this.typeProductsService.getAll(),
+      this.categoryProductService.getAll(),
+      this.markProductService.getAll()
+    )
+  }
+
 
 }
