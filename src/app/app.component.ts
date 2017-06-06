@@ -74,7 +74,7 @@ export class MyApp {
     {
       title: 'Pedidos Pendientes',
       component: 'ListsOrdersDistributorPage',
-      icon: 'clipboard-outline',
+      icon: 'clipboard',
       data: {
         state: 'pending'
       }

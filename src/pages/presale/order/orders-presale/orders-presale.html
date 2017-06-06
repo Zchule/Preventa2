@@ -13,9 +13,9 @@
   <ion-list>
     <ion-item *ngFor="let order of orders">
       <p>{{ order.date | date }}</p>
-      <p><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>
+      <p *ngIf="order.client"><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>
       <p><strong>Estado:</strong> {{ order.state }}</p>
-      <p><strong>Total:</strong> Bs {{ order.total }}</p>
+      <p *ngIf="order.total"><strong>Total:</strong> Bs {{ order.total }}</p>
       <button ion-button clear color="royal" item-right (click)="showOptions( order )">
         Opciones
       </button>

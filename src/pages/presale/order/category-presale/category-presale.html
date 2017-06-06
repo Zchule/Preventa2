@@ -30,7 +30,7 @@
       <ion-segment-button value="all" (ionSelect)="onSelect( $event )">
        Todo
       </ion-segment-button>
-      <ion-segment-button [value]="type.name" *ngFor="let type of types" (ionSelect)="onSelect( $event )">
+      <ion-segment-button [value]="type.value" *ngFor="let type of types" (ionSelect)="onSelect( $event )">
         {{ type.name }}
       </ion-segment-button>
     </ion-segment>
