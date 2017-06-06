@@ -27,9 +27,14 @@ export class CreateOrderPresalePage {
   }
 
   ionViewDidLoad(){
+    let load = this.loadCtrl.create();
+    load.present();
     this.clientService.getAll()
     .subscribe(clients =>{
       this.clients = clients;
+      load.dismiss();
+    },error=>{
+      load.dismiss();
     });
   }
 

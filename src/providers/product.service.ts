@@ -54,6 +54,7 @@ export class ProductService {
       const query = this.productsRef.orderByChild('category').equalTo(category);
       query.once('value', snap =>{
         let data = snap.val();
+        console.log(data);
         if(data === null){
           reject(data);
         }else{

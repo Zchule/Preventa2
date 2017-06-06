@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams, NavController, LoadingController, App } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, NavController, LoadingController, App, AlertController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../../providers/order.service'; 
@@ -23,7 +23,8 @@ export class OrderPresalePage {
     private orderService: OrderService,
     private navCtrl: NavController,
     private loadCtrl: LoadingController,
-    private app: App
+    private app: App,
+    private alertCtrl: AlertController
   ) {
     this.state = this.navParams.get('state');
   }
@@ -41,7 +42,20 @@ export class OrderPresalePage {
     this.fireProducts.remove( product.$key );
   }
 
-  done(){
+  checkTotal(){
+    if(this.total < 50){
+      let alert = this.alertCtrl.create({
+        title: 'Recuerda',
+        message: 'El pedido debe ser de un monto mayor a 50 Bs',
+        buttons:['Aceptar']
+      });
+      alert.present();
+    }else{
+      this.done();
+    }
+  }
+
+  private done(){
     let load = this.loadCtrl.create({
       content: 'Finalizando pedido'
     });
@@ -81,6 +95,5 @@ export class OrderPresalePage {
       this.total = total;
     });
   }
-
 
 }
