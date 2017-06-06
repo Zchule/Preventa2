@@ -144,7 +144,6 @@ export class ListProductsPage {
     })
     .catch(error =>{
       this.shownInfinite = false;
-      console.log(error);
     })
   }
 
