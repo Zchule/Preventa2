@@ -68,7 +68,7 @@ export class ListProductsPage {
   }
 
   private deleteProduct(product: any){
-    this.productService.delete( product.$key );
+    this.productService.delete( product.key );
   }
 
    showAlertDelete( product: any){

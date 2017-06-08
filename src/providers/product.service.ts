@@ -113,7 +113,9 @@ export class ProductService {
   }
 
   delete(key){
-    return this.products.remove(key);
+    if(key !== '' && key !== null && key !== undefined){
+      return this.products.remove(key);
+    }
   }
 
 }
