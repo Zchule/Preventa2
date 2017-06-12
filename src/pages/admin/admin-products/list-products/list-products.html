@@ -19,7 +19,7 @@
       </ion-thumbnail>
       <h2>{{ product.name }}</h2>
       <h3 *ngIf="product.category">Categoria: {{ product.category.name }}</h3>
-      <h3 *ngIf="product.mark">Marca: {{ product.mark.name }}</h3>
+      <h3 *ngIf="product.mark">Marca: {{ product.mark.data }}</h3>
       <h3>Precio: {{ product.price }} bs.</h3>
       <ion-badge item-right>{{ product.cant }}</ion-badge>
     </ion-item>

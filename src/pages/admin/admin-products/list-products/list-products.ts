@@ -60,7 +60,6 @@ export class ListProductsPage {
   }
 
   goToEdit(product: any, index: number){
-    console.log(product);
     let modal2 = this.modalCtrl.create('EditProductPage',{
       product:product,
       index: index

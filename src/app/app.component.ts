@@ -136,7 +136,8 @@ export class MyApp {
           'distributor': 'HomeDistributorPage',
           'presale': 'HomePresalePage',
         };
-        this.navMaster.setRoot(pages[profile.role]);
+        this.profile = profile;
+        this.navMaster.setRoot(pages[this.profile.role]);
       }
     })
     

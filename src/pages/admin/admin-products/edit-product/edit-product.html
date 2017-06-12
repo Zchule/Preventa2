@@ -25,21 +25,21 @@
       <ion-item>
         <ion-label floating>Tipo:</ion-label>
         <ion-select formControlName="type">
-         <ion-option *ngFor="let type of types" [value]="type.value">{{type.name}}</ion-option>
+         <ion-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Categoria:</ion-label>
         <ion-select formControlName="category">
-          <ion-option *ngFor="let category of categories" [value]="category.value">{{category.name}}</ion-option>
+          <ion-option *ngFor="let category of categories" [value]="category">{{category.name}}</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Marca:</ion-label>
         <ion-select formControlName="mark">
-          <ion-option *ngFor="let mark of marks" [value]="mark.value">{{mark.data}}</ion-option>
+          <ion-option *ngFor="let mark of marks" [value]="mark">{{mark.data}}</ion-option>
         </ion-select>
       </ion-item>
 
