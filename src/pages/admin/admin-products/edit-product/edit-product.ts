@@ -63,8 +63,12 @@ export class EditProductPage {
     })
   }
   saveProduct( event: Event ){
+    let product = this.productForm.value;
+    product.typeValue = product.type.value;
+    product.categoryValue = product.category.value;
+    product.markValue = product.mark.value;
     event.preventDefault();
-      this.productService.update(this.product.key, this.productForm.value)
+      this.productService.update(this.product.key, product)
       .then(()=>{
           let message = this.toastCtrl.create({
           message: 'Producto Actualizado',
@@ -72,8 +76,8 @@ export class EditProductPage {
           showCloseButton: true
         })
         message.present();
-        let product = Object.assign(this.product, this.productForm.value);
-        this.viewCtrl.dismiss(product);
+        let productMerge = Object.assign(this.product, product);
+        this.viewCtrl.dismiss(productMerge);
       })
       .catch(error=>{
         console.log(error);
