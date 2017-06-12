@@ -13,15 +13,14 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products; let i = index" (click)="showActionSheet(product)" >
+    <ion-item *ngFor="let product of products; let i = index" (click)="showActionSheet(product, i)" >
       <ion-thumbnail item-left>
         <img [src]="product.photo">
       </ion-thumbnail>
       <h2>{{ product.name }}</h2>
-      <p>Categoria: {{ product.category }}</p>
-      <p>Grupo: {{ product.group }}</p>
-      <p>Marca: {{ product.mark }}</p>
-      <p>BS {{ product.price }}</p>
+      <h3>Categoria: {{ product.category.name }}</h3>
+      <h3>Marca: {{ product.mark }}</h3>
+      <h3>Precio: {{ product.price }} bs.</h3>
       <ion-badge item-right>{{ product.cant }}</ion-badge>
     </ion-item>
   </ion-list>

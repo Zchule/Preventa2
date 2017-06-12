@@ -18,7 +18,7 @@
           <ion-item>
             <ion-label floating>Tipo:</ion-label>
             <ion-select formControlName="type">
-              <ion-option *ngFor="let type of types" [value]="type.value">{{type.name}}</ion-option>
+              <ion-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -34,7 +34,7 @@
           <ion-item>
             <ion-label floating>Categoria:</ion-label>
             <ion-select formControlName="category">
-              <ion-option *ngFor="let category of categories" [value]="category.value">{{category.name}}</ion-option>
+              <ion-option *ngFor="let category of categories" [value]="category">{{category.name}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -50,7 +50,7 @@
           <ion-item>
             <ion-label floating>Marca:</ion-label>
             <ion-select formControlName="mark">
-              <ion-option *ngFor="let mark of marks" [value]="mark.value">{{mark.data}}</ion-option>
+              <ion-option *ngFor="let mark of marks" [value]="mark">{{mark.data}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -71,7 +71,7 @@
 
       <ion-item>
         <ion-label>Codigo: </ion-label>
-        <ion-input formControlName="code" type="number"></ion-input>
+        <ion-input formControlName="code" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="productForm.get('code').errors && productForm.get('code').dirty">
         <p *ngIf="productForm.get('code').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -80,7 +80,7 @@
 
       <ion-item>
         <ion-label>Peso: </ion-label>
-        <ion-input formControlName="wheight" type="number"></ion-input>
+        <ion-input formControlName="wheight" type="text"></ion-input>
       </ion-item>
       <ion-item *ngIf="productForm.get('wheight').errors && productForm.get('wheight').dirty">
         <p *ngIf="productForm.get('wheight').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
@@ -103,9 +103,6 @@
         <p *ngIf="productForm.get('price').hasError('maxlength')" ion-text color="danger">solo 3 decimales.</p>
       </ion-item>
     </ion-list>
-    <div padding *ngIf="image !== null">
-      <img [src]="image" alt="avatar">
-    </div>
     <ion-grid>
       <ion-row>
         <ion-col col-6>
@@ -122,6 +119,11 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <div padding >
+      <img *ngIf="productForm.value.photo == null" [src]="productForm.value.photo" alt="avatar">
+    </div>
+
     <div padding>
       <button block ion-button type="submit" icon-left [disabled]="productForm.invalid">
         Guardar

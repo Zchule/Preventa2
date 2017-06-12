@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, MenuController  } from 'ionic-angular';
+import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, MenuController, LoadingController  } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { UserProfileService } from '../../../../providers/user-profile.service';
@@ -20,11 +20,19 @@ export class ListUsersPage {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private actionSheetCtrl: ActionSheetController,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    public loadCtrl: LoadingController
   ) {}
   
   ionViewDidLoad() {
-   this.users = this.usersService.getAll();
+    let load = this.loadCtrl.create({
+      content: 'Cargando...'
+    });
+    load.present();
+    this.users = this.usersService.getAll();
+    this.users.subscribe(data=>{
+      load.dismiss(); 
+    })
   }
 
    ionViewDidEnter() {

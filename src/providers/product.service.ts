@@ -98,7 +98,12 @@ export class ProductService {
             products.push(data);
             return false;
           })
-          resolve(products);
+          if(products.length === 1){
+            reject(null);
+          }else{
+            products.splice(0,1)
+            resolve(products);
+          }
         }
       })
     })
@@ -109,12 +114,18 @@ export class ProductService {
   }
 
   update(key, product){
-    return this.fireDatabase.object('/productos/'+ key).set(product);
+    if(key !== '' && key !== null && key !== undefined){
+      return this.fireDatabase.object('/productos/'+ key).set(product);
+    }else{
+      return Promise.reject(null);
+    }
   }
 
   delete(key){
     if(key !== '' && key !== null && key !== undefined){
       return this.products.remove(key);
+    }else{
+      return Promise.reject(null);
     }
   }
 

@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams,ToastController, AlertController, LoadingController } from 'ionic-angular';
 
 import { ProductService } from '../../../../providers/product.service';
+import { TypeProductsService } from '../../../../providers/type-products.service';
+import { MarkProductsService } from '../../../../providers/mark-products.service';
+import { CategoryProductsService } from '../../../../providers/category-products.service';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -13,9 +19,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class EditProductPage {
 
-   productForm: FormGroup;
+  productForm: FormGroup;
   product: any= null;
+  index: number;
   image: string = null;
+  types: any = [];
+  categories: any = [];
+  marks: any = [];
+  groups: any = [];
 
   constructor(
     public viewCtrl: ViewController,
@@ -23,30 +34,47 @@ export class EditProductPage {
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public productService: ProductService,
-    public camera: Camera   
+    public camera: Camera,
+    public alertCtrl: AlertController,
+    public typeProductsService: TypeProductsService,
+    public categoryProductService: CategoryProductsService,
+    public markProductService: MarkProductsService,
+    private loadCtrl: LoadingController 
     ) {
     this.productForm = this.makeForm(); 
     this.product = this.navParams.get('product');
+    this.index = this.navParams.get('index');
     if(this.product !== null &&  this.product !==  undefined){
       this.productForm.patchValue(this.product);
     }
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FormProduct');
+    let load = this.loadCtrl.create();
+    load.present();
+    this.getAllData()
+    .subscribe(response =>{
+      this.types = response[0];
+      this.categories = response[1];
+      this.marks = response[2];
+      load.dismiss();
+    }, error=>{
+      load.dismiss();
+    })
   }
   saveProduct( event: Event ){
     event.preventDefault();
-      this.productService.update(this.product.$key, this.productForm.value)
-      .then((()=>{
+      this.productService.update(this.product.key, this.productForm.value)
+      .then(()=>{
           let message = this.toastCtrl.create({
           message: 'Producto Actualizado',
           duration: 3000,
           showCloseButton: true
         })
         message.present();
-        this.close();
-      }))
+        let product = Object.assign(this.product, this.productForm.value);
+        this.viewCtrl.dismiss(product);
+      })
       .catch(error=>{
         console.log(error);
       });
@@ -91,21 +119,28 @@ export class EditProductPage {
   
 makeForm(){
   return this.formBuilder.group({
-      type: ['cuidado', [Validators.required]],
-      category: ['polvo', [Validators.required]],
-      mark: ['omo', [Validators.required]],
-      group: ['limon', [Validators.required]],
+      type: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      mark: ['', [Validators.required]],
       name: ['', [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
-      cant: ['0', [Validators.required]],
+      cant: ['', [Validators.required]],
       wheight: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.maxLength(3)]],
       photo: ['assets/imgs/papas.gif', [Validators.required]]
     });
 }
 
-  close(){
+close(){
     this.viewCtrl.dismiss();
+  }
+
+private getAllData(){
+    return Observable.combineLatest(
+      this.typeProductsService.getAll(),
+      this.categoryProductService.getAll(),
+      this.markProductService.getAll()
+    )
   }
 
 }

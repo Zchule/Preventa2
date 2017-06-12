@@ -59,19 +59,28 @@ export class ListProductsPage {
     modal.present();
   }
 
-  goToEdit(product){
+  goToEdit(product: any, index: number){
     console.log(product);
     let modal2 = this.modalCtrl.create('EditProductPage',{
-      product:product
+      product:product,
+      index: index
     });
     modal2.present();
+    modal2.onDidDismiss(data=>{
+      if(data !== null && data!== undefined){
+        console.log(data);
+        this.products[index] = data;
+      }
+    })
   }
 
-  private deleteProduct(product: any){
-    this.productService.delete( product.key );
+  private deleteProduct(product: any, index: number){
+    this.productService.delete( product.key ).then(()=>{
+      this.products.splice(index, 1);
+    });
   }
 
-   showAlertDelete( product: any){
+   showAlertDelete( product: any, index: number){
     let alert = this.alertCtrl.create({
       title: '¿Estás seguro?',
       message: 'El producto se eliminara',
@@ -86,7 +95,7 @@ export class ListProductsPage {
         {
           text: 'Si, estoy seguro',
           handler: ()=>{
-            this.deleteProduct( product );
+            this.deleteProduct( product, index );
           }
         }
       ]
@@ -94,7 +103,7 @@ export class ListProductsPage {
     alert.present();
   }
 
-  showActionSheet(product: any){
+  showActionSheet(product: any, index: number){
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Opciones',
       buttons: [
@@ -109,7 +118,7 @@ export class ListProductsPage {
           text: 'Modificar',
           icon: 'create',
           handler: ()=>{
-            this.goToEdit(product);
+            this.goToEdit(product, index);
           }
         },
         {
@@ -117,7 +126,7 @@ export class ListProductsPage {
           icon:'trash',
           role: 'destructive',
           handler: ()=>{
-            this.showAlertDelete(product);
+            this.showAlertDelete(product, index);
           }
         },
         {

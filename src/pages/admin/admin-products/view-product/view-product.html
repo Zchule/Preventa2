@@ -14,10 +14,21 @@
   <form [formGroup]="productForm" (ngSubmit)="saveProduct( $event )">
     <ion-list>
 
+      <ion-grid>
+         <ion-row>
+          <ion-col col-6 offset-3>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img [src]="product.photo">
+              </ion-thumbnail>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+       </ion-grid>
+
       <ion-item>
-        <ion-thumbnail item-left>
-          <img [src]="product.photo">
-        </ion-thumbnail>
+        <ion-label>Nombre: </ion-label>
+        <ion-input formControlName="name" disabled="true"></ion-input>
       </ion-item>
     
       <ion-item>
@@ -36,17 +47,6 @@
         <ion-label>Marca:</ion-label>
         <ion-input formControlName="mark" disabled="true">
         </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Group:</ion-label>
-        <ion-input formControlName="group" disabled="true">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Nombre: </ion-label>
-        <ion-input formControlName="name" disabled="true"></ion-input>
       </ion-item>
 
       <ion-item>

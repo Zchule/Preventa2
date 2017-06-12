@@ -69,8 +69,6 @@
       </ion-item>
     </ion-list>
 
-    <div padding>
-        <img *ngIf="image !== null" [src]="image" alt="avatar">
         <ion-grid>
          <ion-row>
            <ion-col col-6>
@@ -87,7 +85,10 @@
            </ion-col>
          </ion-row>
        </ion-grid>
-     </div>
+
+    <div padding>
+        <img *ngIf="userForm.value.photo == null" [src]="userForm.value.photo" alt="avatar">
+    </div>
 
      <div padding>
       <button block ion-button type="submit" icon-left [disabled]="userForm.invalid">

@@ -52,9 +52,9 @@ export class CreateProductPage {
       this.categories = response[1];
       this.marks = response[2];
       this.productForm.patchValue({
-        type: this.types[0].value,
-        category: this.categories[0].value,
-        mark: this.marks[0].value,
+        type: this.types[0],
+        category: this.categories[0],
+        mark: this.marks[0],
       });
       load.dismiss();
     }, error=>{
@@ -64,7 +64,11 @@ export class CreateProductPage {
 
   saveProduct(event: Event) {
     event.preventDefault();
-    this.productService.create(this.productForm.value);
+    let product = this.productForm.value;
+    product.typeValue = product.type.value;
+    product.categoryValue = product.category.value;
+    product.markValue = product.mark.value;
+    this.productService.create(product);
     let message = this.toastCtrl.create({
       message: 'Producto Creado',
       duration: 3000,
