@@ -34,7 +34,7 @@
           <ion-item>
             <ion-label floating>Categoria:</ion-label>
             <ion-select formControlName="category">
-              <ion-option *ngFor="let category of categories" [value]="category">{{category.name}}</ion-option>
+              <ion-option *ngFor="let category of categoriesShow" [value]="category">{{category.name}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -50,7 +50,7 @@
           <ion-item>
             <ion-label floating>Marca:</ion-label>
             <ion-select formControlName="mark">
-              <ion-option *ngFor="let mark of marks" [value]="mark">{{mark.data}}</ion-option>
+              <ion-option *ngFor="let mark of marksShow" [value]="mark">{{mark.data}}</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>

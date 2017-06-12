@@ -15,14 +15,6 @@
     <ion-list>
       
       <ion-item>
-        <ion-label>Nombre: </ion-label>
-        <ion-input formControlName="name" type="text"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="productForm.get('name').errors && productForm.get('name').dirty">
-        <p *ngIf="productForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
-      </ion-item>
-
-      <ion-item>
         <ion-label floating>Tipo:</ion-label>
         <ion-select formControlName="type">
          <ion-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-option>
@@ -42,6 +34,15 @@
           <ion-option *ngFor="let mark of marks" [value]="mark">{{mark.data}}</ion-option>
         </ion-select>
       </ion-item>
+
+      <ion-item>
+        <ion-label>Nombre: </ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="productForm.get('name').errors && productForm.get('name').dirty">
+        <p *ngIf="productForm.get('name').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
+      </ion-item>
+
 
       <ion-item>
         <ion-label>Codigo: </ion-label>

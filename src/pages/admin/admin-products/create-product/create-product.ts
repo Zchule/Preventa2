@@ -8,6 +8,7 @@ import { MarkProductsService } from '../../../../providers/mark-products.service
 import { CategoryProductsService } from '../../../../providers/category-products.service';
 
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/combineLatest';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -22,10 +23,13 @@ export class CreateProductPage {
   productForm: FormGroup;
   product: any = null;
   image: string = null;
-  types: any = [];
-  categories: any = [];
-  marks: any = [];
-  groups: any = [];
+  types: any[] = [];
+  categories: any[] = [];
+  categoriesShow: any[] = [];
+  marks: any[] = [];
+  marksShow: any[] = [];
+  subscribeType: Subscription;
+  subscribeCategory: Subscription;
 
   constructor(
     public viewCtrl: ViewController,
@@ -49,17 +53,42 @@ export class CreateProductPage {
     this.getAllData()
     .subscribe(response =>{
       this.types = response[0];
-      this.categories = response[1];
-      this.marks = response[2];
+      this.categoriesShow = this.categories = response[1];
+      this.marksShow = this.marks = response[2];
       this.productForm.patchValue({
         type: this.types[0],
         category: this.categories[0],
         mark: this.marks[0],
       });
+      this.addSubscribeType();
+      this.addSubscribeCategory();
       load.dismiss();
     }, error=>{
       load.dismiss();
-    })
+    });
+  }
+
+  ionViewWillUnload(){
+    this.subscribeType.unsubscribe();
+    this.subscribeCategory.unsubscribe();
+  }
+
+  private addSubscribeType(){
+    this.subscribeType = this.productForm.get('type').valueChanges.subscribe(type=>{
+      this.categoriesShow = this.categories.filter(category => category.type == type.value );
+      this.productForm.patchValue({
+        category: this.categoriesShow[0]
+      });
+    });
+  }
+
+  private addSubscribeCategory(){
+    this.subscribeType = this.productForm.get('category').valueChanges.subscribe(category=>{
+        this.marksShow = this.marks.filter(mark => mark.category == category.value );
+        this.productForm.patchValue({
+          mark: this.marksShow[0]
+        });
+    });
   }
 
   saveProduct(event: Event) {

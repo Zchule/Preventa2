@@ -67,7 +67,6 @@ export class ListProductsPage {
     modal2.present();
     modal2.onDidDismiss(data=>{
       if(data !== null && data!== undefined){
-        console.log(data);
         this.products[index] = data;
       }
     })
