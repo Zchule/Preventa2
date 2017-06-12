@@ -69,7 +69,7 @@ export class CategoryPresalePage {
       return this.categories;
     }else{
       return this.categories.filter(item =>{
-        return item.type == this.typeSelected;
+        return item.typeValue == this.typeSelected;
       });
     }
   }

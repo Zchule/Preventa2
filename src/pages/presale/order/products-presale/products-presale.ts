@@ -39,7 +39,7 @@ export class ProductsPresalePage {
     this.productsOrder = this.orderService.getOrderProducts(this.navParams.get('order'));
     this.productsService.getProductsByCategory(this.navParams.get('category'))
     .then(products =>{
-      let marks = _.groupBy(products, 'mark');
+      let marks = _.groupBy(products, 'markValue');
       _.forEach(marks, (value, key) =>{
         this.marks.push({
           title: key,

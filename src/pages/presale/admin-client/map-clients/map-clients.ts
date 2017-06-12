@@ -112,18 +112,18 @@ export class MapClientsPage {
     });   
   }
 
-  private renderClients(){
-    this.clients.forEach(client =>{
-      this.createMarker({
-        position: {
-          lat:parseFloat(client.latitude),
-          lng:parseFloat(client.longitude)
-        },
-        map: this.map,
-        icon: 'assets/imgs/markers/pin-pink.png'
-      }, client.name);
-    });
-  }
+    // private renderClients(){
+    //   this.clients.forEach(client =>{
+    //     this.createMarker({
+    //       position: {
+    //         lat:parseFloat(client.latitude),
+    //         lng:parseFloat(client.longitude)
+    //       },
+    //       map: this.map,
+    //       icon: 'assets/imgs/markers/pin-pink.png'
+    //     }, client.name);
+    //   });
+    // }
 
   private getWaypoints(){
     return this.clients.map(item =>{
