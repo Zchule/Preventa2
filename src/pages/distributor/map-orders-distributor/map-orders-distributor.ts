@@ -21,6 +21,7 @@ export class MapOrdersDistributorPage {
   myLatLng: any = {};
   state: string = 'all';
   type: string = 'all';
+  total: number = 0;
 
   constructor(
     public navCtrl: NavController, 
@@ -97,6 +98,7 @@ export class MapOrdersDistributorPage {
       this.load.dismiss();
       if (status === google.maps.DirectionsStatus.OK) {
         this.directionsDisplay.setDirections(response);
+        this.computeTotalDistance(response);
       } else {
         alert('Could not display directions due to: ' + status);
       }
@@ -132,6 +134,15 @@ export class MapOrdersDistributorPage {
                item.type.toLocaleLowerCase() == this.type.toLocaleLowerCase();
       });
     }
+  }
+
+  private computeTotalDistance(result) {
+    let total = 0;
+    let myroute = result.routes[0];
+    for (var i = 0; i < myroute.legs.length; i++) {
+      total += myroute.legs[i].distance.value;
+    }
+    this.total = total / 1000;
   }
 
 }
