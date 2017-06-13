@@ -58,7 +58,7 @@ export class CreateProductPage {
       this.productForm.patchValue({
         type: this.types[0],
         category: this.categories[0],
-        mark: this.marks[0],
+        mark: this.marks[0]
       });
       this.addSubscribeType();
       this.addSubscribeCategory();
@@ -89,6 +89,7 @@ export class CreateProductPage {
           mark: this.marksShow[0]
         });
     });
+    console.log(this.subscribeCategory);
   }
 
   saveProduct(event: Event) {
@@ -214,6 +215,7 @@ export class CreateProductPage {
   }
 
   addMark() {
+    let category = this.productForm.value.category;
     let alert = this.alertCtrl.create({
       title: 'Marca',
       inputs: [
@@ -233,6 +235,7 @@ export class CreateProductPage {
             console.log(data);
             this.markProductService.create({
               data: data.name,
+              category: category.value,
               value: data.name.replace(/ /g, "").toLowerCase()
             });
           }
