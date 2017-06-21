@@ -3,6 +3,7 @@ import { IonicPage, ViewController, NavParams, NavController, LoadingController,
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../providers/order.service'; 
+import { ProductService } from '../../../providers/product.service'; 
 
 @IonicPage()
 @Component({
@@ -21,10 +22,13 @@ export class OrderDistributorPage {
     private viewCtrl: ViewController,
     private navParams: NavParams,
     private orderService: OrderService,
+    private productService: ProductService,
     private navCtrl: NavController,
     private loadCtrl: LoadingController,
     private app: App
-  ) {}
+  ) {
+    this.state = this.navParams.get('state');
+  }
 
   ionViewDidLoad() {
     this.getClient();
@@ -42,6 +46,9 @@ export class OrderDistributorPage {
     load.present();
     this.orderService.updateOrder(this.navParams.get('order'),{
       state: 'done'
+    })
+    .then(()=>{
+      return Promise.all(this.updateProducts())
     })
     .then(()=>{
       load.dismiss();
@@ -71,6 +78,23 @@ export class OrderDistributorPage {
         total+= item.price * item.count;
       });
       this.total = total;
+    });
+  }
+
+  private updateProducts(){
+    let promises = [];
+    this.products.forEach((product)=>{
+      let key = product.$key;
+      let cant = product.cant - product.count;
+      console.log(key, cant);
+      promises.push(this.updateCount(key, cant));
+    });
+    return promises;
+  }
+
+  private updateCount(key, cant){
+    return this.productService.update(key, {
+      cant: cant
     });
   }
 

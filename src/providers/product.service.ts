@@ -51,6 +51,7 @@ export class ProductService {
 
   getProductsByCategory(category: string): Promise<any>{
     return new Promise((resolve, reject)=>{
+      console.log(category);
       const query = this.productsRef.orderByChild('categoryValue').equalTo(category);
       query.once('value', snap =>{
         let data = snap.val();

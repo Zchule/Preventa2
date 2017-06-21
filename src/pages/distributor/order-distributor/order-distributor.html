@@ -35,7 +35,7 @@
   </ion-card>
 </ion-content>
 
-<ion-footer padding>
+<ion-footer padding *ngIf="state == 'pending'">
   <button block ion-button color="dark" (click)="done()">
     (Bs {{ total }}) Entregado
   </button>
