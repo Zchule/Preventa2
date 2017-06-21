@@ -48,30 +48,26 @@ export class EditProductPage {
     this.productForm = this.makeForm(); 
     this.product = this.navParams.get('product');
     this.index = this.navParams.get('index');
-    if(this.product !== null &&  this.product !==  undefined){
-      this.productForm.patchValue(this.product);
-    }
   }
   
   ionViewDidLoad() {
     let load = this.loadCtrl.create();
     load.present();
     this.getAllData()
-    .subscribe(response =>{
+    .subscribe((response: any[]) =>{
       this.types = response[0];
       this.categoriesShow = this.categories = response[1];
       this.marksShow = this.marks = response[2];
       this.addSubscribeType();
       this.addSubscribeCategory();
+      if(this.product !== null &&  this.product !==  undefined){
+        console.log(this.product);
+        this.productForm.patchValue(this.product);
+      }
       load.dismiss();
     }, error=>{
       load.dismiss();
     });
-  }
-
-  ionViewWillUnload(){
-    this.subscribeType.unsubscribe();
-    this.subscribeCategory.unsubscribe();
   }
 
   private addSubscribeType(){

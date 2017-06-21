@@ -68,11 +68,6 @@ export class CreateProductPage {
     });
   }
 
-  ionViewWillUnload(){
-    this.subscribeType.unsubscribe();
-    this.subscribeCategory.unsubscribe();
-  }
-
   private addSubscribeType(){
     this.subscribeType = this.productForm.get('type').valueChanges.subscribe(type=>{
       this.categoriesShow = this.categories.filter(category => category.type == type.value );
@@ -89,7 +84,6 @@ export class CreateProductPage {
           mark: this.marksShow[0]
         });
     });
-    console.log(this.subscribeCategory);
   }
 
   saveProduct(event: Event) {
