@@ -61,7 +61,7 @@ export class OrderService {
   }
 
   updateOrder(id, data){
-    return this.fireDatabase.object('/orders/'+ id).set(data);
+    return this.fireDatabase.object('/orders/'+ id).update(data);
   }
 
 }

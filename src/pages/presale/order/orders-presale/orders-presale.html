@@ -11,12 +11,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let order of orders">
+    <ion-item tappable (click)="showOptions( order )" *ngFor="let order of orders" [ngClass]="order.state">
       <p>{{ order.date | date }}</p>
       <p *ngIf="order.client"><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>
-      <p><strong>Estado:</strong> {{ order.state }}</p>
+      <p><strong>Estado:</strong> {{ order.state == 'done' ? 'Entregado' : 'Pendiente' }}</p>
       <p *ngIf="order.total"><strong>Total:</strong> Bs {{ order.total }}</p>
-      <button ion-button clear color="royal" item-right (click)="showOptions( order )">
+      <p><strong>Tipo:</strong> {{ order.type == 'payment' ? 'Al contado' : 'A crédito' }}</p>
+      <button ion-button color="royal" item-right >
         Opciones
       </button>
     </ion-item>

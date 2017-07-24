@@ -15,20 +15,23 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  <ion-toolbar color="royal">
+    <ion-searchbar debounce="400" showCancelButton="true" (input)="search($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let client of clients; let i = index" (click)="showActionSheet(client)">
-      <ion-thumbnail item-left>
-        <img [src]="client.photo">
-      </ion-thumbnail>
-      <h2>{{ client.codClient }}</h2>
+  <ion-card tappable *ngFor="let client of clientsShow; let i = index" (click)="showActionSheet(client)">
+    <img [src]="client.photo">
+    <ion-card-content>
+      <ion-card-title>
+        {{ client.codClient }}
+      </ion-card-title>
       <p>{{ client.name }} {{ client.apPat }} {{ client.apMat }}</p>
       <p><strong>Dirección:</strong> {{ client.direction }}</p>
       <p><strong>Zona:</strong> {{ client.zone }}</p>
       <p><strong>Tipo:</strong> {{ client.typeStore }}</p>
       <p><strong>Nit:</strong> {{ client.facnit }}</p>
-    </ion-item>
-  </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
