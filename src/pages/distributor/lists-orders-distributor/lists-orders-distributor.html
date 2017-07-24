@@ -19,13 +19,13 @@
     <ion-item *ngIf="showOrders.length == 0">
       Lista vacia
     </ion-item>
-    <ion-item *ngFor="let order of showOrders">
+    <ion-item tappable (click)="showOrder( order )" *ngFor="let order of showOrders" [ngClass]="order.state">
       <p>{{ order.date | date }}</p>
       <p *ngIf="order.client"><strong>Cod cliente:</strong> {{ order.client.codClient }}</p>
-      <p><strong>Estado:</strong> {{ order.state }}</p>
+      <p><strong>Estado:</strong> {{ order.state == 'done' ? 'Entregado' : 'Pendiente' }}</p>
       <p *ngIf="order.total"><strong>Total:</strong> Bs {{ order.total }}</p>
-      <p><strong>Tipo:</strong> {{ order.type }}</p>
-      <button ion-button clear color="dark" item-right (click)="showOrder( order )">
+      <p><strong>Tipo:</strong> {{ order.type == 'payment' ? 'Al contado' : 'A crédito' }}</p>
+      <button ion-button color="dark" item-right>
         Ver
       </button>
     </ion-item>

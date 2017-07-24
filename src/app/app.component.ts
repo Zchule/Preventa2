@@ -75,7 +75,7 @@ export class MyApp {
       }
     },
     {
-      title: 'Pedidos a Credito',
+      title: 'Pedidos a Crédito',
       component: 'ListsOrdersDistributorPage',
       icon: 'clipboard',
       data: {
@@ -88,6 +88,15 @@ export class MyApp {
       icon: 'clipboard',
       data: {
         type: 'payment'
+      }
+    },
+    {
+      title: 'Ver todos los pedidos',
+      component: 'ListsOrdersDistributorPage',
+      icon: 'clipboard',
+      data: {
+        type: 'all',
+        state: 'all'
       }
     },
   ];

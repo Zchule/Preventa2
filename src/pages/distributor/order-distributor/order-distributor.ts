@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../providers/order.service'; 
@@ -23,7 +23,8 @@ export class OrderDistributorPage {
     private navParams: NavParams,
     private orderService: OrderService,
     private productService: ProductService,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {
     this.state = this.navParams.get('state');
   }
@@ -38,6 +39,26 @@ export class OrderDistributorPage {
   }
 
   done(){
+    let alert = this.alertCtrl.create({
+      title: '¿Está seguro?',
+      message: 'Se actualizará este pedido como entregado',
+      buttons: [
+        {
+          text: "Cancelar",
+          role: "cancel"
+        },
+        {
+          text: "Si, estoy seguro",
+          handler: ()=>{
+            this.doneOrder();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  private doneOrder(){
     let load = this.loadCtrl.create({
       content: 'Actualizando pedido'
     });
@@ -84,7 +105,6 @@ export class OrderDistributorPage {
     this.products.forEach((product)=>{
       let key = product.$key;
       let cant = product.cant - product.count;
-      console.log(key, cant);
       promises.push(this.updateCount(key, cant));
     });
     return promises;

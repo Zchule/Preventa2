@@ -39,7 +39,7 @@ export class ListsOrdersDistributorPage {
   showOrder( order ){
     let modal = this.modalCtrl.create('OrderDistributorPage',{
       order: order.$key,
-      state: this.state
+      state: order.state
     });
     modal.present();
   }
