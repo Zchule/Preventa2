@@ -11,65 +11,50 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="productForm" (ngSubmit)="saveProduct( $event )">
+
+    <img [src]="product.photo">
+  
     <ion-list>
 
-      <ion-grid>
-         <ion-row>
-          <ion-col col-6 offset-3>
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img [src]="product.photo">
-              </ion-thumbnail>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-       </ion-grid>
-
       <ion-item>
-        <ion-label>Nombre: </ion-label>
-        <ion-input formControlName="name" disabled="true"></ion-input>
+        <h2>Nombre: </h2>
+        {{ product.name }}
       </ion-item>
     
       <ion-item>
-        <ion-label>Tipo:</ion-label>
-        <ion-input formControlName="type" disabled="true">
-        </ion-input>
+        <h2>Tipo:</h2>
+        {{ product.type.name }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Categoria:</ion-label>
-        <ion-input formControlName="category" disabled="true">
-        </ion-input>
+        <h2>Categoria:</h2>
+        {{ product.category.name }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Marca:</ion-label>
-        <ion-input formControlName="mark" disabled="true">
-        </ion-input>
+        <h2>Marca:</h2>
+        {{ product.mark.data }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Codigo: </ion-label>
-        <ion-input formControlName="code" disabled="true"></ion-input>
+        <h2>Codigo: </h2>
+        {{ product.code }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Peso: </ion-label>
-        <ion-input formControlName="wheight" disabled="true"></ion-input>
+        <h2>Peso: </h2>
+        {{ product.wheight }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Cantidad: </ion-label>
-        <ion-input formControlName="cant" type="number" disabled="true"></ion-input>
+        <h2>Cantidad: </h2>
+        {{ product.cant }}
       </ion-item>
 
       <ion-item>
-        <ion-label>Precio(Bs): </ion-label>
-        <ion-input formControlName="price" type="number" disabled="true"></ion-input>
+        <h2>Precio(Bs): </h2>
+        {{ product.price }}
       </ion-item>
 
     </ion-list>
-    
-  </form>
 </ion-content>

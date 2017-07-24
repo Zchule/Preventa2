@@ -17,14 +17,14 @@
       
       <ion-item>
         <ion-label floating>Tipo:</ion-label>
-        <ion-select formControlName="type" [compareWith]="compareTypes">
+        <ion-select formControlName="type" [compareWith]="compareValues">
           <ion-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Categoria:</ion-label>
-        <ion-select formControlName="category">
+        <ion-select formControlName="category" [compareWith]="compareValues">
           <ion-option *ngFor="let category of categoriesShow" [value]="category">{{category.name}}</ion-option>
         </ion-select>
       </ion-item>
@@ -32,7 +32,7 @@
       
       <ion-item>
         <ion-label floating>Marca:</ion-label>
-        <ion-select formControlName="mark">
+        <ion-select formControlName="mark" [compareWith]="compareValues">
           <ion-option *ngFor="let mark of marksShow" [value]="mark">{{mark.data}}</ion-option>
         </ion-select>
       </ion-item>
