@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { ClientService } from '../../../../providers/client.service';
@@ -15,7 +15,6 @@ export class ListsClientsPage {
   
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
     private clientService: ClientService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,

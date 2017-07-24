@@ -48,30 +48,29 @@ export class EditProductPage {
     this.productForm = this.makeForm(); 
     this.product = this.navParams.get('product');
     this.index = this.navParams.get('index');
-    if(this.product !== null &&  this.product !==  undefined){
-      this.productForm.patchValue(this.product);
-    }
   }
   
   ionViewDidLoad() {
     let load = this.loadCtrl.create();
     load.present();
     this.getAllData()
-    .subscribe(response =>{
+    .subscribe((response: any[]) =>{
       this.types = response[0];
       this.categoriesShow = this.categories = response[1];
       this.marksShow = this.marks = response[2];
       this.addSubscribeType();
       this.addSubscribeCategory();
+      if(this.product !== null &&  this.product !==  undefined){
+        this.productForm.patchValue(this.product);
+      }
       load.dismiss();
     }, error=>{
       load.dismiss();
     });
   }
 
-  ionViewWillUnload(){
-    this.subscribeType.unsubscribe();
-    this.subscribeCategory.unsubscribe();
+  compareValues(a: any, b: any){
+    return a.value === b.value;
   }
 
   private addSubscribeType(){
@@ -99,19 +98,19 @@ export class EditProductPage {
     product.categoryValue = product.category.value;
     product.markValue = product.mark.value;
     event.preventDefault();
-      this.productService.update(product.key, product)
-      .then(()=>{
-          let message = this.toastCtrl.create({
-          message: 'Producto Actualizado',
-          duration: 3000,
-          showCloseButton: true
-        })
-        message.present();
-        this.viewCtrl.dismiss(product);
+    this.productService.update(product.key, product)
+    .then(()=>{
+      let message = this.toastCtrl.create({
+        message: 'Producto Actualizado',
+        duration: 3000,
+        showCloseButton: true
       })
-      .catch(error=>{
-        console.log(error);
-      });
+      message.present();
+      this.viewCtrl.dismiss(product);
+    })
+    .catch(error=>{
+      console.log(error);
+    });
       
     }
 

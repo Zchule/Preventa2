@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams, NavController, LoadingController, App } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, LoadingController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../providers/order.service'; 
@@ -23,9 +23,7 @@ export class OrderDistributorPage {
     private navParams: NavParams,
     private orderService: OrderService,
     private productService: ProductService,
-    private navCtrl: NavController,
-    private loadCtrl: LoadingController,
-    private app: App
+    private loadCtrl: LoadingController
   ) {
     this.state = this.navParams.get('state');
   }

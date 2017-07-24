@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, ViewController, ToastController} from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -18,7 +18,6 @@ export class CreateUserPage {
 
   constructor(
     private viewCtrl: ViewController,
-    private navParams: NavParams,
     private formBuilder: FormBuilder,
     private toastCtrl: ToastController,
     private camera: Camera,

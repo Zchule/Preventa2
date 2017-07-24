@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, NavController, ModalController, AlertController, ActionSheetController, MenuController, LoadingController  } from 'ionic-angular';
+import { IonicPage, ModalController, AlertController, ActionSheetController, MenuController, LoadingController  } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { UserProfileService } from '../../../../providers/user-profile.service';
@@ -14,8 +14,6 @@ export class ListUsersPage {
   users: FirebaseListObservable<any>;
 
   constructor(
-    private navCtrl: NavController, 
-    private navParams: NavParams,
     private usersService: UserProfileService,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
@@ -35,7 +33,7 @@ export class ListUsersPage {
     })
   }
 
-   ionViewDidEnter() {
+  ionViewDidEnter() {
     this.menuCtrl.enable(false, 'menuPreventa');
     this.menuCtrl.enable(false, 'menuUser')
   }

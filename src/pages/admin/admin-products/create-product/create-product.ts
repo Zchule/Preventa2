@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, ToastController, AlertController, LoadingController } from 'ionic-angular';
 
 import { ProductService } from '../../../../providers/product.service';
 import { TypeProductsService } from '../../../../providers/type-products.service';
@@ -33,7 +33,6 @@ export class CreateProductPage {
 
   constructor(
     public viewCtrl: ViewController,
-    public navParams: NavParams,
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public productService: ProductService,
@@ -68,11 +67,6 @@ export class CreateProductPage {
     });
   }
 
-  ionViewWillUnload(){
-    this.subscribeType.unsubscribe();
-    this.subscribeCategory.unsubscribe();
-  }
-
   private addSubscribeType(){
     this.subscribeType = this.productForm.get('type').valueChanges.subscribe(type=>{
       this.categoriesShow = this.categories.filter(category => category.type == type.value );
@@ -89,7 +83,6 @@ export class CreateProductPage {
           mark: this.marksShow[0]
         });
     });
-    console.log(this.subscribeCategory);
   }
 
   saveProduct(event: Event) {

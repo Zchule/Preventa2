@@ -114,12 +114,16 @@ export class ProductService {
     return this.products.push(product);
   }
 
-  update(key, product){
-    if(key !== '' && key !== null && key !== undefined){
-      return this.fireDatabase.object('/productos/'+ key).set(product);
-    }else{
-      return Promise.reject(null);
-    }
+  update(key, product): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      if(key !== '' && key !== null && key !== undefined){
+        this.fireDatabase.object('/productos/'+ key).set(product)
+        .then(()=> resolve(true))
+        .catch(error => reject(error))
+      }else{
+        return reject(null);
+      }
+    });
   }
 
   delete(key){
