@@ -80,7 +80,6 @@ export class MapOrdersDistributorPage {
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       mapEle.classList.add('show-map');
-      console.log('map');
       this.calculateRoute();
     });
   }
@@ -94,7 +93,6 @@ export class MapOrdersDistributorPage {
       travelMode: google.maps.TravelMode.DRIVING,
       avoidTolls: true
     }, (response, status)=> {
-      console.log('route');
       this.load.dismiss();
       if (status === google.maps.DirectionsStatus.OK) {
         this.directionsDisplay.setDirections(response);

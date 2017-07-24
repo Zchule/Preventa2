@@ -1,71 +1,73 @@
-<ion-menu id="menuAdmin" [content]="content">
-  <ion-content>
-    <div class="profile primary">
-      <div class="cover">
-        <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-        <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+<ion-split-pane>
+  <ion-menu id="menuAdmin" [content]="content">
+    <ion-content>
+      <div class="profile primary">
+        <div class="cover">
+          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
+          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+        </div>
+        <h5>Administrador</h5>
+        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
       </div>
-      <h5>Administrador</h5>
-      <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
-    </div>
-    <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesAdmin">
-        <ion-icon [name]="page.icon" item-left></ion-icon>
-        {{ page.title }}
-      </button>
-      <button menuClose ion-item (click)="logout()">
-        <ion-icon name="log-out" item-left></ion-icon>
-        Salir
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
+      <ion-list>
+        <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesAdmin">
+          <ion-icon [name]="page.icon" item-left></ion-icon>
+          {{ page.title }}
+        </button>
+        <button menuClose ion-item (click)="logout()">
+          <ion-icon name="log-out" item-left></ion-icon>
+          Salir
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-<ion-menu id="menuDistributor" [content]="content">
-  <ion-content>
-    <div class="profile secondary">
-      <div class="cover">
-        <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-        <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+  <ion-menu id="menuDistributor" [content]="content">
+    <ion-content>
+      <div class="profile secondary">
+        <div class="cover">
+          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
+          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+        </div>
+        <h5>Distribuidor</h5>
+        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
       </div>
-      <h5>Distribuidor</h5>
-      <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
-    </div>
-    <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesDistributor">
-        <ion-icon [name]="page.icon" item-left></ion-icon>
-        {{ page.title }}
-      </button>
-      <button menuClose ion-item (click)="logout()">
-        <ion-icon name="log-out" item-left></ion-icon>
-        Salir
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
+      <ion-list>
+        <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesDistributor">
+          <ion-icon [name]="page.icon" item-left></ion-icon>
+          {{ page.title }}
+        </button>
+        <button menuClose ion-item (click)="logout()">
+          <ion-icon name="log-out" item-left></ion-icon>
+          Salir
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-<ion-menu id="menuPresale" [content]="content">
-  <ion-content>
-    <div class="profile royal">
-      <div class="cover">
-        <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-        <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+  <ion-menu id="menuPresale" [content]="content">
+    <ion-content>
+      <div class="profile royal">
+        <div class="cover">
+          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
+          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+        </div>
+        <h5>Preventa</h5>
+        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
       </div>
-      <h5>Preventa</h5>
-      <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
-    </div>
-    <ion-list>
-      <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPresale">
-        <ion-icon [name]="page.icon" item-left></ion-icon>
-        {{ page.title }}
-      </button>
-      <button menuClose ion-item (click)="logout()">
-        <ion-icon name="log-out" item-left></ion-icon>
-        Salir
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
+      <ion-list>
+        <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPresale">
+          <ion-icon [name]="page.icon" item-left></ion-icon>
+          {{ page.title }}
+        </button>
+        <button menuClose ion-item (click)="logout()">
+          <ion-icon name="log-out" item-left></ion-icon>
+          Salir
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-<ion-nav #content [root]="rootPage"></ion-nav>
+  <ion-nav #content [root]="rootPage" main></ion-nav>
+</ion-split-pane>
 
