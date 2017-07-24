@@ -84,7 +84,7 @@ export class EditProductPage {
   }
 
   private addSubscribeCategory(){
-    this.subscribeType = this.productForm.get('category').valueChanges.subscribe(category=>{
+    this.subscribeCategory = this.productForm.get('category').valueChanges.subscribe(category=>{
         this.marksShow = this.marks.filter(mark => mark.category == category.value );
         this.productForm.patchValue({
           mark: this.marksShow[0]
