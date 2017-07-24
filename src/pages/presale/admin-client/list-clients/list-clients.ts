@@ -32,7 +32,16 @@ export class ListsClientsPage {
       this.clientsShow = this.clientsBackup = clients.map(item =>{
         item.fullName = `${item.name} ${item.apPat} ${item.apMat}`;
         return item;
-      });
+      })
+      .sort((a,b)=>{
+        if (a.fullName > b.fullName) {
+          return 1;
+        }
+        if (a.fullName < b.fullName) {
+          return -1;
+        }
+        return 0;
+      })
       load.dismiss(); 
     });   
   }
