@@ -48,7 +48,6 @@ export class CreateOrderPresalePage {
     this.orderService.getOrderByClient(client.codClient)
     .then((clients: any[]) =>{
       load.dismiss();
-      console.log(clients);
       if(clients.length > 0){
         let alert = this.alertCtrl.create({
           title: 'Ateción',

@@ -59,12 +59,7 @@ export class MyApp {
       component: 'HomeDistributorPage'
     },
     {
-      title: 'Ver pedidos',
-      icon: 'clipboard',
-      component: 'ListsOrdersDistributorPage'
-    },
-    {
-      title: 'Pedidos entregados',
+      title: 'Pedidos Entregados',
       component: 'ListsOrdersDistributorPage',
       icon: 'clipboard',
       data: {
