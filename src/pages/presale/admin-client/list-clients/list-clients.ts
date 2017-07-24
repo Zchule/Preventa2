@@ -29,7 +29,10 @@ export class ListsClientsPage {
     load.present();
     this.clientService.getAll()
     .subscribe(clients=>{
-      this.clientsShow = this.clientsBackup = clients;
+      this.clientsShow = this.clientsBackup = clients.map(item =>{
+        item.fullName = `${item.name} ${item.apPat} ${item.apMat}`;
+        return item;
+      });
       load.dismiss(); 
     });   
   }
@@ -38,7 +41,7 @@ export class ListsClientsPage {
     if(event.target && event.target.value){
       let query = event.target.value.trim();
       this.clientsShow = this.clientsBackup.filter(item => {
-        return item.codClient.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        return item.fullName.toLocaleLowerCase().includes(query.toLocaleLowerCase())
       });
     }else{
       this.clientsShow = this.clientsBackup;
