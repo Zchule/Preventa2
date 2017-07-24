@@ -17,7 +17,7 @@
       
       <ion-item>
         <ion-label floating>Tipo:</ion-label>
-        <ion-select formControlName="type">
+        <ion-select formControlName="type" [compareWith]="compareTypes">
           <ion-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-option>
         </ion-select>
       </ion-item>

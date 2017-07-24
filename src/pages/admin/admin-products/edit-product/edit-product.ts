@@ -55,14 +55,37 @@ export class EditProductPage {
     load.present();
     this.getAllData()
     .subscribe((response: any[]) =>{
-      this.types = response[0];
+      // this.types = response[0].map(item =>{
+      //   return {
+      //     name: item.name,
+      //     value: item.value,
+      //     photo: item.photo
+      //   }
+      // });
+      this.types = [
+        {
+          name:'ho',
+          value: 'ho'
+        },
+        {
+          name:'h1',
+          value: 'h1'
+        }
+      ];
       this.categoriesShow = this.categories = response[1];
       this.marksShow = this.marks = response[2];
-      this.addSubscribeType();
-      this.addSubscribeCategory();
+      console.log(this.types);
+      //this.addSubscribeType();
+      //this.addSubscribeCategory();
       if(this.product !== null &&  this.product !==  undefined){
         console.log(this.product);
-        this.productForm.patchValue(this.product);
+        this.productForm.patchValue({
+          type: {
+            name:'ho',
+            value:'ho'
+          }
+        });
+        //this.productForm.patchValue(this.product);
       }
       load.dismiss();
     }, error=>{
@@ -70,23 +93,27 @@ export class EditProductPage {
     });
   }
 
-  private addSubscribeType(){
-    this.subscribeType = this.productForm.get('type').valueChanges.subscribe(type=>{
-      this.categoriesShow = this.categories.filter(category => category.type == type.value );
-      this.productForm.patchValue({
-        category: this.categoriesShow[0]
-      });
-    });
+  compareTypes(a: any, b: any){
+    return a.value === b.value;
   }
 
-  private addSubscribeCategory(){
-    this.subscribeType = this.productForm.get('category').valueChanges.subscribe(category=>{
-        this.marksShow = this.marks.filter(mark => mark.category == category.value );
-        this.productForm.patchValue({
-          mark: this.marksShow[0]
-        });
-    });
-  }
+  // private addSubscribeType(){
+  //   this.subscribeType = this.productForm.get('type').valueChanges.subscribe(type=>{
+  //     this.categoriesShow = this.categories.filter(category => category.type == type.value );
+  //     this.productForm.patchValue({
+  //       category: this.categoriesShow[0]
+  //     });
+  //   });
+  // }
+
+  // private addSubscribeCategory(){
+  //   this.subscribeType = this.productForm.get('category').valueChanges.subscribe(category=>{
+  //       this.marksShow = this.marks.filter(mark => mark.category == category.value );
+  //       this.productForm.patchValue({
+  //         mark: this.marksShow[0]
+  //       });
+  //   });
+  // }
 
 
   saveProduct( event: Event ){
@@ -95,19 +122,19 @@ export class EditProductPage {
     product.categoryValue = product.category.value;
     product.markValue = product.mark.value;
     event.preventDefault();
-      this.productService.update(product.key, product)
-      .then(()=>{
-          let message = this.toastCtrl.create({
-          message: 'Producto Actualizado',
-          duration: 3000,
-          showCloseButton: true
-        })
-        message.present();
-        this.viewCtrl.dismiss(product);
+    this.productService.update(product.key, product)
+    .then(()=>{
+      let message = this.toastCtrl.create({
+        message: 'Producto Actualizado',
+        duration: 3000,
+        showCloseButton: true
       })
-      .catch(error=>{
-        console.log(error);
-      });
+      message.present();
+      this.viewCtrl.dismiss(product);
+    })
+    .catch(error=>{
+      console.log(error);
+    });
       
     }
 
