@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams, ToastController } from 'ionic-angular';
-
-import { Camera, CameraOptions } from '@ionic-native/camera';
-
-import { ProductService } from '../../../../providers/product.service';
+import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,17 +13,9 @@ export class ViewProductPage {
 
   constructor(
     public viewCtrl: ViewController,
-    public navParams: NavParams,
-    public formBuilder: FormBuilder,
-    public toastCtrl: ToastController,
-    public productService: ProductService,
-    public camera: Camera
-    ) {
+    public navParams: NavParams
+  ) {
     this.product = this.navParams.get('product');
-  }
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormProduct');
   }
   
   close(){

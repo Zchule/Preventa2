@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, AlertController } from 'ionic-angular';
 
 import { OrderService } from '../../../../providers/order.service';
 import { ClientService } from '../../../../providers/client.service';
@@ -16,8 +16,7 @@ export class CreateOrderPresalePage {
   clients: any[] = [];
 
   constructor(
-    private navCtrl: NavController, 
-    private navParams: NavParams,
+    private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private orderService: OrderService,
     private loadCtrl: LoadingController,

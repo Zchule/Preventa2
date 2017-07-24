@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, ViewController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, ToastController, AlertController, LoadingController } from 'ionic-angular';
 
 import { ProductService } from '../../../../providers/product.service';
 import { TypeProductsService } from '../../../../providers/type-products.service';
@@ -33,7 +33,6 @@ export class CreateProductPage {
 
   constructor(
     public viewCtrl: ViewController,
-    public navParams: NavParams,
     public formBuilder: FormBuilder,
     public toastCtrl: ToastController,
     public productService: ProductService,

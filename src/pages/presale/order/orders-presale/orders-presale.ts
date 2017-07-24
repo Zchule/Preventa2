@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, ModalController, AlertController, ActionSheetController } from 'ionic-angular';
 
 import { OrderService } from '../../../../providers/order.service'; 
 
@@ -14,7 +14,6 @@ export class OrdersPresalePage {
 
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
     private orderService: OrderService,
     private loadCtrl: LoadingController,
     private modalCtrl: ModalController,
