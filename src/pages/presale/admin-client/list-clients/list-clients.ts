@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { FormControl } from '@angular/forms';
 
 import { ClientService } from '../../../../providers/client.service';
 
@@ -11,7 +12,9 @@ import { ClientService } from '../../../../providers/client.service';
 })
 export class ListsClientsPage {
 
-  clients: FirebaseListObservable<any>;
+  clientsBackup: any[] = [];
+  clientsShow: any[] = [];
+  searchInput: FormControl;
   
   constructor(
     private navCtrl: NavController,
@@ -27,11 +30,23 @@ export class ListsClientsPage {
       content: 'Cargando...'
     });
     load.present();
+    this.searchInput = new FormControl("");
     this.clientService.getAll()
     .subscribe(clients=>{
-      this.clients = clients;
+      this.clientsShow = this.clientsBackup = clients;
       load.dismiss(); 
     });   
+  }
+
+  search(event: any){
+    if(event.target && event.target.value){
+      let query = event.target.value.trim();
+      this.clientsShow = this.clientsBackup.filter(item => {
+        return item.codClient.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+      });
+    }else{
+      this.clientsShow = this.clientsBackup;
+    }
   }
 
   goToClient(client){

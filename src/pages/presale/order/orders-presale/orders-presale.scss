@@ -1,3 +1,10 @@
 page-orders-presale {
-
+   ion-item{
+    &.done{
+      border-left: 10px solid green;
+    }
+    &.pending{
+      border-left: 10px solid orange;
+    }
+  }
 }
