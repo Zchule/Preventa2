@@ -12,56 +12,44 @@
 
 <ion-content>
 
-  <form [formGroup]="userForm">
-    <ion-list>
+      <img [src]="user.photo">
 
-      <ion-grid>
-         <ion-row>
-          <ion-col col-6 offset-3>
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img [src]="user.photo">
-              </ion-thumbnail>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-       </ion-grid>
+      <ion-list>  
 
       <ion-item>
-        <ion-label>Nombre: </ion-label>
-        <ion-input formControlName="name" disabled="true"></ion-input>
+        <h2> Nombre: </h2>
+        <p> {{ user.name }} </p>
       </ion-item>
       
       <ion-item>
-        <ion-label>Apellido Paterno: </ion-label>
-        <ion-input formControlName="apPat" disabled="true"></ion-input>
+        <h2>Apellido Paterno: </h2>
+        <p> {{ user.apPat }} </p>
       </ion-item>
      
       <ion-item>
-        <ion-label>Apellido Materno: </ion-label>
-        <ion-input formControlName="apMat" disabled="true"></ion-input>
+        <h2>Apellido Materno: </h2>
+        <p>{{ user.apMat }}</p>
       </ion-item>
      
       <ion-item>
-        <ion-label>Carnet de Indentidad: </ion-label>
-        <ion-input formControlName="CI" disabled="true" ></ion-input>
+        <h2>Carnet de Indentidad: </h2>
+        <p>{{ user.CI }}</p>
       </ion-item>
      
       <ion-item>
-        <ion-label>Dirección: </ion-label>
-        <ion-input formControlName="direction" disabled="true"></ion-input>
+        <h2>Dirección: </h2>
+        <p> {{ user.direction }}</p>
+        </ion-item>
+      
+      <ion-item>
+      <h2>email: </h2>
+      <p> {{ user.email }}</p>
       </ion-item>
       
       <ion-item>
-      <ion-label>email: </ion-label>
-      <ion-input formControlName="email" disabled="true"></ion-input>
+        <h2>Tipo de Usuario</h2>
+        <p> {{ user.role }}</p>
       </ion-item>
-      
-      <ion-item>
-      <ion-label>Tipo de Usuario</ion-label>
-      <ion-input formControlName="role" disabled="true"></ion-input>
-    </ion-item>
+
     </ion-list>
-
-  </form>
 </ion-content>

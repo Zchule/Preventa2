@@ -61,7 +61,7 @@ export class EditProductPage {
       this.addSubscribeType();
       this.addSubscribeCategory();
       if(this.product !== null &&  this.product !==  undefined){
-        this.productForm.patchValue(this.product);
+        this.productForm.patchValue(this.product, {emitEvent: false});
       }
       load.dismiss();
     }, error=>{
@@ -84,10 +84,10 @@ export class EditProductPage {
 
   private addSubscribeCategory(){
     this.subscribeCategory = this.productForm.get('category').valueChanges.subscribe(category=>{
-        this.marksShow = this.marks.filter(mark => mark.category == category.value );
-        this.productForm.patchValue({
-          mark: this.marksShow[0]
-        });
+      this.marksShow = this.marks.filter(mark => mark.category == category.value );
+      this.productForm.patchValue({
+        mark: this.marksShow[0]
+      });
     });
   }
 
