@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
-import { FormControl } from '@angular/forms';
 
 import { ClientService } from '../../../../providers/client.service';
 
@@ -14,7 +12,6 @@ export class ListsClientsPage {
 
   clientsBackup: any[] = [];
   clientsShow: any[] = [];
-  searchInput: FormControl;
   
   constructor(
     private navCtrl: NavController,
@@ -30,7 +27,6 @@ export class ListsClientsPage {
       content: 'Cargando...'
     });
     load.present();
-    this.searchInput = new FormControl("");
     this.clientService.getAll()
     .subscribe(clients=>{
       this.clientsShow = this.clientsBackup = clients;
