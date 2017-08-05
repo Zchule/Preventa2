@@ -127,6 +127,7 @@ export class MyApp {
   logout() {
     this.fireAuth.auth.signOut();
     this.storage.remove('session');
+    this.storage.clear();
     this.navMaster.setRoot('LoginPage');
   }
 
