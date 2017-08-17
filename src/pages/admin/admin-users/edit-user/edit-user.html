@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Usuarios</ion-title>
+    <ion-title>Editar</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="close()">
         <ion-icon name="close"></ion-icon>
@@ -49,23 +49,34 @@
         <p *ngIf="userForm.get('direction').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
       </ion-item>
 
-      <ion-item >
-      <ion-label floating>email: </ion-label>
-      <ion-input formControlName="email" type="email" disabled="{{isInputDisabled}}" ></ion-input>
+      <!-- <ion-item>
+        <ion-label floating>email: </ion-label>
+        <ion-input formControlName="email" type="email" ></ion-input>
       </ion-item>
       <ion-item *ngIf="userForm.get('email').errors && userForm.get('email').dirty">
         <p *ngIf="userForm.get('email').hasError('required')" ion-text color="danger">Este campo es requerido.</p>
         <p *ngIf="userForm.get('email').hasError('pattern')" ion-text color="danger">email no valido.</p>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item>
-      <ion-label>Tipo de Usuario</ion-label>
-        <ion-select formControlName="role">
+        <ion-label>Tipo de Usuario</ion-label>
+        <ion-select [formControl]="roleField">
           <ion-option value="presale" selected="true">Preventa</ion-option>
           <ion-option value="distributor">Distribuidor</ion-option>
           <ion-option value="admin">Administrador</ion-option>
         </ion-select>
       </ion-item>
+
+      <ion-item *ngIf="roleField.value == 'distributor'">
+        <ion-label>Zona</ion-label>
+        <ion-select [formControl]="zoneField">
+          <ion-option value="Norte" selected="true">Norte</ion-option>
+          <ion-option value="Sur">Sur</ion-option>
+          <ion-option value="Este">Este</ion-option>
+          <ion-option value="Oste">Oste</ion-option>
+        </ion-select>
+      </ion-item>
+
     </ion-list>
 
     <div padding>

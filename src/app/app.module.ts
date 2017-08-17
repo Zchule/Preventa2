@@ -6,6 +6,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -56,6 +58,7 @@ const configFirebase ={
     StatusBar,
     SplashScreen,
     Camera,
+    InAppBrowser,
     ProductService,
     UserProfileService,
     DetersService,
@@ -65,6 +68,7 @@ const configFirebase ={
     MarkProductsService,
     CategoryProductsService,
     Geolocation,
+    LaunchNavigator,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OrderService
   ]

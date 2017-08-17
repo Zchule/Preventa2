@@ -14,5 +14,22 @@ page-map-clients {
     .scroll{
       height: calc(100% - 250px);
     }
+    .item-map{
+      .item-map-avatar{
+        width: 50px;
+        text-align: left;
+        float: left;
+        margin-right: 5px;
+        img{
+          width: 100%;
+        }
+      }
+      h2{
+        font-size: 16px;
+      }
+      p{
+        text-transform: uppercase;
+      }
+    }
   }
 }

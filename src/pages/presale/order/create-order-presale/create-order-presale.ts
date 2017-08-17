@@ -91,6 +91,7 @@ export class CreateOrderPresalePage {
       date: new Date().getTime(),
       type: this.orderForm.value.type,
       client: client,
+      zone: client.zone || '',
       codClient: client.codClient,
       state: 'init',
       products: []

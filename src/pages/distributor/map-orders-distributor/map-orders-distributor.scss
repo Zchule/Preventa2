@@ -1,6 +1,9 @@
 page-map-orders-distributor {
   ion-content{
     background: rgb(229, 227, 223);
+    &.item-detail .scroll-content{
+      padding-bottom: 100px;
+    }
     #map {
       width: 100%;
       height: 250px;
@@ -18,5 +21,39 @@ page-map-orders-distributor {
       padding-bottom: 0px;
       padding-top: 0px; 
     }
+  }
+  .item-map{
+    .item-map-avatar{
+      width: 50px;
+      text-align: left;
+      float: left;
+      margin-right: 5px;
+      img{
+        width: 100%;
+      }
+    }
+    h5,h2{
+      font-size: 12px;
+    }
+    p{
+      text-transform: uppercase;
+    }
+  }
+}
+
+div.item-detail{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 2;
+  border-top: 5px solid color($colors, dark);
+  background-color: white;
+  h5{
+    margin: 0px;
+    font-size: 1.5rem;
+  }
+  p{
+    font-size: 12px;
   }
 }

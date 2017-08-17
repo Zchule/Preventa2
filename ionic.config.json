@@ -15,5 +15,8 @@
       "path": "",
       "proxyUrl": "https://bddproyecto.firebaseio.com"
     }
-  ]
+  ],
+  "integrations": {
+    "cordova": {}
+  }
 }

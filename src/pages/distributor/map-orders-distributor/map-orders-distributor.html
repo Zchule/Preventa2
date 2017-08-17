@@ -4,13 +4,41 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content [class.item-detail]="itemSelected !== null">
   <div id="map"></div>
   
   <ion-scroll scrollY="true" class="scroll">
-    <div padding class="text">
-      <p>Distancia total: {{ total }} km</p>
-    </div>
-    <div id="panel" padding></div>
+    <h5 padding-horizontal>Distancia total: {{ total }} km</h5>
+    <ion-list>
+      <ion-item *ngFor="let item of legs; let i = index;" (click)="clickLeg(item)">
+        <ion-badge [color]="item.color" item-start>{{ i + 1 }}</ion-badge> 
+        <h2 text-wrap>{{ item.leg.end_address }}</h2>
+        <p *ngIf="item.order" text-wrap>{{ item.order.client.fullName }}</p>
+      </ion-item>
+    </ion-list>
   </ion-scroll>
+
 </ion-content>
+
+<div class="item-detail" *ngIf="itemSelected !== null">
+  <ion-row align-items-center>
+    <ion-col col-4>
+      <button ion-button block icon-only (click)="showOrder()">
+        <ion-icon name="eye"></ion-icon>
+      </button>
+      <p text-center>Ver pedido</p>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button block icon-only (click)="openNavigate()">
+        <ion-icon name="navigate"></ion-icon>
+      </button>
+      <p text-center>Abrir ruta</p>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button block color="danger" icon-only (click)="closeLeg()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <p text-center>Cerrar</p>
+    </ion-col>
+  </ion-row>
+</div>

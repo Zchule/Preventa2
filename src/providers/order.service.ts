@@ -20,6 +20,26 @@ export class OrderService {
     return this.orders.push(order);
   }
 
+  getProductsByZone(zone: string): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      const query = this.ordersRef.orderByChild('zone').equalTo(zone);
+      query.once('value', snap =>{
+        let orders = [];
+        snap.forEach(item => {
+          let data = item.val();
+          data.key = item.key;
+          orders.push(data);
+          return false;
+        });
+        if(orders === null){
+          reject(orders);
+        }else{
+          resolve(orders);
+        }
+      })
+    })
+  }
+
   getOrders(){
     return this.orders;
   }

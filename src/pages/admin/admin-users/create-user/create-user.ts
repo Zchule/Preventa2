@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IonicPage, ViewController, ToastController} from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -15,6 +15,8 @@ export class CreateUserPage {
 
   userForm: FormGroup;
   image: string = null;
+  roleField: FormControl;
+  zoneField: FormControl;
 
   constructor(
     private viewCtrl: ViewController,
@@ -23,7 +25,7 @@ export class CreateUserPage {
     private camera: Camera,
     private userProfileService: UserProfileService
   ) {
-    this.userForm = this.makeForm();  
+    this.makeForm();  
   }
 
   ionViewDidLoad() {}
@@ -40,7 +42,6 @@ export class CreateUserPage {
       })
       message.present();
       message.onDidDismiss(()=>{
-        this.userForm = this.makeForm();  
         this.close();
       })
     }))
@@ -90,7 +91,11 @@ export class CreateUserPage {
   }
   
   private makeForm(){
-    return this.formBuilder.group({
+
+    this.zoneField = new FormControl('');
+    this.roleField = new FormControl('presale', [Validators.required]);
+
+    this.userForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       apPat: ['', [Validators.required]],
       apMat: ['', [Validators.required]],

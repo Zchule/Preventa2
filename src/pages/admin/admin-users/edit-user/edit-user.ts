@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { IonicPage, ViewController, NavParams, ToastController} from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -16,6 +16,8 @@ export class EditUserPage {
   userForm: FormGroup;
   image: string = null;
   user: any = null;
+  roleField: FormControl;
+  zoneField: FormControl;
   
   constructor(
     private viewCtrl: ViewController,
@@ -24,8 +26,8 @@ export class EditUserPage {
     private toastCtrl: ToastController,
     private camera: Camera,
     private userProfileService: UserProfileService
-    ) {
-      this.userForm = this.makeForm();
+  ) {
+      this.makeForm();
       this.user = this.navParams.get('user');
       this.userForm.patchValue(this.user);
   }
@@ -45,7 +47,6 @@ export class EditUserPage {
         showCloseButton: true
       })
       message.present();
-      this.userForm = this.makeForm();  
       this.close();
     }))
     .catch(error =>{
@@ -94,15 +95,21 @@ export class EditUserPage {
   }
   
   private makeForm(){
-    return this.formBuilder.group({
+
+    this.zoneField = new FormControl('');
+    this.roleField = new FormControl('presale', [Validators.required]);
+
+     
+    this.userForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       apPat: ['', [Validators.required]],
       apMat: ['', [Validators.required]],
       CI: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
-      role: ['presale', [Validators.required]],
+      role: this.roleField,
       photo: ['assets/imgs/sinfoto.png', [Validators.required]],
+      zone: this.zoneField,
     });
   }
 
