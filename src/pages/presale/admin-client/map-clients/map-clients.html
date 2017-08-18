@@ -11,15 +11,37 @@
 
 <ion-content>
   <div id="map"></div>
-   <ion-scroll scrollY="true" class="scroll">
+  <ion-scroll scrollY="true" class="scroll">
+    <h5 padding-horizontal>Distancia total: {{ total }} km</h5>
     <ion-list>
-      <ion-item *ngFor="let client of clients" (click)="clickClient(client)">
-        <ion-avatar item-start>
-          <img [src]="client.photo">
-        </ion-avatar>
-        <h2>{{ client.fullName }}</h2>
-        <p><strong>Dirección:</strong> {{ client.direction }}</p>
+      <ion-item *ngFor="let item of legs; let i = index;" (click)="clickLeg(item)">
+        <ion-badge [color]="item.color" item-start>{{ i + 1 }}</ion-badge> 
+        <h2 text-wrap>{{ item.leg.end_address }}</h2>
+        <p *ngIf="item.client" text-wrap>{{ item.client.fullName }}</p>
       </ion-item>
     </ion-list>
-  </ion-scroll> 
+  </ion-scroll>
 </ion-content>
+
+<div class="item-detail" *ngIf="itemSelected !== null">
+  <ion-row align-items-center>
+    <ion-col col-4>
+      <button color="royal" ion-button block icon-only (click)="showClient()">
+        <ion-icon name="eye"></ion-icon>
+      </button>
+      <p text-center>Ver cliente</p>
+    </ion-col>
+    <ion-col col-4>
+      <button color="royal" ion-button block icon-only (click)="openNavigate()">
+        <ion-icon name="navigate"></ion-icon>
+      </button>
+      <p text-center>Abrir ruta</p>
+    </ion-col>
+    <ion-col col-4>
+      <button color="royal" ion-button block color="danger" icon-only (click)="closeLeg()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <p text-center>Cerrar</p>
+    </ion-col>
+  </ion-row>
+</div>

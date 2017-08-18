@@ -127,11 +127,11 @@ export class MapOrdersDistributorPage {
         this.directionsDisplay.setDirections(response);
         console.log(response);
         response.routes[0].legs.forEach((item, index)=>{
-          let client = this.matchClient(item.end_location.lat(),item.end_location.lng());
-          if(client){
+          let order = this.matchClient(item.end_location.lat(),item.end_location.lng());
+          if(order){
             this.legs.push({
               leg: item,
-              order: this.matchClient(item.end_location.lat(),item.end_location.lng()),
+              order: order,
               color: 'secondary'
             });
           }
@@ -159,6 +159,8 @@ export class MapOrdersDistributorPage {
   }
 
   private fitBounds(points: any[]){
+
+    this.bounds.extend(this.myLatLng);
     
     points.forEach((point) => {
       var myLatlng = new google.maps.LatLng(point.location.lat, point.location.lng);

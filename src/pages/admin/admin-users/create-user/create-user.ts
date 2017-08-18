@@ -92,7 +92,7 @@ export class CreateUserPage {
   
   private makeForm(){
 
-    this.zoneField = new FormControl('');
+    this.zoneField = new FormControl('Norte');
     this.roleField = new FormControl('presale', [Validators.required]);
 
     this.userForm = this.formBuilder.group({
@@ -102,8 +102,9 @@ export class CreateUserPage {
       CI: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
-      role: ['presale', [Validators.required]],
-      photo: ['assets/imgs/sinfoto.png', [Validators.required]]
+      role: this.roleField,
+      photo: ['assets/imgs/sinfoto.png', [Validators.required]],
+      zone: this.zoneField,
     });
   }
 

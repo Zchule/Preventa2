@@ -96,7 +96,7 @@ export class EditUserPage {
   
   private makeForm(){
 
-    this.zoneField = new FormControl('');
+    this.zoneField = new FormControl('Norte');
     this.roleField = new FormControl('presale', [Validators.required]);
 
      

@@ -14,7 +14,7 @@ export class ViewClientPage {
     public navParams: NavParams,
     public viewCtrl: ViewController  
   ) {
-      this.client = this.navParams.get('client');
+    this.client = this.navParams.get('client');
   }
   
   close(){

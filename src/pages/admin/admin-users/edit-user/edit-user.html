@@ -67,7 +67,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item *ngIf="roleField.value == 'distributor'">
+      <ion-item *ngIf="roleField.value != 'admin'">
         <ion-label>Zona</ion-label>
         <ion-select [formControl]="zoneField">
           <ion-option value="Norte" selected="true">Norte</ion-option>

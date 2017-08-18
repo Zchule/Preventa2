@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 import { ClientService } from '../../../../providers/client.service';
 
 @IonicPage()
@@ -19,7 +19,8 @@ export class ListsClientsPage {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private actionSheetCtrl: ActionSheetController,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private storage: Storage,
   ) {}
 
   ionViewDidLoad() {
@@ -27,8 +28,14 @@ export class ListsClientsPage {
       content: 'Cargando...'
     });
     load.present();
-    this.clientService.getAll()
-    .subscribe(clients=>{
+    this.storage.get('session')
+    .then(data =>{
+      let profile = JSON.parse(data);
+      console.log(profile);
+      return this.clientService.getClientsByZone(profile.zone || '');
+    })
+    .then((clients:any[]) =>{
+      console.log(clients);
       this.clientsShow = this.clientsBackup = clients.map(item =>{
         item.fullName = `${item.name} ${item.apPat} ${item.apMat}`;
         return item;
@@ -43,7 +50,10 @@ export class ListsClientsPage {
         return 0;
       })
       load.dismiss(); 
-    });   
+    })
+    .catch(error =>{
+      load.dismiss();
+    });
   }
 
   search(event: any){

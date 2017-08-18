@@ -66,7 +66,7 @@ export class EditClientPage {
       direction: ['', [Validators.required]],
       nameStore: ['', [Validators.required]],
       typeStore: ['agency'],
-      zone: ['north'],
+      zone: ['Norte'],
       facName: ['', [Validators.required]],
       facNit: ['', [Validators.required]],
       photo: ['assets/imgs/sinfoto.png', [Validators.required]],

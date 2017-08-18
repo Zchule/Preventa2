@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, LoadingController, AlertController } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 import { OrderService } from '../../../../providers/order.service';
 import { ClientService } from '../../../../providers/client.service';
 
@@ -21,7 +21,8 @@ export class CreateOrderPresalePage {
     private orderService: OrderService,
     private loadCtrl: LoadingController,
     private clientService: ClientService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private storage: Storage,
   ) {
     this.orderForm = this.makeLoginForm();
   }
@@ -29,11 +30,16 @@ export class CreateOrderPresalePage {
   ionViewDidLoad(){
     let load = this.loadCtrl.create();
     load.present();
-    this.clientService.getAll()
-    .subscribe(clients =>{
-      this.clients = clients;
+    this.storage.get('session')
+    .then(data =>{
+      let profile = JSON.parse(data);
+      return this.clientService.getClientsByZone(profile.zone || '');
+    })
+    .then((clients:any[]) =>{
       load.dismiss();
-    },error=>{
+      this.clients = clients;
+    })
+    .catch(()=>{
       load.dismiss();
     });
   }
