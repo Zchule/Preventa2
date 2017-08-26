@@ -291,11 +291,11 @@ export class MapOrdersDistributorPage {
 
   private matchClient(lat, lng){
     let result = this.orders.filter(item =>{
-      let latClient = parseFloat(item.client.latitude).toFixed(4);
-      let lngClient = parseFloat(item.client.longitude).toFixed(4);
+      let latClient = parseFloat(item.client.latitude).toFixed(3);
+      let lngClient = parseFloat(item.client.longitude).toFixed(3);
 
-      let latStep = lat.toFixed(4);
-      let lngStep = lng.toFixed(4);
+      let latStep = lat.toFixed(3);
+      let lngStep = lng.toFixed(3);
       
       return (latClient == latStep) && (lngClient == lngStep);
     });
