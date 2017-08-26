@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="royal">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Inventario</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p ion-text color="danger" text-center>Los siguientes productos están apunto de agotarse.</p>
+    </ion-card-content> 
+  </ion-card>
+  <ion-list>
+    <ion-item *ngIf="products.length === 0">
+      No hay items
+    </ion-item>
+    <ion-item *ngFor="let product of products; let i = index" (click)="goToProduct(product)" >
+      <ion-thumbnail item-left>
+        <img [src]="product.photo">
+      </ion-thumbnail>
+      <h2>{{ product.name }}</h2>
+      <h3 *ngIf="product.category">Categoria: {{ product.category.name }}</h3>
+      <h3 *ngIf="product.mark">Marca: {{ product.mark.data }}</h3>
+      <h3>Precio: {{ product.price }} bs.</h3>
+      <ion-badge item-right>{{ product.cant }}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

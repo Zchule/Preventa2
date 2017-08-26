@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Platform } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth.service';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,9 @@ export class LoginPage{
     public formBuilder: FormBuilder,
     public authService: AuthService,
     public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private oneSignal: OneSignal,
+    private platform: Platform
   ) {
     this.loginForm = this.makeLoginForm();
   }
@@ -35,6 +38,9 @@ export class LoginPage{
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
     .then(user => {
+      if(this.platform.is('cordova')){
+        this.oneSignal.sendTag('role', user.role);
+      }
       this.navCtrl.setRoot(user.page);
     })
     .catch(error=>{

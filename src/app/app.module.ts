@@ -28,6 +28,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { OrderService } from '../providers/order.service';
+import { PushService } from '../providers/push.service';
 
 const configFirebase ={
   apiKey: "AIzaSyB7BLUYFFxZw5lJEUt_3RfPMjcJMVcUmuw",
@@ -72,7 +73,8 @@ const configFirebase ={
     Geolocation,
     LaunchNavigator,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    OrderService
+    OrderService,
+    PushService
   ]
 })
 export class AppModule {}

@@ -10,12 +10,14 @@ export class ViewProductPage {
 
   product: any = null;
   image: string = null;
+  color: string;
 
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams
   ) {
     this.product = this.navParams.get('product');
+    this.color = this.navParams.get('color') || 'primary';
   }
   
   close(){

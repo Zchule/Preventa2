@@ -3,7 +3,8 @@ import { IonicPage, ViewController, NavParams, LoadingController, AlertControlle
 import { FirebaseListObservable } from 'angularfire2/database';
 
 import { OrderService } from '../../../providers/order.service'; 
-import { ProductService } from '../../../providers/product.service'; 
+import { ProductService } from '../../../providers/product.service';
+import { PushService } from '../../../providers/push.service';
 
 @IonicPage()
 @Component({
@@ -24,7 +25,8 @@ export class OrderDistributorPage {
     private orderService: OrderService,
     private productService: ProductService,
     private loadCtrl: LoadingController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private pushService: PushService
   ) {
     this.state = this.navParams.get('state');
   }
@@ -66,10 +68,9 @@ export class OrderDistributorPage {
     this.orderService.updateOrder(this.navParams.get('order'),{
       state: 'done'
     })
-    .then(()=>{
-      return Promise.all(this.updateProducts())
-    })
-    .then(()=>{
+    .then(() => Promise.all(this.updateProducts()))
+    .then(() => this.pushService.sendPushPreventa('Hay productos que están por agotarse'))
+    .then(() =>{
       load.dismiss();
       load.onDidDismiss(()=>{
         this.close();

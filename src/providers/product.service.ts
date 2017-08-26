@@ -49,6 +49,22 @@ export class ProductService {
     return this.products;
   }
 
+  getProductsByCant(cant: number): Promise<any>{
+    return new Promise((resolve, reject)=>{
+      const query = this.productsRef.orderByChild('cant').endAt(cant, 'cant');
+      query.once('value', snaps =>{
+        let products = [];
+        snaps.forEach(snap =>{
+          let data = snap.val();
+          data.key = snap.key;
+          products.push(data);
+          return false;
+        })
+        resolve(products);
+      })
+    })
+  }
+
   getProductsByCategory(category: string): Promise<any>{
     return new Promise((resolve, reject)=>{
       const query = this.productsRef.orderByChild('categoryValue').equalTo(category);
@@ -115,7 +131,7 @@ export class ProductService {
   update(key, product): Promise<any>{
     return new Promise((resolve, reject)=>{
       if(key !== '' && key !== null && key !== undefined){
-        this.fireDatabase.object('/productos/'+ key).set(product)
+        this.fireDatabase.object('/productos/'+ key).update(product)
         .then(()=> resolve(true))
         .catch(error => reject(error))
       }else{
@@ -124,7 +140,7 @@ export class ProductService {
     });
   }
 
-  delete(key){
+  delete(key): any{
     if(key !== '' && key !== null && key !== undefined){
       return this.products.remove(key);
     }else{

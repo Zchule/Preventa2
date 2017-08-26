@@ -42,6 +42,11 @@ export class MyApp {
       component: 'HomePresalePage'
     },
     {
+      title: 'Inventario',
+      icon: 'list',
+      component: 'InventoryPage'
+    },
+    {
       title: 'Ver pedidos',
       icon: 'clipboard',
       component: 'OrdersPresalePage'
@@ -111,7 +116,9 @@ export class MyApp {
       this.checkSession();
       this.listenChangeUser();
       this.disenabledMenu();
-      this.listerNotifications();
+      if(this.platform.is('cordova')){
+        this.listerNotifications();
+      }
     });
   }
 
@@ -131,13 +138,8 @@ export class MyApp {
   private checkSession(){
     if(this.auth.isLoggedIn()){
       this.user = this.auth.getUser();
-      console.log(this.user);
-      let pages: any = {
-        'admin': 'HomeAdminPage',
-        'distributor': 'HomeDistributorPage',
-        'presale': 'HomePresalePage',
-      };
-      this.navMaster.setRoot(pages[this.user.role]);
+      this.oneSignal.sendTag('role', this.user.role);
+      this.navMaster.setRoot(this.user.page);
     }else{
       this.navMaster.setRoot('LoginPage');
     }
@@ -163,7 +165,9 @@ export class MyApp {
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     this.oneSignal.handleNotificationOpened()
     .subscribe((data) => {
-      console.log(data);
+      if(this.auth.isLoggedIn()){
+        this.navMaster.setRoot('InventoryPage');
+      }
     });
     this.oneSignal.endInit();
   }

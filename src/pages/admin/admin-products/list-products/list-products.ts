@@ -51,7 +51,6 @@ export class ListProductsPage {
       product:product
     });
     modal.present();
-
   }
   
   addProduct(){
@@ -73,12 +72,13 @@ export class ListProductsPage {
   }
 
   private deleteProduct(product: any, index: number){
-    this.productService.delete( product.key ).then(()=>{
+    this.productService.delete( product.key )
+    .then(()=>{
       this.products.splice(index, 1);
     });
   }
 
-   showAlertDelete( product: any, index: number){
+  showAlertDelete( product: any, index: number){
     let alert = this.alertCtrl.create({
       title: '¿Estás seguro?',
       message: 'El producto se eliminara',
