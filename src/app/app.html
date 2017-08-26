@@ -3,11 +3,11 @@
     <ion-content>
       <div class="profile primary">
         <div class="cover">
-          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+          <img *ngIf="user.photo !== undefined" [src]="user.photo" alt="avatar">
+          <img *ngIf="user.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
         </div>
         <h5>Administrador</h5>
-        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
+        <p *ngIf="user.email !== undefined">{{ user.email }}</p>
       </div>
       <ion-list>
         <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesAdmin">
@@ -26,11 +26,11 @@
     <ion-content>
       <div class="profile secondary">
         <div class="cover">
-          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+          <img *ngIf="user.photo !== undefined" [src]="user.photo" alt="avatar">
+          <img *ngIf="user.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
         </div>
-        <h5>Distribuidor <span *ngIf="profile.zone">/ {{ profile.zone }}</span> </h5>
-        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
+        <h5>Distribuidor </h5>
+        <p *ngIf="user.email !== undefined">{{ user.email }}</p>
       </div>
       <ion-list>
         <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesDistributor">
@@ -49,11 +49,11 @@
     <ion-content>
       <div class="profile royal">
         <div class="cover">
-          <img *ngIf="profile.photo !== undefined" [src]="profile.photo" alt="avatar">
-          <img *ngIf="profile.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
+          <img *ngIf="user.photo !== undefined" [src]="user.photo" alt="avatar">
+          <img *ngIf="user.photo === undefined" src="assets/imgs/sinfoto.png" alt="avatar">
         </div>
-        <h5>Preventa <span *ngIf="profile.zone">/ {{ profile.zone }}</span></h5>
-        <p *ngIf="profile.email !== undefined">{{ profile.email }}</p>
+        <h5>Preventa</h5>
+        <p *ngIf="user.email !== undefined">{{ user.email }}</p>
       </div>
       <ion-list>
         <button menuClose ion-item (click)="openPage( page )" *ngFor="let page of pagesPresale">

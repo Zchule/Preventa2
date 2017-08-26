@@ -36,17 +36,13 @@ export class LoginPage{
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
-    .then(user=>{
-      return this.authService.getProfile(user.uid);
-    })
-    .then(profile =>{
+    .then(user =>{
       let pages: any = {
         'admin': 'HomeAdminPage',
         'distributor': 'HomeDistributorPage',
         'presale': 'HomePresalePage',
       };
-      this.storage.set('session', JSON.stringify(profile));
-      this.navCtrl.setRoot(pages[profile.role]);
+      this.navCtrl.setRoot(pages[user.role]);
     })
     .catch(error=>{
       load.dismiss().then( () => {
