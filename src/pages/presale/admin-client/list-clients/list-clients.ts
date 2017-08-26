@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicPage, NavController, ModalController, AlertController, ActionSheetController, LoadingController, NavParams } from 'ionic-angular';
 import { ClientService } from '../../../../providers/client.service';
 
 @IonicPage()
@@ -12,6 +11,7 @@ export class ListsClientsPage {
 
   clientsBackup: any[] = [];
   clientsShow: any[] = [];
+  zone: string;
   
   constructor(
     private navCtrl: NavController,
@@ -20,22 +20,19 @@ export class ListsClientsPage {
     private alertCtrl: AlertController,
     private actionSheetCtrl: ActionSheetController,
     private loadCtrl: LoadingController,
-    private storage: Storage,
-  ) {}
+    private navParams: NavParams
+  ) {
+    this.zone = this.navParams.get('zone') || 'Norte';
+  }
 
   ionViewDidLoad() {
     let load = this.loadCtrl.create({
       content: 'Cargando...'
     });
     load.present();
-    this.storage.get('session')
-    .then(data =>{
-      let profile = JSON.parse(data);
-      console.log(profile);
-      return this.clientService.getClientsByZone(profile.zone || '');
-    })
+
+    this.clientService.getClientsByZone(this.zone)
     .then((clients:any[]) =>{
-      console.log(clients);
       this.clientsShow = this.clientsBackup = clients.map(item =>{
         item.fullName = `${item.name} ${item.apPat} ${item.apMat}`;
         return item;
@@ -155,7 +152,9 @@ export class ListsClientsPage {
   }
 
   goToMapClientsPage(){
-    this.navCtrl.push('MapClientsPage');
+    this.navCtrl.push('MapClientsPage',{
+      zone: this.zone
+    });
   }
 
 }

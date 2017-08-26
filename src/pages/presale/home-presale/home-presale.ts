@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,9 +8,37 @@ import { IonicPage, NavController, MenuController } from 'ionic-angular';
 })
 export class HomePresalePage {
 
+  private inputs = [
+    {
+      type: 'radio',
+      name: 'sur',
+      value: 'Sur',
+      label: 'Sur',
+    },
+    {
+      type: 'radio',
+      name: 'este',
+      value: 'Este',
+      label: 'Este'
+    },
+    {
+      type: 'radio',
+      name: 'norte',
+      value: 'Norte',
+      label: 'Norte'
+    },
+    {
+      type: 'radio',
+      name: 'oeste',
+      value: 'Oste',
+      label: 'Oste'
+    }
+  ]
+
   constructor(
     private navCtrl: NavController,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewDidEnter() {
@@ -20,15 +48,72 @@ export class HomePresalePage {
   }
 
   goToCreateOrderPresalePage(){
-    this.navCtrl.push('CreateOrderPresalePage');
+    let alert = this.alertCtrl.create({
+      title: 'Zonas:',
+      inputs: this.inputs,
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Aceptar',
+          handler: (data) =>{
+            if(data){
+              this.navCtrl.push('CreateOrderPresalePage',{
+                zone: data
+              });
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   goToMapClientsPage(){
-    this.navCtrl.push('MapClientsPage');
+    let alert = this.alertCtrl.create({
+      title: 'Zonas:',
+      inputs: this.inputs,
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Aceptar',
+          handler: (data) =>{
+            if(data){
+              this.navCtrl.push('MapClientsPage',{
+                zone: data
+              });
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   goToClientPage(){
-    this.navCtrl.push('ListsClientsPage');
+    let alert = this.alertCtrl.create({
+      title: 'Zonas:',
+      inputs: this.inputs,
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Aceptar',
+          handler: (data) =>{
+            if(data){
+              this.navCtrl.push('ListsClientsPage',{
+                zone: data
+              });
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

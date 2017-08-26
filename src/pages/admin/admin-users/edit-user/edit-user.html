@@ -67,16 +67,6 @@
         </ion-select>
       </ion-item>
 
-      <ion-item *ngIf="roleField.value != 'admin'">
-        <ion-label>Zona</ion-label>
-        <ion-select [formControl]="zoneField">
-          <ion-option value="Norte" selected="true">Norte</ion-option>
-          <ion-option value="Sur">Sur</ion-option>
-          <ion-option value="Este">Este</ion-option>
-          <ion-option value="Oste">Oste</ion-option>
-        </ion-select>
-      </ion-item>
-
     </ion-list>
 
     <div padding>

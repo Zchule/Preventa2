@@ -36,13 +36,8 @@ export class LoginPage{
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     this.authService.doLogin(email, password)
-    .then(user =>{
-      let pages: any = {
-        'admin': 'HomeAdminPage',
-        'distributor': 'HomeDistributorPage',
-        'presale': 'HomePresalePage',
-      };
-      this.navCtrl.setRoot(pages[user.role]);
+    .then(user => {
+      this.navCtrl.setRoot(user.page);
     })
     .catch(error=>{
       load.dismiss().then( () => {

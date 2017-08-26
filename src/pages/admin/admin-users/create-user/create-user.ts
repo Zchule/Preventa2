@@ -16,7 +16,6 @@ export class CreateUserPage {
   userForm: FormGroup;
   image: string = null;
   roleField: FormControl;
-  zoneField: FormControl;
 
   constructor(
     private viewCtrl: ViewController,
@@ -92,7 +91,6 @@ export class CreateUserPage {
   
   private makeForm(){
 
-    this.zoneField = new FormControl('Norte');
     this.roleField = new FormControl('presale', [Validators.required]);
 
     this.userForm = this.formBuilder.group({
@@ -104,7 +102,6 @@ export class CreateUserPage {
       direction: ['', [Validators.required]],
       role: this.roleField,
       photo: ['assets/imgs/sinfoto.png', [Validators.required]],
-      zone: this.zoneField,
     });
   }
 

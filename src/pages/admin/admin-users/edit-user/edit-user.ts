@@ -17,7 +17,6 @@ export class EditUserPage {
   image: string = null;
   user: any = null;
   roleField: FormControl;
-  zoneField: FormControl;
   
   constructor(
     private viewCtrl: ViewController,
@@ -96,7 +95,6 @@ export class EditUserPage {
   
   private makeForm(){
 
-    this.zoneField = new FormControl('Norte');
     this.roleField = new FormControl('presale', [Validators.required]);
 
      
@@ -108,8 +106,7 @@ export class EditUserPage {
       email: ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
       direction: ['', [Validators.required]],
       role: this.roleField,
-      photo: ['assets/imgs/sinfoto.png', [Validators.required]],
-      zone: this.zoneField,
+      photo: ['assets/imgs/sinfoto.png', [Validators.required]]
     });
   }
 

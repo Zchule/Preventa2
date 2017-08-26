@@ -41,11 +41,6 @@ export class MyApp {
       component: 'HomePresalePage'
     },
     {
-      title: 'Ver Clientes',
-      component: 'ListsClientsPage',
-      icon: 'people'
-    },
-    {
       title: 'Ver pedidos',
       icon: 'clipboard',
       component: 'OrdersPresalePage'

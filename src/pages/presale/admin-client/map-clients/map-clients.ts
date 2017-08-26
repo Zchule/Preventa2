@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, LoadingController, Loading, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading, ModalController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Storage } from '@ionic/storage';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 import { ClientService } from '../../../../providers/client.service';
@@ -15,17 +14,18 @@ declare var google;
 })
 export class MapClientsPage {
 
-   map: any;
-   load: Loading;
-   clients: any[] = [];
-   directionsService: any = null;
-   directionsDisplay: any = null;
-   bounds: any = null;
-   myLatLng: any = {};
-   infowindow: any;
-   legs: any[] =[];
-   itemSelected: any = null;
-   total: number = 0;
+  map: any;
+  load: Loading;
+  clients: any[] = [];
+  directionsService: any = null;
+  directionsDisplay: any = null;
+  bounds: any = null;
+  myLatLng: any = {};
+  infowindow: any;
+  legs: any[] =[];
+  itemSelected: any = null;
+  total: number = 0;
+  zone: string;
 
   constructor(
     private navCtrl: NavController,
@@ -34,12 +34,14 @@ export class MapClientsPage {
     private clientService: ClientService,
     private storage: Storage,
     private launchNavigator: LaunchNavigator,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private navParams: NavParams
   ) {
     this.bounds = new google.maps.LatLngBounds();
     this.directionsService = new google.maps.DirectionsService();
     this.directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
     this.infowindow = new google.maps.InfoWindow();
+    this.zone = this.navParams.get('zone') || 'Norte';
   }
 
   ionViewDidLoad() {
@@ -47,11 +49,7 @@ export class MapClientsPage {
       content: 'Generando ruta'
     });
     this.load.present();
-    this.storage.get('session')
-    .then(data =>{
-      let profile = JSON.parse(data);
-      return this.clientService.getClientsByZone(profile.zone || '');
-    })
+    this.clientService.getClientsByZone(this.zone)
     .then((clients:any[]) =>{
       this.clients = clients
       .splice(0,10)
@@ -68,7 +66,9 @@ export class MapClientsPage {
   }
 
   goToListsClientsPage(){
-    this.navCtrl.push('ListsClientsPage');
+    this.navCtrl.push('ListsClientsPage', {
+      zone: this.zone
+    });
   }
 
   private getPosition():any{
@@ -236,11 +236,11 @@ export class MapClientsPage {
 
   private matchClient(lat, lng){
     let result = this.clients.filter(item =>{
-      let latClient = parseFloat(item.latitude).toFixed(4);
-      let lngClient = parseFloat(item.longitude).toFixed(4);
+      let latClient = parseFloat(item.latitude).toFixed(3);
+      let lngClient = parseFloat(item.longitude).toFixed(3);
 
-      let latStep = lat.toFixed(4);
-      let lngStep = lng.toFixed(4);
+      let latStep = lat.toFixed(3);
+      let lngStep = lng.toFixed(3);
       
       return (latClient == latStep) && (lngClient == lngStep);
     });

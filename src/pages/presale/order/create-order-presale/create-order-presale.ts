@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { OrderService } from '../../../../providers/order.service';
 import { ClientService } from '../../../../providers/client.service';
@@ -14,6 +14,7 @@ export class CreateOrderPresalePage {
 
   orderForm: FormGroup;
   clients: any[] = [];
+  zone: string;
 
   constructor(
     private navCtrl: NavController,
@@ -22,19 +23,16 @@ export class CreateOrderPresalePage {
     private loadCtrl: LoadingController,
     private clientService: ClientService,
     private alertCtrl: AlertController,
-    private storage: Storage,
+    private navParams: NavParams
   ) {
     this.orderForm = this.makeLoginForm();
+    this.zone = this.navParams.get('zone') || 'Norte';
   }
 
   ionViewDidLoad(){
     let load = this.loadCtrl.create();
     load.present();
-    this.storage.get('session')
-    .then(data =>{
-      let profile = JSON.parse(data);
-      return this.clientService.getClientsByZone(profile.zone || '');
-    })
+    this.clientService.getClientsByZone(this.zone)
     .then((clients:any[]) =>{
       load.dismiss();
       this.clients = clients;

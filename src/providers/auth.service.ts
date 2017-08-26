@@ -31,6 +31,12 @@ export class AuthService {
       this.fireDatabase.object('/userProfiles/'+ id)
       .subscribe(data =>{
         data.uid = id;
+        let pages: any = {
+          'admin': 'HomeAdminPage',
+          'distributor': 'HomeDistributorPage',
+          'presale': 'HomePresalePage',
+        };
+        data.page = pages[data.role];
         resolve(data);
       },error=>{
         reject(error)
