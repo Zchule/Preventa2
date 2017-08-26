@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 
 import { AuthService } from '../../providers/auth.service';
 
@@ -20,8 +19,7 @@ export class LoginPage{
     public formBuilder: FormBuilder,
     public authService: AuthService,
     public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController,
-    private storage: Storage
+    public loadingCtrl: LoadingController
   ) {
     this.loginForm = this.makeLoginForm();
   }

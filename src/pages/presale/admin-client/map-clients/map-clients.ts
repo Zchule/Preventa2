@@ -32,7 +32,6 @@ export class MapClientsPage {
     private geolocation: Geolocation,
     private loadCtrl: LoadingController,
     private clientService: ClientService,
-    private storage: Storage,
     private launchNavigator: LaunchNavigator,
     private modalCtrl: ModalController,
     private navParams: NavParams
@@ -162,7 +161,6 @@ export class MapClientsPage {
   }
 
   showClient(){
-    let order = this.itemSelected.order;
     let modal = this.modalCtrl.create('ViewClientPage',{
       client: this.itemSelected.client,
     });
