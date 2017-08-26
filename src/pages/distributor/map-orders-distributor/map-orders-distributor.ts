@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading, ModalController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Storage } from '@ionic/storage';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 import { OrderService } from '../../../providers/order.service'; 
@@ -21,13 +20,15 @@ export class MapOrdersDistributorPage {
   directionsService: any = null;
   directionsDisplay: any = null;
   myLatLng: any = {};
-  state: string = 'all';
-  type: string = 'all';
   total: number = 0;
   bounds: any = null;
   infowindow: any;
   legs: any[] =[];
   itemSelected: any = null;
+
+  state: string;
+  type: string;
+  zone: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,12 +36,12 @@ export class MapOrdersDistributorPage {
     private orderService: OrderService,
     private loadCtrl: LoadingController,
     private geolocation: Geolocation,
-    private storage: Storage,
     private modalCtrl: ModalController,
     private launchNavigator: LaunchNavigator
   ) {
     this.state = this.navParams.get('state') || 'all';
     this.type = this.navParams.get('type') || 'all';
+    this.zone = this.navParams.get('zone') || 'Norte';
     this.directionsService = new google.maps.DirectionsService();
     this.directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
     this.bounds = new google.maps.LatLngBounds();
@@ -54,11 +55,7 @@ export class MapOrdersDistributorPage {
     });
     this.load.present();
 
-    this.storage.get('session')
-    .then(data =>{
-      let profile = JSON.parse(data);
-      return this.orderService.getProductsByZone(profile.zone || '');
-    })
+    this.orderService.getProductsByZone(this.zone)
     .then((orders:any[]) =>{
       this.orders = this.getOrders(orders)
       .splice(0,10)

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController, PopoverController } from 'ionic-angular';
 
 import { OrderService } from '../../../providers/order.service'; 
-import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -13,8 +12,9 @@ export class ListsOrdersDistributorPage {
 
   orders: any[] = [];
   showOrders: any[] = [];
-  state: string = 'all';
-  type: string = 'all';
+  state: string;
+  type: string;
+  zone: string;
 
   constructor(
     public navCtrl: NavController,
@@ -22,20 +22,18 @@ export class ListsOrdersDistributorPage {
     private orderService: OrderService,
     private loadCtrl: LoadingController,
     private modalCtrl: ModalController,
-    private storage:Storage
+    private popoverCtrl: PopoverController
   ) {
     this.state = this.navParams.get('state') || 'all';
     this.type = this.navParams.get('type') || 'all';
+    this.zone = this.navParams.get('zone') || 'Norte';
   }
 
   ionViewDidLoad() {
     let load = this.loadCtrl.create();
     load.present();
-    this.storage.get('session')
-    .then(data =>{
-      let profile = JSON.parse(data);
-      return this.orderService.getProductsByZone(profile.zone || '');
-    })
+
+    this.orderService.getProductsByZone(this.zone)
     .then((orders:any[]) =>{
       console.log(orders);
       this.orders = orders;
@@ -59,7 +57,21 @@ export class ListsOrdersDistributorPage {
   goToMapOrdersDistributorPage(){
     this.navCtrl.push('MapOrdersDistributorPage',{
       state: this.state,
-      type: this.type
+      type: this.type,
+      zone: this.zone
+    });
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create('PopoverZonesPage');
+    popover.present({
+      ev: myEvent
+    });
+    popover.onDidDismiss(data =>{
+      if(data){
+        this.zone = data;
+        this.ionViewDidLoad();
+      }
     });
   }
 

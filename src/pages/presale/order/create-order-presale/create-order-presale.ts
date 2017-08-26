@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { OrderService } from '../../../../providers/order.service';
 import { ClientService } from '../../../../providers/client.service';
 
