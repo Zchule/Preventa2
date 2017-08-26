@@ -166,7 +166,10 @@ export class MyApp {
     this.oneSignal.handleNotificationOpened()
     .subscribe((data) => {
       if(this.auth.isLoggedIn()){
-        this.navMaster.setRoot('InventoryPage');
+        let user = this.auth.getUser();
+        if(user.role == 'presale'){
+          this.navMaster.setRoot('InventoryPage');
+        }
       }
     });
     this.oneSignal.endInit();

@@ -18,6 +18,7 @@ export class OrderDistributorPage {
   fireProducts: FirebaseListObservable<any>;
   state: string = 'init';
   user: any = {};
+  sendNotification: boolean = false;
 
   constructor(
     private viewCtrl: ViewController,
@@ -69,7 +70,12 @@ export class OrderDistributorPage {
       state: 'done'
     })
     .then(() => Promise.all(this.updateProducts()))
-    .then(() => this.pushService.sendPushPreventa('Hay productos que están por agotarse'))
+    .then(() => {
+      if(this.sendNotification){
+        return this.pushService.sendPushPreventa('Hay productos que están por agotarse')
+      }
+      return Promise.resolve(true);
+    })
     .then(() =>{
       load.dismiss();
       load.onDidDismiss(()=>{
@@ -104,14 +110,18 @@ export class OrderDistributorPage {
   private updateProducts(){
     let promises = [];
     this.products.forEach((product)=>{
-      let key = product.$key;
+      let key = product.key;
       let cant = product.cant - product.count;
+      if(cant <= 5 && !this.sendNotification){
+        this.sendNotification = true;
+      }
       promises.push(this.updateCount(key, cant));
     });
     return promises;
   }
 
   private updateCount(key, cant){
+    console.log(key, cant);
     return this.productService.update(key, {
       cant: cant
     });
