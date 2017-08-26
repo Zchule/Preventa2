@@ -4,6 +4,7 @@ import 'rxjs/add/operator/filter';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { AuthService } from './../providers/auth.service';
 
@@ -101,7 +102,8 @@ export class MyApp {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private auth: AuthService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private oneSignal: OneSignal
   ) {
     this.platform.ready()
     .then(() => {
@@ -109,6 +111,7 @@ export class MyApp {
       this.checkSession();
       this.listenChangeUser();
       this.disenabledMenu();
+      this.listerNotifications();
     });
   }
 
@@ -153,5 +156,15 @@ export class MyApp {
     .subscribe(user =>{
       this.user = user;
     });
+  }
+
+  private listerNotifications(){
+    this.oneSignal.startInit('db22e52a-a6ac-4e79-8f71-16905859dc63', '4446233718');
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    this.oneSignal.handleNotificationOpened()
+    .subscribe((data) => {
+      console.log(data);
+    });
+    this.oneSignal.endInit();
   }
 }

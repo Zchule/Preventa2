@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -59,6 +60,7 @@ const configFirebase ={
     SplashScreen,
     Camera,
     InAppBrowser,
+    OneSignal,
     ProductService,
     UserProfileService,
     DetersService,
