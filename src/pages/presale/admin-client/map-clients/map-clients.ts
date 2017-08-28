@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, LoadingController, Loading, ModalController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading, ModalController, NavParams, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
@@ -34,7 +34,8 @@ export class MapClientsPage {
     private clientService: ClientService,
     private launchNavigator: LaunchNavigator,
     private modalCtrl: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private alertCtrl: AlertController
   ) {
     this.bounds = new google.maps.LatLngBounds();
     this.directionsService = new google.maps.DirectionsService();
@@ -72,7 +73,8 @@ export class MapClientsPage {
 
   private getPosition():any{
     this.geolocation.getCurrentPosition({
-      maximumAge: 20000
+      maximumAge: 50000,
+      timeout: 5000,
     })
     .then(position => {
       this.myLatLng = {
@@ -82,6 +84,12 @@ export class MapClientsPage {
       this.loadMap();
     })
     .catch(error =>{
+      let alert = this.alertCtrl.create({
+        title: 'Ocurrió un problema',
+        message: 'Por favor habilita tu geolocalización en tu dispositivo',
+        buttons: ['Aceptar']
+      });
+      alert.present();
       this.load.dismiss();
     })
   }
