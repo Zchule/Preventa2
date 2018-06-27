@@ -44,6 +44,27 @@ export class AuthService {
     })
   }
 
+  getVendedores(){
+    let vendedores = [];
+    let sizeVendedores = 0;
+    return new Promise((resolve, reject)=>{
+      this.fireDatabase.list('/supervidores/idSupervidor/VendedoresList')
+      .subscribe(list =>{
+        sizeVendedores = list.length;
+        list.forEach(vendedor=>{
+          let imei = vendedor.imei;
+          this.fireDatabase.object('/vendedores/'+imei)
+          .subscribe(dataVendedor=>{
+            vendedores.push(dataVendedor);
+            if(vendedores.length == sizeVendedores){
+              resolve(vendedores);
+            }
+          })
+        })
+      })
+    });
+  }
+
   getUser(): any{
     let user = localStorage.getItem('current-user');
     if(user !== null && user !== undefined){
